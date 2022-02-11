@@ -1,0 +1,230 @@
+/*============    FONTS   ============*/
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/*============    GENERAL  ============*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header, .main {
+  margin: 0 auto;
+}
+
+.link {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+/*============    BODY   ============*/
+
+body {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+/*============    HEADER   ============*/
+.header {
+  position: fixed;
+  left: 50%; /* эта и следующая строчки центрируют элемент fixed*/
+  transform: translateX(-50%);
+  top: 0;
+  max-width: 1920px;
+  width: 100%;
+  height: 120px;
+  font-size: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 40px 80px;
+  padding: 0 32px;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  align-items: center;
+  z-index: 10;
+}
+
+.header section {
+  border-bottom: 1px solid rgba(191, 187, 187, 0.3);
+  box-sizing: border-box;
+  height: 100%;
+  display: grid;
+}
+
+.header__top {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.header__contact {
+  justify-self: start;
+  align-self: center;
+  align-items: flex-start;
+  display: flex;
+}
+
+.header__tel, .header__mail {
+  height: 100%;
+  display: flex;
+}
+
+.header__tel .header__contact-img img {
+  width: 16px;
+  height: 16px;
+}
+
+.header__mail .header__contact-img img {
+  width: 14px;
+  height: 11px;
+}
+
+.header__contact-text {
+  margin-left: 10px;
+}
+
+.header__mail {
+  margin-left: 35px;
+}
+
+.header__socials {
+  justify-self: end;
+  align-self: center;
+}
+
+.header__socials-link + .header__socials-link {
+  margin-left: 16px;
+}
+
+.header__bot {
+  grid-template-columns: 271px 1fr 271px;
+  align-items: center;
+}
+
+.header__logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.header__logo-link {
+  height: fit-content;
+  display: flex;
+}
+
+.header__nav {
+  height: 100%;
+}
+
+.header__nav-list {
+  width: fit-content;
+  height: 100%;
+  margin: auto;
+}
+
+.header__nav-item {
+  display: inline-block;
+  list-style: none;
+  height: 100%;
+}
+
+.header__nav-item + .header__nav-item {
+  margin-left: 32px;
+}
+
+.header__nav-link {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.header__feedback {
+  border-left: 1px solid rgba(191, 187, 187, 0.3);
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.header__feedback-link {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*============    MAIN   ============*/
+
+.banner {
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/picture/banner.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 860px;
+  max-width: 1920px;
+  margin: 0 auto;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.banner__heading {
+  font-size: 56px;
+  width: 863px;
+  margin: auto 0 auto 207.5px;
+}
+
+.banner__booking {
+  display: grid;
+  grid-template-columns: repeat(4, 352px);
+  grid-template-rows: 1fr;
+  grid-column-gap: 32px;
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.banner__booking-tab {
+  display: grid;
+  height: 64px;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr repeat(3, 64px);
+  border-bottom: 1px solid rgba(191, 187, 187, 0.3);
+  border-top: 1px solid rgba(191, 187, 187, 0.3);
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.banner__booking-title {
+  color: rgb(191, 187, 187);
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+
+.banner__booking-button, .banner__booking-input {
+  background: transparent;
+  color: rgb(222, 222, 222);
+  outline: none;
+  border: none;
+  font-size: 24px;
+  height: 100%;
+}
+
+.banner__booking-button {
+  cursor: pointer;
+}
+
+.banner__booking-input {
+  text-align: center;
+  border-left: 1px solid rgba(191, 187, 187, 0.3);
+  border-right: 1px solid rgba(191, 187, 187, 0.3);
+  box-sizing: border-box;
+  font-family: 'Fira Sans Condensed';
+}
+
+.banner__booking-label {
+  font-size: 18px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

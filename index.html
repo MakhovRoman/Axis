@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style/style.css">
+  <title>Axis</title>
+</head>
+<body>
+  <header class="header">
+    <section class="header__top">
+      <div class="header__contact">
+        <a href="tel:+79288112211" class="header__tel link">
+          <div class="header__contact-img">
+            <img src="picture/icons/phone.png" alt="">
+          </div>
+          <span class="header__contact-text">+7 928 811 22 11</span>
+        </a>
+        <a href="mailto:info@axis-hotel.ru" class="header__mail link">
+          <div class="header__contact-img">
+            <img src="picture/icons/envelope.png" alt="">
+          </div>
+          <span class="header__contact-text">info@axis-hotel.ru</span>
+        </a>
+      </div>
+      <div class="header__socials">
+        <a href="#" class="header__socials-link"><img src="picture/icons/instagram.png" alt=""></a>
+        <a href="#" class="header__socials-link"><img src="picture/icons/facebook.png" alt=""></a>
+        <a href="#" class="header__socials-link"><img src="picture/icons/booking.png" alt=""></a>
+        <a href="#" class="header__socials-link"><img src="picture/icons/vkontakte.png" alt=""></a>
+        <a href="#" class="header__socials-link"><img src="picture/icons/odnoklassniki.png" alt=""></a>
+      </div>
+    </section>
+    <section class="header__bot">
+      <div class="header__logo">
+        <a href="#" class="header__logo-link"><img src="picture/full_logo.png" alt=""></a>
+      </div>
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item"><a href="" class="header__nav-link link">О нас</a></li>
+          <li class="header__nav-item"><a href="" class="header__nav-link link">Апартаменты</a></li>
+          <li class="header__nav-item"><a href="" class="header__nav-link link">Оплата</a></li>
+          <li class="header__nav-item"><a href="" class="header__nav-link link">Ski</a></li>
+          <li class="header__nav-item"><a href="" class="header__nav-link link">Ресторан</a></li>
+          <li class="header__nav-item"><a href="" class="header__nav-link link">Сервис</a></li>
+          <li class="header__nav-item"><a href="" class="header__nav-link link">Контакты</a></li>
+        </ul>
+      </nav>
+      <div class="header__feedback">
+        <a href="#" class="header__feedback-link link">Заказать звонок</a>
+      </div>
+    </section>
+  </header>
+  <main class="main">
+    <section class="banner">
+      <h3 class="banner__heading">Уютные Апартаменты в центре горнолыжного курорта</h3>
+      <form class="banner__booking" name="booking" method="post">
+        <div class="banner__booking-item">
+          <p class="banner__booking-title">Заезд – Выезд</p>
+        </div>
+        <div class="banner__booking-item">
+          <p class="banner__booking-title">Гости</p>
+          <div class="banner__booking-tab">
+            <label for="adults" class="banner__booking-label">Взрослые</label>
+            <button class="banner__booking-button" id="guestAdultMinus">-</button>
+            <input type="number" class="banner__booking-input" id="guestAdult" name="adults" value="10" min="1" max="42">
+            <button class="banner__booking-button" id="guestAdultPlus">+</button>
+          </div>
+        </div>
+        <div class="banner__booking-item">
+          <p class="banner__booking-title">Гости</p>
+          <div class="banner__booking-tab">
+            <label for="child" class="banner__booking-label">Дети</label>
+            <button class="banner__booking-button" id="guestChildMinus">-</button>
+            <input type="number" class="banner__booking-input" id="guestChild" name="child" value="10" min="1" max="42">
+            <button class="banner__booking-button" id="guestChildPlus">+</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script src="scripts/script.js"></script>
+</body>
+</html>
