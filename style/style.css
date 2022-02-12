@@ -131,9 +131,14 @@ body {
 
 .header__nav-link {
   width: 100%;
-  height: 100%;
+  height: calc(100% + 0.5px);
   display: flex;
   align-items: center;
+  box-sizing: border-box;
+}
+
+.header__nav-link:hover {
+  border-bottom: 1px solid rgb(255, 255, 255);
 }
 
 .header__feedback {
@@ -147,16 +152,27 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.header__feedback-link:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  transition: all 0.3s ease;
 }
 
 /*============    MAIN   ============*/
+.main {
+  max-width: 1920px;
+}
 
 .banner {
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/picture/banner.png);
   background-repeat: no-repeat;
   background-position: center center;
+  background-size: cover;
   height: 860px;
-  max-width: 1920px;
+
   margin: 0 auto;
   color: rgb(255, 255, 255);
   display: flex;
@@ -209,6 +225,24 @@ body {
 
 .banner__booking-button {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.banner__booking-button:hover {
+  background: rgb(255, 255, 255);
+  transition: all 0.3s ease;
+}
+
+.button__sign {
+  transition: all 0.3s ease;
+}
+
+.banner__booking-button:hover .button__sign {
+  filter: invert(100%);
+  transition: all 0.3s ease;
 }
 
 .banner__booking-input {
@@ -232,4 +266,46 @@ input[type="number"]::-webkit-inner-spin-button {
 .banner__booking-item:last-child {
   display: flex;
   align-items: flex-end;
+}
+
+.banner__booking-item:last-child .banner__booking-tab{
+  display: flex;
+  width: 100%;
+}
+
+.banner__booking-link {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  justify-content: left;
+}
+
+.banner__booking-link img {
+  margin-left: 8px;
+  transition: all 0.3s ease;
+}
+
+.banner__booking-link:hover {
+  transition: all 0.3s ease;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  animation: slideText 0.5s ease forwards;
+}
+
+.banner__booking-link:hover img {
+  filter: invert(100%);
+  transition: all 0.3s ease;
+}
+
+@keyframes slideText {
+  0% {padding-left: 0px;}
+  100% {padding-left: 170px;}
+}
+
+@keyframes slideTextBackward {
+  0% {padding-left: 170px;}
+  100% {padding-left: 0px;}
 }
