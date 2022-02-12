@@ -58,6 +58,12 @@ guestChild.addEventListener('focusout', () => {
 
 let bannerLink = document.querySelector('.banner__booking-link');
 bannerLink.addEventListener('mouseout', function() {
-  bannerLink.style.animation = 'slideTextBackward 0.5s ease forwards';
+  bannerLink.style.animation = 'slideTextBackward 0.4s ease forwards';
   setTimeout( () => {bannerLink.style.animation = null}, 600);
+});
+
+let payLink = document.querySelector('.pay__booking');
+payLink.addEventListener('mouseout', function() {
+  payLink.style.animation = 'slideTextBigBackward 0.4s ease forwards';
+  setTimeout( () => {payLink.style.animation = null}, 600);
 })

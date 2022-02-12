@@ -17,6 +17,28 @@
   color: rgb(255, 255, 255);
 }
 
+/*============    ANIMATIONS  ============*/
+
+@keyframes slideText {
+  0% {padding-left: 0px;}
+  100% {padding-left: 170px;}
+}
+
+@keyframes slideTextBackward {
+  0% {padding-left: 170px;}
+  100% {padding-left: 0px;}
+}
+
+@keyframes slideTextBig {
+  0% {padding-left: 0px;}
+  100% {padding-left: 430px;}
+}
+
+@keyframes slideTextBigBackward {
+  0% {padding-left: 430px;}
+  100% {padding-left: 0px;}
+}
+
 /*============    BODY   ============*/
 
 body {
@@ -152,13 +174,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .header__feedback-link:hover {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 /*============    MAIN   ============*/
@@ -215,7 +237,7 @@ body {
   margin-bottom: 8px;
 }
 
-.banner__booking-button, .banner__booking-input {
+.banner__booking-button, .banner__booking-input, .slider__control-button {
   background: transparent;
   color: rgb(222, 222, 222);
   outline: none;
@@ -224,7 +246,7 @@ body {
   height: 100%;
 }
 
-.banner__booking-button {
+.banner__booking-button, .slider__control-button {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -301,17 +323,6 @@ input[type="number"]::-webkit-inner-spin-button {
   transition: all 0.3s ease;
 }
 
-@keyframes slideText {
-  0% {padding-left: 0px;}
-  100% {padding-left: 170px;}
-}
-
-@keyframes slideTextBackward {
-  0% {padding-left: 170px;}
-  100% {padding-left: 0px;}
-}
-
-
 /*============    APARTAMENTS   ============*/
 .apartments__content {
   display: grid;
@@ -322,13 +333,13 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 180px 208px;
 }
 
-.apartments__heading {
+.section__heading {
   font-family: 'Fira Sans Condensed';
   font-size: 38px;
   letter-spacing: 0.13em;
 }
 
-.apartaments__paragraph {
+.content__paragraph {
   font-size: 18px;
   line-height: 27px;
   margin-top: 32px;
@@ -337,12 +348,207 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .apartaments__icons {
   display: flex;
+  margin-top: 64px;
 }
 
 .apartament__icons-item {
   width: 111px;
+  text-align: center;
 }
 
 .apartament__icons-item + .apartament__icons-item {
   margin-left: 25px;
+}
+
+.apartament__icon-label {
+  margin-top: 16px;
+}
+
+
+/*============    PAY   ============*/
+.pay {
+  padding: 180px 0;
+  background-color: rgba(191, 187, 187, 0.3);
+}
+
+.pay__content {
+  display: grid;
+  grid-row: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 32px;
+  width: 1504px;
+  margin: 0 auto;
+}
+
+.pay__info {
+  grid-column: 1/3;
+  grid-row: 1/3;
+}
+
+.pay__shale {
+  grid-column: 3/5;
+  grid-row: 1/3;
+}
+
+.pay__lines {
+  grid-column: 1/3;
+  grid-row: 3/5;
+}
+
+.pay__lamp {
+  grid-column: 3/4;
+  grid-row: 3/4;
+}
+
+.pay__bootle {
+  grid-column: 4/5;
+  grid-row: 3/4;
+}
+
+.pay__diningroom {
+  grid-column: 3/5;
+  grid-row: 4/6;
+}
+
+.pay__towel {
+  grid-column: 1/2;
+  grid-row: 5/6;
+}
+
+.pay__lamp2 {
+  grid-column: 2/3;
+  grid-row: 5/6;
+}
+
+.pay__paragraph {
+  width: 608px;
+}
+
+.pay__list {
+  width: 384px;
+  margin-top: 64px;
+}
+
+.pay__list-item {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 24px 0;
+  font-size: 18px;
+  line-height: 27px;
+  border-top: 1px solid rgba(191, 187, 187, 0.6);
+  box-sizing: border-box;
+  max-height: 75px;
+}
+
+.pay__list-item:last-child {
+  border-bottom: 1px solid rgba(191, 187, 187, 0.6);
+}
+
+.circle {
+  width: 4px;
+  height: 4px;
+  border-radius: 50px;
+  background-color: rgb(0, 0, 0);
+  margin-right: 16px;
+}
+
+.pay__booking {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  color: rgb(0, 0, 0);
+  margin-top: 64px;
+  height: 80px;
+  width: 608px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(191, 187, 187, 0.6);
+  border-bottom: 1px solid rgba(191, 187, 187, 0.6);
+}
+
+.pay__booking:hover {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  transition: all 0.4s ease;
+  animation: slideTextBig 0.4s forwards;
+}
+
+.pay__booking img {
+  margin-left: 8px;
+}
+
+.pay__booking:hover img {
+  filter: invert(100%);
+}
+
+.pay__slider {
+  width: 1504px;
+  height: 642px;
+  margin: 88px auto 0 auto;
+  background-color: yellow;
+  position: relative;
+}
+
+.pay__slider-item {
+  display: grid;
+  min-width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-gap: 160px;
+}
+
+.pay__slider-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.slider__control {
+  display: flex;
+  height: 80px;
+  width: 608px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(191, 187, 187, 0.6);
+  border-bottom: 1px solid rgba(191, 187, 187, 0.6);
+
+}
+
+.slider__control-button {
+  width: 80px;
+  height: 100%;
+  transition: 0.3s ease;
+}
+
+.slider__control-button img {
+  transition: 0.3s ease;
+}
+
+.slider__control-button:hover {
+  background-color: rgb(0, 0, 0);
+  transition: 0.3s ease;
+}
+
+.slider__control-button:hover img {
+  filter: invert(100%);
+  transition: 0.3s ease;
+}
+
+.slider__control-line {
+  height: 100%;
+  width: 1px;
+  background-color: rgba(191, 187, 187, 0.6);
+}
+
+#slider__minus img {
+  transform: rotateY(180deg);
+}
+
+.slider__control-count {
+  line-height: 80px;
+  font-family: 'Fira Sans Condensed';
+  font-size: 38px;
+  margin-left: auto;
 }
