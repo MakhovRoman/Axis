@@ -166,6 +166,7 @@ body {
   max-width: 1920px;
 }
 
+/*============    BANNER   ============*/
 .banner {
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/picture/banner.png);
   background-repeat: no-repeat;
@@ -308,4 +309,40 @@ input[type="number"]::-webkit-inner-spin-button {
 @keyframes slideTextBackward {
   0% {padding-left: 170px;}
   100% {padding-left: 0px;}
+}
+
+
+/*============    APARTAMENTS   ============*/
+.apartments__content {
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: 736px 608px;
+  grid-template-rows: 1fr;
+  grid-column-gap: 160px;
+  margin: 180px 208px;
+}
+
+.apartments__heading {
+  font-family: 'Fira Sans Condensed';
+  font-size: 38px;
+  letter-spacing: 0.13em;
+}
+
+.apartaments__paragraph {
+  font-size: 18px;
+  line-height: 27px;
+  margin-top: 32px;
+  color: #636363;
+}
+
+.apartaments__icons {
+  display: flex;
+}
+
+.apartament__icons-item {
+  width: 111px;
+}
+
+.apartament__icons-item + .apartament__icons-item {
+  margin-left: 25px;
 }
