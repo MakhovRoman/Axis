@@ -364,7 +364,6 @@ input[type="number"]::-webkit-inner-spin-button {
   margin-top: 16px;
 }
 
-
 /*============    PAY   ============*/
 .pay {
   padding: 180px 0;
@@ -486,13 +485,13 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 1504px;
   height: 642px;
   margin: 88px auto 0 auto;
-  background-color: yellow;
   position: relative;
+  overflow-x: hidden;
 }
 
 .pay__slider-item {
   display: grid;
-  min-width: 100%;
+  min-width: calc(100% / 4);
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
   grid-gap: 160px;
@@ -500,7 +499,8 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .pay__slider-wrapper {
   display: flex;
-  width: 100%;
+  width: calc(100% * 4);
+  transition: all 0.5s ease-in-out;
 }
 
 .slider__control {
@@ -551,4 +551,29 @@ input[type="number"]::-webkit-inner-spin-button {
   font-family: 'Fira Sans Condensed';
   font-size: 38px;
   margin-left: auto;
+}
+
+/*============    SKI   ============*/
+
+.ski {
+  padding: 180px 0;
+}
+
+.ski__trace {
+  display: grid;
+  width: fit-content;
+  grid-template-columns: 736px 608px;
+  grid-template-rows: 1fr;
+  grid-gap: 160px;
+  margin: 0 auto;
+}
+
+.ski__food {
+  display: grid;
+  width: fit-content;
+  grid-template-columns: 608px 736px;
+  grid-template-rows: 1fr;
+  grid-gap: 160px;
+  margin: 0 auto;
+  margin-top: 160px;
 }

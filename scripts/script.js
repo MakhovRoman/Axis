@@ -1,5 +1,7 @@
 "use strict"
 
+//============= Заполнение формы количества гостей =============
+
 let buttonAdultMinus = document.querySelector('#guestAdultMinus');
 let buttonAdultPlus = document.querySelector('#guestAdultPlus');
 let buttonChildMinus = document.querySelector('#guestChildMinus');
@@ -67,3 +69,38 @@ payLink.addEventListener('mouseout', function() {
   payLink.style.animation = 'slideTextBigBackward 0.4s ease forwards';
   setTimeout( () => {payLink.style.animation = null}, 600);
 })
+
+
+
+//============= Слайдеры =============
+
+let paySliderList = document.querySelectorAll('.pay__slider-item');
+let paySliderWrapper = document.querySelector('.pay__slider-wrapper');
+let paySliderCount = document.querySelector('#slider__counter');
+let paySliderPlus = document.querySelector('#slider__plus');
+let paySliderMinus = document.querySelector('#slider__minus');
+
+function sliderForward(slider, count) {
+  let i = Number(count.textContent);
+  i++;
+  if (i>=4) i = 4;
+  count.textContent = i;
+  slider.style.transform = `translateX(${-(i-1)*100/4}%)`;
+}
+
+function sliderBackward(slider, count) {
+  let i = Number(count.textContent);
+  i--;
+  if (i<=1) i = 1;
+  count.textContent = i;
+  slider.style.transform = `translateX(${-(i-1)*100/4}%)`;
+}
+
+paySliderPlus.addEventListener('click', function() {
+  sliderForward(paySliderWrapper, paySliderCount);
+});
+paySliderMinus.addEventListener('click', function() {
+  sliderBackward(paySliderWrapper, paySliderCount);
+});
+
+console.log(Number(paySliderCount.textContent));
