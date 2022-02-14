@@ -163,4 +163,8 @@ servicesButtonMinus.addEventListener('click', function() {
 
 servicesButtonBlock.addEventListener('click', function() {
   sliderServicesOpacity(servicesCount, servicesSliderList);
-})
+});
+
+
+
+//============= Маска телефона =============

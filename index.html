@@ -455,6 +455,28 @@
         </div>
       </div>
     </section>
+    <section class="contacts">
+      <div class="contacts__wrapper">
+        <div class="contacts__text">
+          <h3 class="contacts__heading section__heading">Остались вопросы?</h3>
+          <p class="contacts__paragraph">Оставьте номер телефона и мы перезвоним вам</p>
+        </div>
+        <form action="#" method="post" class="contacts__form">
+          <div class="contacts__form-item">
+            <label for="contacts__name" class="contacts__form-label">Ваше имя</label>
+            <input type="text" class="contacts__form-input" name="contacts__name" placeholder="Имя Фамилия" pattern="^[a-zA-Z0-9_][a-zA-Z0-9_ ]*[a-zA-Z0-9_]$" required>
+          </div>
+          <div class="contacts__form-item">
+            <label for="contacts__tel" class="contacts__form-label">Номер телефона</label>
+            <input type="tel" class="contacts__form-input" name="contacts__tel" placeholder="+7 ХХХ ХХХ ХХ ХХ" required>
+          </div>
+          <button type="submit" class="contacts__form-input contacts__form-submit">
+            Отправить
+            <img src="picture/icons/arrow.svg" alt="">
+          </button>
+        </form>
+      </div>
+    </section>
   </main>
   <script src="scripts/script.js"></script>
 </body>
