@@ -464,16 +464,20 @@
         <form action="#" method="post" class="contacts__form">
           <div class="contacts__form-item">
             <label for="contacts__name" class="contacts__form-label">Ваше имя</label>
-            <input type="text" class="contacts__form-input" name="contacts__name" placeholder="Имя Фамилия" pattern="^[a-zA-Z0-9_][a-zA-Z0-9_ ]*[a-zA-Z0-9_]$" required>
+            <input type="text" class="contacts__form-input" name="contacts__name" placeholder="Имя Фамилия" pattern="[a-zA-ZА-Яа-яёЁ\-\s\']" required>
           </div>
           <div class="contacts__form-item">
             <label for="contacts__tel" class="contacts__form-label">Номер телефона</label>
-            <input type="tel" class="contacts__form-input" name="contacts__tel" placeholder="+7 ХХХ ХХХ ХХ ХХ" required>
+            <input type="tel" id="contacts__tel" class="contacts__form-input" name="contacts__tel" placeholder="+7 ХХХ ХХХ ХХ ХХ" pattern=[0-9] required>
           </div>
           <button type="submit" class="contacts__form-input contacts__form-submit">
             Отправить
             <img src="picture/icons/arrow.svg" alt="">
           </button>
+            <div class="contacts__form-personal">
+              <input type="radio" class="contacts__form-radio" name="personalData" value="1">
+              <label for="personalData" class="contacts__form-radioLabel">Даю согласие на обработку персональных данных.</label>
+            </div>
         </form>
       </div>
     </section>
