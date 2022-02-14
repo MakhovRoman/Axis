@@ -103,4 +103,64 @@ paySliderMinus.addEventListener('click', function() {
   sliderBackward(paySliderWrapper, paySliderCount);
 });
 
-console.log(Number(paySliderCount.textContent));
+//слайдер в Showplace
+
+let showplaceSliderCount = document.querySelector('#sliderShowplace__counter');
+let showplaceSliderPlus = document.querySelector('#sliderShowplace__plus');
+let showplaceSliderMinus = document.querySelector('#sliderShowplace__minus');
+let showplaceSlider = document.querySelector('.services__showplace-slider');
+
+showplaceSliderPlus.addEventListener('click', function() {
+  sliderForward(showplaceSlider, showplaceSliderCount);
+});
+showplaceSliderMinus.addEventListener('click', function() {
+  sliderBackward(showplaceSlider, showplaceSliderCount);
+})
+
+//слайдер в Services
+
+let servicesButtonMinus = document.querySelector('#services__button-minus');
+let servicesButtonPlus = document.querySelector('#services__button-plus');
+let servicesButtonBlock = document.querySelector('.services__slider1-buttons');
+let servicesMarker = document.querySelector('.services__slider1-marker');
+let servicesSlider = document.querySelector('.services__slider1');
+let servicesSliderList = document.querySelectorAll('.services__slider1-item');
+let servicesCount = 0;
+
+function sliderServicesForward(marker, slider) {
+  servicesCount++;
+  if (servicesCount >= 2) servicesCount = 2;
+  marker.style.transform = `translateX(${servicesCount*100}%)`;
+  slider.style.transform = `translateX(${-servicesCount*(100/3)}%)`;
+}
+
+function sliderServicesBackward(marker, slider) {
+  servicesCount--;
+  if (servicesCount <= 0) servicesCount = 0;
+  marker.style.transform = `translateX(${servicesCount*100}%)`;
+  slider.style.transform = `translateX(${-servicesCount*(100/3)}%)`;
+}
+
+function sliderServicesOpacity(count, sliderList) {
+  for(let i = 0; i <= sliderList.length; i ++) {
+    if (i == count) {
+      sliderList[i].style.opacity = '1';
+    } else if (i > count){
+      sliderList[i].style.opacity = '0.15';
+    } else if (i < count) {
+      sliderList[i].style.opacity = '0';
+    }
+  }
+}
+
+servicesButtonPlus.addEventListener('click', function() {
+  sliderServicesForward(servicesMarker, servicesSlider);
+});
+
+servicesButtonMinus.addEventListener('click', function() {
+  sliderServicesBackward(servicesMarker, servicesSlider);
+});
+
+servicesButtonBlock.addEventListener('click', function() {
+  sliderServicesOpacity(servicesCount, servicesSliderList);
+})
