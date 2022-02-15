@@ -61,13 +61,19 @@ guestChild.addEventListener('focusout', () => {
 let bannerLink = document.querySelector('.banner__booking-link');
 bannerLink.addEventListener('mouseout', function() {
   bannerLink.style.animation = 'slideTextBackward 0.4s ease forwards';
-  setTimeout( () => {bannerLink.style.animation = null}, 600);
+  setTimeout( () => {bannerLink.style.animation = null}, 500);
 });
 
 let payLink = document.querySelector('.pay__booking');
 payLink.addEventListener('mouseout', function() {
   payLink.style.animation = 'slideTextBigBackward 0.4s ease forwards';
-  setTimeout( () => {payLink.style.animation = null}, 600);
+  setTimeout( () => {payLink.style.animation = null}, 500);
+})
+
+let contactsSubmit = document.querySelector('.contacts__form-submit');
+contactsSubmit.addEventListener('mouseout', function() {
+  contactsSubmit.style.animation = 'slideTextBackward 0.4s ease forwards';
+  setTimeout( () => {contactsSubmit.style.animation = null}, 500);
 })
 
 
@@ -124,21 +130,23 @@ let servicesButtonPlus = document.querySelector('#services__button-plus');
 let servicesButtonBlock = document.querySelector('.services__slider1-buttons');
 let servicesMarker = document.querySelector('.services__slider1-marker');
 let servicesSlider = document.querySelector('.services__slider1');
-let servicesSliderList = document.querySelectorAll('.services__slider1-item');
+let servicesSliderList = document.querySelectorAll('.services__slider1-content');
+let servicesSliderLength = servicesSliderList.length;
+let servicesSliderMargin = servicesSliderList[1].style.marginLeft;
 let servicesCount = 0;
 
 function sliderServicesForward(marker, slider) {
   servicesCount++;
-  if (servicesCount >= 2) servicesCount = 2;
-  marker.style.transform = `translateX(${servicesCount*100}%)`;
-  slider.style.transform = `translateX(${-servicesCount*(100/3)}%)`;
+  if (servicesCount >= servicesSliderLength-4) servicesCount = servicesSliderLength-4;
+  marker.style.transform = `translateX(${(servicesCount + 4)*25}%)`;
+  slider.style.transform = `translateX(calc(${-servicesCount* 278}px - 106px * ${servicesCount}))`;
 }
 
 function sliderServicesBackward(marker, slider) {
   servicesCount--;
   if (servicesCount <= 0) servicesCount = 0;
-  marker.style.transform = `translateX(${servicesCount*100}%)`;
-  slider.style.transform = `translateX(${-servicesCount*(100/3)}%)`;
+  marker.style.transform = `translateX(${servicesCount*25}%)`;
+  slider.style.transform = `translateX(calc(${-servicesCount* 278}px - 106px * ${servicesCount}))`;
 }
 
 function sliderServicesOpacity(count, sliderList) {
@@ -159,10 +167,6 @@ servicesButtonPlus.addEventListener('click', function() {
 
 servicesButtonMinus.addEventListener('click', function() {
   sliderServicesBackward(servicesMarker, servicesSlider);
-});
-
-servicesButtonBlock.addEventListener('click', function() {
-  sliderServicesOpacity(servicesCount, servicesSliderList);
 });
 
 
