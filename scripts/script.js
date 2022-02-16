@@ -178,4 +178,44 @@ servicesButtonBlock.addEventListener('click', function() {
 
 //============= Маска телефона =============
 let contactsTel = document.querySelector('#contacts__tel');
-let tel = contactsTel.value;
+
+
+//============= Поле с именем и фамилией =============
+function noDigits(event) {
+  if ("1234567890".indexOf(event.key) != -1) event.preventDefault();
+}
+
+let contactsName = document.querySelector('#contacts__name');
+contactsName.addEventListener('keypress', noDigits);
+
+
+//============= Header =============
+
+let header = document.querySelector('.header');
+let headerTop = document.querySelector('.header__top');
+let headerBot = document.querySelector('.header__bot');
+let headerBotHeight = parseInt(getComputedStyle(headerBot).height);
+let headerTopHeight = parseInt(getComputedStyle(headerTop).height);
+let headerPositionTop;
+let pageScroll;
+
+window.addEventListener('scroll', function() {
+  pageScroll = window.pageYOffset;
+
+  if (pageScroll > headerTopHeight) {
+    headerPositionTop = headerTopHeight;
+    header.style.top = `${-headerPositionTop}px`;
+  } else {
+    header.style.top = '0';
+  }
+
+  if (pageScroll > 265) {
+    header.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+  } else {
+    header.style.backgroundColor = 'transparent';
+  }
+
+
+
+  console.log(pageScroll);
+})

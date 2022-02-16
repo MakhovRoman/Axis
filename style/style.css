@@ -63,6 +63,7 @@ body {
   color: rgb(255, 255, 255);
   align-items: center;
   z-index: 10;
+  transition: all 0.5s ease;
 }
 
 .header section {
@@ -575,10 +576,6 @@ input[type="number"]::-webkit-inner-spin-button {
   grid-template-rows: 1fr;
   grid-gap: 160px;
   margin: 0 auto;
-}
-
-.ski__paragraph {
-
 }
 
 .ski__food {
