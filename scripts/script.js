@@ -132,28 +132,30 @@ let servicesMarker = document.querySelector('.services__slider1-marker');
 let servicesSlider = document.querySelector('.services__slider1');
 let servicesSliderList = document.querySelectorAll('.services__slider1-content');
 let servicesSliderLength = servicesSliderList.length;
-let servicesSliderMargin = servicesSliderList[1].style.marginLeft;
+let servicesSliderMargin = parseInt(getComputedStyle(servicesSliderList[1]).marginLeft);
+let servicesSliderWidth = parseInt(getComputedStyle(servicesSliderList[1]).width);
 let servicesCount = 0;
 
 function sliderServicesForward(marker, slider) {
   servicesCount++;
   if (servicesCount >= servicesSliderLength-4) servicesCount = servicesSliderLength-4;
-  marker.style.transform = `translateX(${(servicesCount + 4)*25}%)`;
-  slider.style.transform = `translateX(calc(${-servicesCount* 278}px - 106px * ${servicesCount}))`;
+  marker.style.transform = `translateX(${(servicesCount)*100/(2)}%)`;
+  slider.style.transform = `translateX(calc(${-servicesCount * servicesSliderWidth}px - ${servicesSliderMargin}px * ${servicesCount}))`;
 }
 
 function sliderServicesBackward(marker, slider) {
   servicesCount--;
   if (servicesCount <= 0) servicesCount = 0;
-  marker.style.transform = `translateX(${servicesCount*25}%)`;
-  slider.style.transform = `translateX(calc(${-servicesCount* 278}px - 106px * ${servicesCount}))`;
+  marker.style.transform = `translateX(${(servicesCount)*100/(2)}%)`;
+  slider.style.transform = `translateX(calc(${-servicesCount * servicesSliderWidth}px - ${servicesSliderMargin}px * ${servicesCount}))`;
 }
 
 function sliderServicesOpacity(count, sliderList) {
-  for(let i = 0; i <= sliderList.length; i ++) {
-    if (i == count) {
+  let lastCount = count + 4;
+   for(let i = 0; i < sliderList.length; i ++) {
+    if (i >= count && i < lastCount) {
       sliderList[i].style.opacity = '1';
-    } else if (i > count){
+    } else if (i >= lastCount){
       sliderList[i].style.opacity = '0.15';
     } else if (i < count) {
       sliderList[i].style.opacity = '0';
@@ -169,7 +171,11 @@ servicesButtonMinus.addEventListener('click', function() {
   sliderServicesBackward(servicesMarker, servicesSlider);
 });
 
+servicesButtonBlock.addEventListener('click', function() {
+  sliderServicesOpacity(servicesCount, servicesSliderList);
+})
 
 
 //============= Маска телефона =============
 let contactsTel = document.querySelector('#contacts__tel');
+let tel = contactsTel.value;

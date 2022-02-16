@@ -325,12 +325,14 @@ input[type="number"]::-webkit-inner-spin-button {
 
 /*============    APARTAMENTS   ============*/
 .apartments__content {
+  padding: 180px 0;
   display: grid;
   box-sizing: border-box;
   grid-template-columns: 736px 608px;
   grid-template-rows: 1fr;
   grid-column-gap: 160px;
-  margin: 180px 208px;
+  margin: 0 auto;
+  width: fit-content;
 }
 
 .section__heading {
@@ -366,7 +368,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
 /*============    PAY   ============*/
 .pay {
-  padding: 180px 0;
   background-color: rgba(191, 187, 187, 0.3);
 }
 
@@ -375,6 +376,7 @@ input[type="number"]::-webkit-inner-spin-button {
   grid-template-rows:  repeat(2, 418px) repeat(3, 402px);
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 32px;
+  padding: 180px 0;
   width: 1504px;
   margin: 0 auto;
 }
@@ -562,10 +564,11 @@ input[type="number"]::-webkit-inner-spin-button {
 /*============    SKI   ============*/
 
 .ski {
-  padding: 180px 0;
+  padding-bottom: 180px;
 }
 
 .ski__trace {
+  padding-top: 180px;
   display: grid;
   width: fit-content;
   grid-template-columns: 736px 608px;
@@ -579,13 +582,18 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .ski__food {
+  position: relative;
   display: grid;
   width: fit-content;
   grid-template-columns: 608px 736px;
   grid-template-rows: 1fr;
   grid-gap: 160px;
   margin: 0 auto;
-  margin-top: 160px;
+  padding-top: 160px;
+}
+
+.ski__food a {
+  position: absolute;
 }
 
 
@@ -593,8 +601,12 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .services {
   background-color: rgba(191, 187, 187, 0.3);
-  padding: 120px 0 120px 0;
+
   overflow-x: hidden;
+}
+
+.services__wrapper {
+  padding: 120px 0 120px 0;
 }
 
 .services__slider1-wrapper {
@@ -612,10 +624,15 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .services__slider1-content {
   width: 278px;
+  transition: all 0.3s ease-in-out;
 }
 
 .services__slider1-content + .services__slider1-content {
   margin-left: 106px;
+}
+
+.services__slider1-content:nth-child(5) {
+  opacity: 0.15;
 }
 
 .services__slider1-heading {
