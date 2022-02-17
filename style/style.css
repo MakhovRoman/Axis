@@ -221,6 +221,13 @@ body {
   transform: translateX(-50%);
 }
 
+.banner__booking-calendar {
+  height: 64px;
+  display: flex;
+  border-top: 1px solid rgba(191, 187, 187, 0.6);
+  border-bottom: 1px solid rgba(191, 187, 187, 0.6);
+}
+
 .banner__booking-tab {
   display: grid;
   height: 64px;
@@ -370,6 +377,7 @@ input[type="number"]::-webkit-inner-spin-button {
 /*============    PAY   ============*/
 .pay {
   background-color: rgba(191, 187, 187, 0.3);
+  padding-bottom: 180px;
 }
 
 .pay__content {
@@ -377,7 +385,7 @@ input[type="number"]::-webkit-inner-spin-button {
   grid-template-rows:  repeat(2, 418px) repeat(3, 402px);
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 32px;
-  padding: 180px 0;
+  padding: 180px 0 0 0;
   width: 1504px;
   margin: 0 auto;
 }
@@ -593,6 +601,34 @@ input[type="number"]::-webkit-inner-spin-button {
   position: absolute;
 }
 
+.detailed__link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  color: rgb(0, 0, 0);
+  margin-top: 64px;
+  height: 80px;
+  width: 608px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(191, 187, 187, 0.6);
+  border-bottom: 1px solid rgba(191, 187, 187, 0.6);
+}
+
+.detailed__link:hover {
+  background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    transition: all 0.4s ease;
+    animation: slideTextBig 0.4s forwards;
+}
+
+.detailed__link img {
+  margin-left: 8px;
+}
+
+.detailed__link:hover img {
+  filter: invert(100%);
+}
 
 /*============    SERVICES   ============*/
 

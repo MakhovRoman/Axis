@@ -59,6 +59,9 @@
       <form class="banner__booking" name="booking" method="post">
         <div class="banner__booking-item">
           <p class="banner__booking-title">Заезд – Выезд</p>
+          <div class="banner__booking-calendar">
+
+          </div>
         </div>
         <div class="banner__booking-item">
           <p class="banner__booking-title">Гости</p>
@@ -67,7 +70,7 @@
             <button class="banner__booking-button" id="guestAdultMinus">
               <img src="picture/icons/minus.svg" alt="" class="button__sign">
             </button>
-            <input type="number" class="banner__booking-input" id="guestAdult" name="adults" value="10" min="1" max="42">
+            <input type="number" class="banner__booking-input" id="guestAdult" name="adults" value="2" min="1" max="42">
             <button class="banner__booking-button" id="guestAdultPlus">
               <img src="picture/icons/plus.svg" alt="" class="button__sign">
             </button>
@@ -80,7 +83,7 @@
             <button class="banner__booking-button" id="guestChildMinus">
               <img src="picture/icons/minus.svg" alt="" class="button__sign">
             </button>
-            <input type="number" class="banner__booking-input" id="guestChild" name="child" value="10" min="1" max="42">
+            <input type="number" class="banner__booking-input" id="guestChild" name="child" value="0" min="0" max="42">
             <button class="banner__booking-button" id="guestChildPlus">
               <img src="picture/icons/plus.svg" alt="" class="button__sign">
             </button>
@@ -254,6 +257,10 @@
             <br><br>
             Средняя продолжительность сезона – 115 дней: со второй половины декабря, по начало марта, поэтому желательно задуматься о бронировании апартаметов заблаговременно.
           </p>
+          <a href="#" class="detailed__link">
+            Подробнее
+            <img src="picture/icons/arrow_black.svg" alt="">
+          </a>
         </div>
       </div>
       <ski class="ski__food">
@@ -269,6 +276,10 @@
             <br><br>
             Для нас очень важно, чтобы вы получили удовольствие не только от ментального или активного отдыха в горах, но и от вкусной еды.
           </p>
+          <a href="#" class="detailed__link">
+            Подробнее
+            <img src="picture/icons/arrow_black.svg" alt="">
+          </a>
         </div>
         <div class="ski__food-image">
           <img src="picture/food.png" alt="">
@@ -434,7 +445,7 @@
             </div>
             <div class="contacts__form-item">
               <label for="contacts__tel" class="contacts__form-label">Номер телефона</label>
-              <input type="tel" id="contacts__tel" class="contacts__form-input" name="contacts__tel" placeholder="+7 ХХХ ХХХ ХХ ХХ" pattern=[0-9] required>
+              <input type="tel" id="contacts__tel" class="contacts__form-input" name="contacts__tel" placeholder="+7 ХХХ ХХХ ХХ ХХ" data-mask="+7 ___ ___ ____" required>
             </div>
             <button type="submit" class="contacts__form-input contacts__form-submit">
               Отправить
