@@ -278,12 +278,13 @@ let headerBot = document.querySelector('.header__bot');
 let headerBotHeight = parseInt(getComputedStyle(headerBot).height);
 let headerTopHeight = parseInt(getComputedStyle(headerTop).height);
 let bannerHeight = parseInt(getComputedStyle(document.querySelector('.banner')).height);
+let bannerBookingLink = document.querySelector('.banner__booking-link');
+let modal = document.querySelector('.modal');
 let headerPositionTop;
 let pageScroll;
 let headerLastScrollTop = 0;
 
-
-window.addEventListener('scroll', function() {
+function headerScroll() {
   pageScroll = window.pageYOffset;
   let scrollTop = pageScroll;
 
@@ -325,4 +326,19 @@ window.addEventListener('scroll', function() {
     headerLastScrollTop = scrollTop;
   }
 
+}
+
+
+
+
+window.addEventListener('scroll', headerScroll);
+
+//============= Modal =============
+
+window.addEventListener('keydown', function(e) {              // закрытие модального окна по клавише ESC
+  if (e.which == 27) modal.classList.remove('modal_visible')
+});
+
+bannerBookingLink.addEventListener('click', function() {
+  modal.classList.add('modal_visible');
 })
