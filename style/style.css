@@ -356,6 +356,10 @@ input[type="number"]::-webkit-inner-spin-button {
   color: #636363;
 }
 
+.content__paragraph + .content__paragraph {
+  margin-top: 27px;
+}
+
 .apartaments__icons {
   display: flex;
   margin-top: 64px;
@@ -508,7 +512,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .pay__slider-item {
   display: grid;
-  min-width: calc(100% / 4);
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
   grid-gap: 160px;
@@ -516,7 +519,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .pay__slider-wrapper {
   display: flex;
-  width: calc(100% * 4);
   transition: all 0.5s ease-in-out;
 }
 
@@ -723,12 +725,10 @@ input[type="number"]::-webkit-inner-spin-button {
 .services__showplace-slider {
   display: flex;
   transition: all 0.3s ease-in-out;
-  width: calc(100% * 4);
 }
 
 .services__showplace-item {
   display: grid;
-  width: calc(100% / 4);
   grid-template-columns: 608px 736px;
   grid-template-rows: 1fr;
   grid-gap: 160px;
@@ -872,6 +872,8 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .footer {
   padding: 80px 0;
+  max-width: 1920px;
+  margin: 0 auto;
   background-color: rgb(255, 255, 255);
 }
 

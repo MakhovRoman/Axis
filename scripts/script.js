@@ -83,45 +83,61 @@ contactsSubmit.addEventListener('mouseout', function() {
 let paySliderList = document.querySelectorAll('.pay__slider-item');
 let paySliderWrapper = document.querySelector('.pay__slider-wrapper');
 let paySliderCount = document.querySelector('#slider__counter');
+let paySliderLength = document.querySelector('#slider__length')
 let paySliderPlus = document.querySelector('#slider__plus');
 let paySliderMinus = document.querySelector('#slider__minus');
 
-function sliderForward(slider, count) {
+function sliderForward(slider, count, length) {
   let i = Number(count.textContent);
   i++;
-  if (i>=4) i = 4;
+  if (i>=length) i = length;
   count.textContent = i;
-  slider.style.transform = `translateX(${-(i-1)*100/4}%)`;
+  slider.style.transform = `translateX(${-(i-1)*100/length}%)`;
 }
 
-function sliderBackward(slider, count) {
+function sliderBackward(slider, count, length) {
   let i = Number(count.textContent);
   i--;
   if (i<=1) i = 1;
   count.textContent = i;
-  slider.style.transform = `translateX(${-(i-1)*100/4}%)`;
+  slider.style.transform = `translateX(${-(i-1)*100/length}%)`;
 }
 
+//слайдер в Pay
+
+paySliderLength.textContent = `${paySliderList.length}`;               // добавляю количество слайдеров в счетчик
+paySliderWrapper.style.width = `calc(100% * ${paySliderList.length})`; // задаю ширину слайдера, в зависимости от количества слайдов
+Array.from(paySliderList).forEach( (item, index, array) => {                         // задаю ширину каждого слайда
+  item.style.width = `calc(100% / ${array.length})`;
+});
+
 paySliderPlus.addEventListener('click', function() {
-  sliderForward(paySliderWrapper, paySliderCount);
+  sliderForward(paySliderWrapper, paySliderCount, paySliderList.length);
 });
 paySliderMinus.addEventListener('click', function() {
-  sliderBackward(paySliderWrapper, paySliderCount);
+  sliderBackward(paySliderWrapper, paySliderCount, paySliderList.length);
 });
 
 //слайдер в Showplace
 
 let showplaceSliderCount = document.querySelector('#sliderShowplace__counter');
+let showplaceSliderLength = document.querySelector('#sliderShowplace__length');
 let showplaceSliderPlus = document.querySelector('#sliderShowplace__plus');
 let showplaceSliderMinus = document.querySelector('#sliderShowplace__minus');
 let showplaceSlider = document.querySelector('.services__showplace-slider');
+let showplaceSliderList = document.querySelectorAll('.services__showplace-item');
 
+showplaceSliderLength.textContent = `${showplaceSliderList.length}`;        // добавляю количество слайдеров в счетчик
+showplaceSlider.style.width = `calc(100% * ${showplaceSliderList.length})`; // задаю ширину слайдера, в зависимости от количества слайдов
+Array.from(showplaceSliderList).forEach( (item, index, array) => {          // задаю ширину каждого слайда
+  item.style.width = `calc(100% / ${array.length})`;
+});
 showplaceSliderPlus.addEventListener('click', function() {
-  sliderForward(showplaceSlider, showplaceSliderCount);
+  sliderForward(showplaceSlider, showplaceSliderCount, showplaceSliderList.length);
 });
 showplaceSliderMinus.addEventListener('click', function() {
-  sliderBackward(showplaceSlider, showplaceSliderCount);
-})
+  sliderBackward(showplaceSlider, showplaceSliderCount, showplaceSliderList.length);
+});
 
 //слайдер в Services
 
@@ -139,14 +155,14 @@ let servicesCount = 0;
 function sliderServicesForward(marker, slider) {
   servicesCount++;
   if (servicesCount >= servicesSliderLength-4) servicesCount = servicesSliderLength-4;
-  marker.style.transform = `translateX(${(servicesCount)*100/(2)}%)`;
+  marker.style.transform = `translateX(${(servicesCount)*100/((servicesSliderLength - 4) / 2)}%)`;
   slider.style.transform = `translateX(calc(${-servicesCount * servicesSliderWidth}px - ${servicesSliderMargin}px * ${servicesCount}))`;
 }
 
 function sliderServicesBackward(marker, slider) {
   servicesCount--;
   if (servicesCount <= 0) servicesCount = 0;
-  marker.style.transform = `translateX(${(servicesCount)*100/(2)}%)`;
+  marker.style.transform = `translateX(${(servicesCount)*100/((servicesSliderLength - 4) / 2)}%)`;
   slider.style.transform = `translateX(calc(${-servicesCount * servicesSliderWidth}px - ${servicesSliderMargin}px * ${servicesCount}))`;
 }
 
@@ -341,4 +357,4 @@ window.addEventListener('keydown', function(e) {              // закрыти�
 
 bannerBookingLink.addEventListener('click', function() {
   modal.classList.add('modal_visible');
-})
+});
