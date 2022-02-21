@@ -58,95 +58,102 @@
     </section>
   </header>
   <main class="main">
-    <section class="banner">
-      <a name="aboutUs"></a>
-      <h1 class="banner__heading">Уютные Апартаменты в центре горнолыжного курорта</h1>
-      <form class="banner__booking" name="booking" method="post">
-        <div class="banner__booking-item">
-          <p class="banner__booking-title">Заезд – Выезд</p>
-          <div class="banner__booking-calendar">
+    <section class="banner" id="aboutUs">
+      <picture>
+        <source srcset="picture/BG.png">
+        <img src="picture/BG.png" alt="" class="banner__img">
+      </picture>
+      <div class="banner__wrapper content__wrapper">
+        <div class="banner__container content__container">
+          <h1 class="banner__heading">Уютные Апартаменты в центре горнолыжного курорта</h1>
+          <form class="banner__booking content__wrapper" name="booking" method="post">
+            <div class="banner__booking-item">
+              <p class="banner__booking-title">Заезд – Выезд</p>
+              <div class="banner__booking-calendar">
 
-          </div>
+              </div>
+            </div>
+            <div class="banner__booking-item">
+              <p class="banner__booking-title">Гости</p>
+              <div class="banner__booking-tab">
+                <label for="adults" class="banner__booking-label">Взрослые</label>
+                <button class="banner__booking-button" id="guestAdultMinus">
+                  <img src="picture/icons/minus.svg" alt="" class="button__sign">
+                </button>
+                <input type="number" class="banner__booking-input" id="guestAdult" name="adults" value="2" min="1" max="42">
+                <button class="banner__booking-button" id="guestAdultPlus">
+                  <img src="picture/icons/plus.svg" alt="" class="button__sign">
+                </button>
+              </div>
+            </div>
+            <div class="banner__booking-item">
+              <p class="banner__booking-title">Гости</p>
+              <div class="banner__booking-tab">
+                <label for="child" class="banner__booking-label">Дети</label>
+                <button class="banner__booking-button" id="guestChildMinus">
+                  <img src="picture/icons/minus.svg" alt="" class="button__sign">
+                </button>
+                <input type="number" class="banner__booking-input" id="guestChild" name="child" value="0" min="0" max="42">
+                <button class="banner__booking-button" id="guestChildPlus">
+                  <img src="picture/icons/plus.svg" alt="" class="button__sign">
+                </button>
+              </div>
+            </div>
+            <div class="banner__booking-item">
+              <div class="banner__booking-tab">
+                <a href="#" class="banner__booking-link link">
+                  Забронировать
+                  <img src="picture/icons/arrow.svg" alt="">
+                </a>
+              </div>
+            </div>
+          </form>
         </div>
-        <div class="banner__booking-item">
-          <p class="banner__booking-title">Гости</p>
-          <div class="banner__booking-tab">
-            <label for="adults" class="banner__booking-label">Взрослые</label>
-            <button class="banner__booking-button" id="guestAdultMinus">
-              <img src="picture/icons/minus.svg" alt="" class="button__sign">
-            </button>
-            <input type="number" class="banner__booking-input" id="guestAdult" name="adults" value="2" min="1" max="42">
-            <button class="banner__booking-button" id="guestAdultPlus">
-              <img src="picture/icons/plus.svg" alt="" class="button__sign">
-            </button>
-          </div>
-        </div>
-        <div class="banner__booking-item">
-          <p class="banner__booking-title">Гости</p>
-          <div class="banner__booking-tab">
-            <label for="child" class="banner__booking-label">Дети</label>
-            <button class="banner__booking-button" id="guestChildMinus">
-              <img src="picture/icons/minus.svg" alt="" class="button__sign">
-            </button>
-            <input type="number" class="banner__booking-input" id="guestChild" name="child" value="0" min="0" max="42">
-            <button class="banner__booking-button" id="guestChildPlus">
-              <img src="picture/icons/plus.svg" alt="" class="button__sign">
-            </button>
-          </div>
-        </div>
-        <div class="banner__booking-item">
-          <div class="banner__booking-tab">
-            <a href="#" class="banner__booking-link link">
-              Забронировать
-              <img src="picture/icons/arrow.svg" alt="">
-            </a>
-          </div>
-        </div>
-      </form>
+      </div>
     </section>
-    <section class="apartaments">
-      <a name="apartaments"></a>
-      <div class="apartments__content">
-        <div class="aparaments__photo">
-          <picture>
-            <source srcset="picture/front_photo.png" media="(min-width: 800px)">
-            <img src="picture/front_photo.png" alt="">
-          </picture>
-        </div>
-        <div class="apartaments__info">
-          <h2 class="apartments__heading section__heading">Отдых в Архызе европейскоего уровня</h2>
-          <p class="apartaments__paragraph content__paragraph">
-            Апарт-отель «Axis» - это комплекс из 7 двухэтажных коттеджей с домашним уютом и гостиничным сервисом.
-          </p>
-          <p class="apartaments__paragraph content__paragraph">
-            В отличие от обычного отеля, здесь больше пространства, комфорта и свободы действий.
-          </p>
-          <p class="apartaments__paragraph content__paragraph">
-            Мы подготовили универсальные апартаменты для любых типов поездок: горнолыжные развлечения, туристические выходные для двоих, путешествие в компании друзей и семьи или новый формат бизнес-встреч «pleasure», в котором объединяются работа и отдых.
-          </p>
-          <div class="apartaments__icons">
-            <div class="apartament__icons-item">
-              <img src="picture/icons/house.svg" alt="">
-              <p class="apartamet__icon-label">Уютные шале</p>
-            </div>
-            <div class="apartament__icons-item">
-              <img src="picture/icons/bed.svg" alt="">
-              <p class="apartamet__icon-label">2 спальни</p>
-            </div>
-            <div class="apartament__icons-item">
-              <img src="picture/icons/guests.svg" alt="">
-              <p class="apartamet__icon-label">до 6 гостей</p>
-            </div>
-            <div class="apartament__icons-item">
-              <img src="picture/icons/lift.svg" alt="">
-              <p class="apartamet__icon-label">200м до подъемников</p>
+    <section class="apartaments" id="apartaments">
+      <div class="apartaments__wrapper content__wrapper">
+        <div class="apartments__container content__container">
+          <div class="apartaments__photo">
+            <picture>
+              <source srcset="picture/front_photo.png" media="(min-width: 800px)">
+              <img src="picture/front_photo.png" alt="">
+            </picture>
+          </div>
+          <div class="apartaments__info">
+            <h2 class="apartments__heading section__heading">Отдых в Архызе европейскоего уровня</h2>
+            <p class="apartaments__paragraph content__paragraph">
+              Апарт-отель «Axis» - это комплекс из 7 двухэтажных коттеджей с домашним уютом и гостиничным сервисом.
+            </p>
+            <p class="apartaments__paragraph content__paragraph">
+              В отличие от обычного отеля, здесь больше пространства, комфорта и свободы действий.
+            </p>
+            <p class="apartaments__paragraph content__paragraph">
+              Мы подготовили универсальные апартаменты для любых типов поездок: горнолыжные развлечения, туристические выходные для двоих, путешествие в компании друзей и семьи или новый формат бизнес-встреч «pleasure», в котором объединяются работа и отдых.
+            </p>
+            <div class="apartaments__icons">
+              <div class="apartament__icons-item">
+                <img src="picture/icons/house.svg" alt="">
+                <p class="apartament__icon-label">Уютные шале</p>
+              </div>
+              <div class="apartament__icons-item">
+                <img src="picture/icons/bed.svg" alt="">
+                <p class="apartament__icon-label">2 спальни</p>
+              </div>
+              <div class="apartament__icons-item">
+                <img src="picture/icons/guests.svg" alt="">
+                <p class="apartament__icon-label">до 6 гостей</p>
+              </div>
+              <div class="apartament__icons-item">
+                <img src="picture/icons/lift.svg" alt="">
+                <p class="apartament__icon-label">200м до подъемников</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="pay">
-      <a name="pay"></a>
+    <section class="pay" id="pay">
       <div class="pay__content">
         <div class="pay__info">
           <h2 class="pay__heading section__heading">
@@ -323,7 +330,7 @@
         </div>
       </div>
     </section>
-    <section class="ski">
+    <section class="ski" id="ski">
       <a name="ski"></a>
       <div class="ski__trace">
         <div class="ski__trace-image">
@@ -375,8 +382,7 @@
         </div>
       </ski>
     </section>
-    <section class="services">
-      <a name="services"></a>
+    <section class="services" id="services">
       <div class="services__wrapper">
         <div class="services__slider1-wrapper">
           <div class="services__slider1">
@@ -559,33 +565,32 @@
             <div class="slider__control-count"><span id="sliderShowplace__counter">1</span>/<span  id="sliderShowplace__length"></span></div>
           </div>
         </div>
-      </section>
-      <section class="contacts">
-        <a name="contacts"></a>
-        <div class="contacts__wrapper">
-          <div class="contacts__text">
-            <h2 class="contacts__heading section__heading">Остались вопросы?</h2>
-            <p class="contacts__paragraph">Оставьте номер телефона и мы перезвоним вам</p>
-          </div>
-          <form action="#" method="post" class="contacts__form">
-            <div class="contacts__form-item">
-              <label for="contacts__name" class="contacts__form-label">Ваше имя</label>
-              <input type="text" class="contacts__form-input" id="contacts__name" name="contacts__name" placeholder="Имя Фамилия" pattern="[a-zA-ZА-Яа-яёЁ\-\s\']" required>
-            </div>
-            <div class="contacts__form-item">
-              <label for="contacts__tel" class="contacts__form-label">Номер телефона</label>
-              <input type="tel" id="contacts__tel" class="contacts__form-input" name="contacts__tel" placeholder="+7 ХХХ ХХХ ХХ ХХ" data-mask="+7 ___ ___ ____" required>
-            </div>
-            <button type="submit" class="contacts__form-input contacts__form-submit">
-              Отправить
-              <img src="picture/icons/arrow.svg" alt="">
-            </button>
-              <div class="contacts__form-personal">
-                <input type="radio" class="contacts__form-radio" name="personalData" value="1" id="personalData">
-                <label for="personalData" class="contacts__form-radioLabel">Даю согласие на обработку персональных данных.</label>
-              </div>
-          </form>
+      </div>
+    </section>
+    <section class="contacts" id="contacts">
+      <div class="contacts__wrapper">
+        <div class="contacts__text">
+          <h2 class="contacts__heading section__heading">Остались вопросы?</h2>
+          <p class="contacts__paragraph">Оставьте номер телефона и мы перезвоним вам</p>
         </div>
+        <form action="#" method="post" class="contacts__form">
+          <div class="contacts__form-item">
+            <label for="contacts__name" class="contacts__form-label">Ваше имя</label>
+            <input type="text" class="contacts__form-input" id="contacts__name" name="contacts__name" placeholder="Имя Фамилия" pattern="[a-zA-ZА-Яа-яёЁ\-\s\']" required>
+          </div>
+          <div class="contacts__form-item">
+            <label for="contacts__tel" class="contacts__form-label">Номер телефона</label>
+            <input type="tel" id="contacts__tel" class="contacts__form-input" name="contacts__tel" placeholder="+7 ХХХ ХХХ ХХ ХХ" data-mask="+7 ___ ___ ____" required>
+          </div>
+          <button type="submit" class="contacts__form-input contacts__form-submit">
+            Отправить
+            <img src="picture/icons/arrow.svg" alt="">
+          </button>
+            <div class="contacts__form-personal">
+              <input type="radio" class="contacts__form-radio" name="personalData" value="1" id="personalData">
+              <label for="personalData" class="contacts__form-radioLabel">Даю согласие на обработку персональных данных.</label>
+            </div>
+        </form>
       </div>
     </section>
   </main>

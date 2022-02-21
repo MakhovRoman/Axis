@@ -8,6 +8,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .header, .main {
   margin: 0 auto;
 }
@@ -15,6 +19,20 @@
 .link {
   text-decoration: none;
   color: rgb(255, 255, 255);
+}
+
+.content__wrapper {
+  width: 1504px;
+  margin: 0 auto;
+}
+
+.content__container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr;
+  grid-gap: 32px;
+  width: 100%;
+  height: 100%;
 }
 
 /*============    ANIMATIONS  ============*/
@@ -58,8 +76,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 40px 80px;
-  padding: 0 32px;
-  box-sizing: border-box;
+
   color: rgb(255, 255, 255);
   align-items: center;
   z-index: 10;
@@ -71,6 +88,8 @@ body {
   box-sizing: border-box;
   height: 100%;
   display: grid;
+  padding: 0 32px;
+  box-sizing: border-box;
 }
 
 .header__top {
@@ -109,15 +128,24 @@ body {
 
 .header__socials {
   justify-self: end;
+  display: flex;
+  justify-content: space-between;
   align-self: center;
+  width: 164px;
 }
 
-.header__socials-link + .header__socials-link {
-  margin-left: 16px;
+.header__socials-link {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+}
+
+.header__socials-link img {
+  max-width: 100%;
 }
 
 .header__bot {
-  grid-template-columns: 271px 1fr 271px;
+  grid-template-columns: 14.17026% 1fr 14.60129%;
   align-items: center;
 }
 
@@ -137,19 +165,17 @@ body {
 }
 
 .header__nav-list {
-  width: fit-content;
+  width: 518px;
   height: 100%;
   margin: auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 .header__nav-item {
   display: inline-block;
   list-style: none;
   height: 100%;
-}
-
-.header__nav-item + .header__nav-item {
-  margin-left: 32px;
 }
 
 .header__nav-link {
@@ -191,12 +217,6 @@ body {
 
 /*============    BANNER   ============*/
 .banner {
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/picture/banner.png);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  height: 860px;
-
   margin: 0 auto;
   color: rgb(255, 255, 255);
   display: flex;
@@ -204,21 +224,40 @@ body {
   position: relative;
 }
 
+.banner__wrapper {
+  height: 100%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+}
+
+.banner__img {
+  position: absolute;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
 .banner__heading {
   font-size: 56px;
-  width: 863px;
-  margin: auto 0 auto 207.5px;
+  grid-column: 1/8;
+  align-self: center;
+  z-index: 5;
 }
 
 .banner__booking {
+  position: fixed;
   display: grid;
-  grid-template-columns: repeat(4, 352px);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
   grid-column-gap: 32px;
-  position: absolute;
   bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.banner__booking-item div {
+  box-sizing: border-box;
 }
 
 .banner__booking-calendar {
@@ -332,15 +371,16 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 /*============    APARTAMENTS   ============*/
-.apartments__content {
+.apartaments__wrapper {
   padding: 180px 0;
-  display: grid;
-  box-sizing: border-box;
-  grid-template-columns: 736px 608px;
-  grid-template-rows: 1fr;
-  grid-column-gap: 160px;
-  margin: 0 auto;
-  width: fit-content;
+}
+
+.apartaments__photo {
+  grid-column: 1/7;
+}
+
+.apartaments__info {
+  grid-column: 8/13;
 }
 
 .section__heading {
@@ -361,13 +401,14 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .apartaments__icons {
-  display: flex;
   margin-top: 64px;
+  display: flex;
 }
 
 .apartament__icons-item {
-  width: 111px;
+  width: 104px;
   text-align: center;
+  display: inline-block;
 }
 
 .apartament__icons-item + .apartament__icons-item {
@@ -376,6 +417,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .apartament__icon-label {
   margin-top: 16px;
+  width: 100%;
 }
 
 /*============    PAY   ============*/
@@ -977,4 +1019,13 @@ input[type="number"]::-webkit-inner-spin-button {
   background-color: rgb(255, 255, 255);
   width: 896px;
   height: 1236px;
+}
+
+
+/*============    MEDIA   ============*/
+
+@media (max-width: 1920px) {
+  .banner {
+    height: 100vh;
+  }
 }

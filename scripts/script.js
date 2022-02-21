@@ -299,6 +299,7 @@ let modal = document.querySelector('.modal');
 let headerPositionTop;
 let pageScroll;
 let headerLastScrollTop = 0;
+let bannerBooking = document.querySelector('.banner__booking');
 
 function headerScroll() {
   pageScroll = window.pageYOffset;
@@ -332,16 +333,23 @@ function headerScroll() {
     header.style.backgroundColor = 'transparent';
   }
 
-  if (pageScroll > bannerHeight) {
+  if (pageScroll > (bannerHeight / 2)) {                        //при скроле вниз хайдится хедер
     if (scrollTop > headerLastScrollTop) {
       headerPositionTop = headerTopHeight + headerBotHeight;
     } else {
       headerPositionTop = headerTopHeight;
     }
     header.style.top = `${-headerPositionTop}px`;
-    headerLastScrollTop = scrollTop;
+
   }
 
+  if (scrollTop > headerLastScrollTop) {                        //при скроле вниз добавляется класс к форме заявки
+    bannerBooking.classList.add('banner__booking_scroll');
+  } else {
+    bannerBooking.classList.remove('banner__booking_scroll');
+  }
+
+  headerLastScrollTop = scrollTop;
 }
 
 
