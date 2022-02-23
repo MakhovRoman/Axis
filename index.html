@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style/style.css">
   <title>Axis</title>
 </head>
-<body>
+<body class="body">
   <header class="header">
     <section class="header__top">
       <div class="header__contact">
@@ -113,7 +113,7 @@
     </section>
     <section class="apartaments" id="apartaments">
       <div class="apartaments__wrapper content__wrapper">
-        <div class="apartments__container content__container">
+        <div class="apartments__container content__container content__container_left">
           <div class="apartaments__photo">
             <picture>
               <source srcset="picture/front_photo.png" media="(min-width: 800px)">
@@ -154,236 +154,238 @@
       </div>
     </section>
     <section class="pay" id="pay">
-      <div class="pay__content">
-        <div class="pay__info">
-          <h2 class="pay__heading section__heading">
-            Шале с видом на лес<br>и горнолыжную трассу
-          </h2>
-          <p class="pay__paragraph content__paragraph">
-            Апартаменты совершенно новые, после ремонта.
-          </p>
-          <p class="pay__paragraph content__paragraph">
-            На первом этаже кухня, гостиная и душ, а на втором — две спальни, с личными ванными комнатами.
-          </p>
-          <p class="pay__paragraph content__paragraph">
-            У апартаментов есть широкие балконы, с которых удобно любоваться пейзажем и горнолыжной трассой. Площадка — хорошее место для памятных фототографий. Также предусмотрена бесплатная парковка и wi-fi.
-          </p>
-          <ul class="pay__list">
-            <li class="pay__list-item"><div class="circle"></div>Цена: 45 000 р/сутки</li>
-            <li class="pay__list-item"><div class="circle"></div>Заезд в 15:00</li>
-            <li class="pay__list-item"><div class="circle"></div>Расчетный час в 12:00</li>
-          </ul>
-          <a href="#" class="pay__booking">
-            Забронировать
-            <img src="picture/icons/arrow_black.svg" alt="">
-          </a>
-        </div>
-        <div class="pay__shale">
-          <picture>
-            <source srcset="picture/room/shale.png" media="(min-width: 800px)">
-            <img src="picture/room/shale.png" alt="">
-          </picture>
-        </div>
-        <div class="pay__lines">
-          <picture>
-            <source srcset="picture/room/linens.png" media="(min-width: 800px)">
-            <img src="picture/room/linens.png" alt="">
-          </picture>
-        </div>
-        <div class="pay__lamp">
-          <picture>
-            <source srcset="picture/room/lamp.png" media="(min-width: 800px)">
-            <img src="picture/room/lamp.png" alt="">
-          </picture>
-        </div>
-        <div class="pay__bootle">
-          <picture>
-            <source srcset="picture/room/bootle.png">
-            <img src="picture/room/bootle.png" alt="">
-          </picture>
-        </div>
-        <div class="pay__diningroom">
-          <picture>
-            <source srcset="picture/room/dining_room.png" media="(min-width: 800px)">
-            <img src="picture/room/dining_room.png" alt="">
-          </picture>
-        </div>
-        <div class="pay__towel">
-          <picture>
-            <source srcset="picture/room/towel.png" media="(min-width: 800px)">
-            <img src="picture/room/towel.png" alt="">
-          </picture>
-        </div>
-        <div class="pay__lamp2">
-          <picture>
-            <source srcset="picture/room/lamp2.png" media="(min-width: 800px)">
-            <img src="picture/room/lamp2.png" alt="">
-          </picture>
-        </div>
-      </div>
-      <div class="pay__slider">
-        <div class="pay__slider-wrapper">
-          <div class="pay__slider-item">
-            <div class="slider__content">
-              <h3 class="pay__slider-heading section__heading">Наше местоположение</h3>
-              <p class="pay__slider-paragraph content__paragraph">
-                Шагните в элегантную зимнюю сказку вместе с «Axis».
-                <br>
-                Для любителей горнолыжного спорта у нас есть отличные новости - мы находимся всего в 200 метрах от канатной дороги.
-              </p>
-              <p class="pay__slider-paragraph content__paragraph">
-                В стоимость проживания включено: парковка - ваш транспорт будет под надежной защитой, и высокоскоростной wi-fi, чтобы всегда оставаться на связи с родными и делиться радостными моментами.
-              </p>
-            </div>
-            <div class="pay__slider-image">
-              <picture>
-                <source srcset="picture/snow.png" media="(min-width: 800px)">
-                <img src="picture/snow.png" alt="">
-              </picture>
-            </div>
+      <div class="pay__wrapper content__wrapper">
+        <div class="pay__container content__container">
+          <div class="pay__info">
+            <h2 class="pay__heading section__heading">
+              Шале с видом на лес<br>и горнолыжную трассу
+            </h2>
+            <p class="pay__paragraph content__paragraph">
+              Апартаменты совершенно новые, после ремонта.
+            </p>
+            <p class="pay__paragraph content__paragraph">
+              На первом этаже кухня, гостиная и душ, а на втором — две спальни, с личными ванными комнатами.
+            </p>
+            <p class="pay__paragraph content__paragraph">
+              У апартаментов есть широкие балконы, с которых удобно любоваться пейзажем и горнолыжной трассой. Площадка — хорошее место для памятных фототографий. Также предусмотрена бесплатная парковка и wi-fi.
+            </p>
+            <ul class="pay__list">
+              <li class="pay__list-item"><div class="circle"></div>Цена: 45 000 р/сутки</li>
+              <li class="pay__list-item"><div class="circle"></div>Заезд в 15:00</li>
+              <li class="pay__list-item"><div class="circle"></div>Расчетный час в 12:00</li>
+            </ul>
+            <a href="#" class="pay__booking">
+              Забронировать
+              <img src="picture/icons/arrow_black.svg" alt="">
+            </a>
           </div>
-          <div class="pay__slider-item">
-            <div class="slider__content">
-              <h3 class="pay__slider-heading section__heading">Гостиная</h3>
-              <p class="pay__slider-paragraph content__paragraph">
-                Во всех номерах отеля есть просторная гостиная зона с большим ЖК телевизором, где можно уютно расположиться большой компанией.
-              </p>
-              <p class="pay__slider-paragraph content__paragraph">Яркий и стильный дизайн украсит не только ваш досуг в горах, но и фотокарточки.</p>
-            </div>
-            <div class="pay__slider-image">
-              <picture>
-                <source srcset="picture/living_room.png" media="(min-width: 800px)">
-                <img src="picture/living_room.png" alt="">
-              </picture>
-            </div>
+          <div class="pay__shale">
+            <picture>
+              <source srcset="picture/room/shale.png" media="(min-width: 800px)">
+              <img src="picture/room/shale.png" alt="" class="pay__img">
+            </picture>
           </div>
-          <div class="pay__slider-item">
-            <div class="slider__content">
-              <h3 class="pay__slider-heading section__heading">Спальня</h3>
-              <p class="pay__slider-paragraph content__paragraph">
-                На втором этаже – две спальни с мягкой двуспальной кроватью и личной ванной комнатой.
-              </p>
-              <p class="pay__slider-paragraph content__paragraph">Ценители более спокойного отдыха смогут полюбоваться колоритным пейзажем из панорамных окон апартаментов.</p>
-            </div>
-            <div class="pay__slider-image">
-              <picture>
-                <source srcset="picture/bedroom.png" media="(min-width: 800px)">
-                <img src="picture/bedroom.png" alt="">
-              </picture>
-            </div>
+          <div class="pay__lines">
+            <picture>
+              <source srcset="picture/room/linens.png" media="(min-width: 800px)">
+              <img src="picture/room/linens.png" alt="" class="pay__img">
+            </picture>
           </div>
-          <div class="pay__slider-item">
-            <div class="slider__content">
-              <h3 class="pay__slider-heading section__heading">Балкон</h3>
-              <p class="pay__slider-paragraph content__paragraph">
-                Вид из аппортаментов «Axis» - наша настоящая гордость.
-                <br>
-                У апартаментов есть широкие балконы, с которых удобно любоваться пейзажем и горнолыжной трассой.
-              </p>
-              <p class="pay__slider-paragraph content__paragraph">Площадка - хорошее место, чтобы насладиться тишиной и покоем, с чашечкой душистого чая в руках.</p>
-            </div>
-            <div class="pay__slider-image">
-              <picture>
-                <source srcset="picture/balcony.png" media="(min-width: 800px)">
-                <img src="picture/balcony.png" alt="">
-              </picture>
-            </div>
+          <div class="pay__lamp">
+            <picture>
+              <source srcset="picture/room/lamp.png" media="(min-width: 800px)">
+              <img src="picture/room/lamp.png" alt="" class="pay__img">
+            </picture>
           </div>
-          <div class="pay__slider-item">
-            <div class="slider__content">
-              <h3 class="pay__slider-heading section__heading">Кухня</h3>
-              <p class="pay__slider-paragraph content__paragraph">
-                Кухня в наших коттеджах устроена так, чтобы вы чувствовали себя, как дома - комфортно и уютно.
-              </p>
-              <p class="pay__slider-paragraph content__paragraph">
-                В наличии: холодильник, микроволновая печь, столовые приборы, тарелки, супницы, чайные кружки, бокалы, а также электрический чайник.
-              </p>
-            </div>
-            <div class="pay__slider-image">
-              <picture>
-                <source srcset="picture/kitchen.png" media="(min-width: 800px)">
-                <img src="picture/kitchen.png" alt="">
-              </picture>
-            </div>
+          <div class="pay__bootle">
+            <picture>
+              <source srcset="picture/room/bootle.png">
+              <img src="picture/room/bootle.png" alt="" class="pay__img">
+            </picture>
           </div>
-          <div class="pay__slider-item">
-            <div class="slider__content">
-              <h3 class="pay__slider-heading section__heading">Ванная комната</h3>
-              <p class="pay__slider-paragraph content__paragraph">
-                Горячая ванная и душ позволят вам расслабиться после активного отдыха на горнолыжных склонах. В ванной комнате вы найдете все необходимое, чтобы чувствовать себя комфортно.
-              </p>
-            </div>
-            <div class="pay__slider-image">
-              <img src="picture/room/bathroom.png" alt="">
-            </div>
+          <div class="pay__diningroom">
+            <picture>
+              <source srcset="picture/room/dining_room.png" media="(min-width: 800px)">
+              <img src="picture/room/dining_room.png" alt="" class="pay__img">
+            </picture>
+          </div>
+          <div class="pay__towel">
+            <picture>
+              <source srcset="picture/room/towel.png" media="(min-width: 800px)">
+              <img src="picture/room/towel.png" alt="" class="pay__img">
+            </picture>
+          </div>
+          <div class="pay__lamp2">
+            <picture>
+              <source srcset="picture/room/lamp2.png" media="(min-width: 800px)">
+              <img src="picture/room/lamp2.png" alt="" class="pay__img">
+            </picture>
           </div>
         </div>
-        <div class="slider__control">
-          <button class="slider__control-button" id="slider__minus">
-            <img src="picture/icons/arrow_black.svg" alt="">
-          </button>
-          <div class="slider__control-line"></div>
-          <button class="slider__control-button" id="slider__plus">
-            <img src="picture/icons/arrow_black.svg" alt="">
-          </button>
-          <div class="slider__control-count"><span id="slider__counter">1</span>/<span id="slider__length"></span></div>
+        <div class="pay__slider">
+          <div class="pay__slider-wrapper">
+            <div class="pay__slider-item content__container content__container_right">
+              <div class="slider__content">
+                <h3 class="pay__slider-heading section__heading">Наше местоположение</h3>
+                <p class="pay__slider-paragraph content__paragraph">
+                  Шагните в элегантную зимнюю сказку вместе с «Axis».
+                  <br>
+                  Для любителей горнолыжного спорта у нас есть отличные новости - мы находимся всего в 200 метрах от канатной дороги.
+                </p>
+                <p class="pay__slider-paragraph content__paragraph">
+                  В стоимость проживания включено: парковка - ваш транспорт будет под надежной защитой, и высокоскоростной wi-fi, чтобы всегда оставаться на связи с родными и делиться радостными моментами.
+                </p>
+              </div>
+              <div class="pay__slider-image">
+                <picture>
+                  <source srcset="picture/snow.png" media="(min-width: 800px)">
+                  <img src="picture/snow.png" alt="">
+                </picture>
+              </div>
+            </div>
+            <div class="pay__slider-item content__container content__container_right">
+              <div class="slider__content">
+                <h3 class="pay__slider-heading section__heading">Гостиная</h3>
+                <p class="pay__slider-paragraph content__paragraph">
+                  Во всех номерах отеля есть просторная гостиная зона с большим ЖК телевизором, где можно уютно расположиться большой компанией.
+                </p>
+                <p class="pay__slider-paragraph content__paragraph">Яркий и стильный дизайн украсит не только ваш досуг в горах, но и фотокарточки.</p>
+              </div>
+              <div class="pay__slider-image">
+                <picture>
+                  <source srcset="picture/living_room.png" media="(min-width: 800px)">
+                  <img src="picture/living_room.png" alt="">
+                </picture>
+              </div>
+            </div>
+            <div class="pay__slider-item content__container content__container_right">
+              <div class="slider__content">
+                <h3 class="pay__slider-heading section__heading">Спальня</h3>
+                <p class="pay__slider-paragraph content__paragraph">
+                  На втором этаже – две спальни с мягкой двуспальной кроватью и личной ванной комнатой.
+                </p>
+                <p class="pay__slider-paragraph content__paragraph">Ценители более спокойного отдыха смогут полюбоваться колоритным пейзажем из панорамных окон апартаментов.</p>
+              </div>
+              <div class="pay__slider-image">
+                <picture>
+                  <source srcset="picture/bedroom.png" media="(min-width: 800px)">
+                  <img src="picture/bedroom.png" alt="">
+                </picture>
+              </div>
+            </div>
+            <div class="pay__slider-item content__container content__container_right">
+              <div class="slider__content">
+                <h3 class="pay__slider-heading section__heading">Балкон</h3>
+                <p class="pay__slider-paragraph content__paragraph">
+                  Вид из аппортаментов «Axis» - наша настоящая гордость.
+                  <br>
+                  У апартаментов есть широкие балконы, с которых удобно любоваться пейзажем и горнолыжной трассой.
+                </p>
+                <p class="pay__slider-paragraph content__paragraph">Площадка - хорошее место, чтобы насладиться тишиной и покоем, с чашечкой душистого чая в руках.</p>
+              </div>
+              <div class="pay__slider-image">
+                <picture>
+                  <source srcset="picture/balcony.png" media="(min-width: 800px)">
+                  <img src="picture/balcony.png" alt="">
+                </picture>
+              </div>
+            </div>
+            <div class="pay__slider-item content__container content__container_right">
+              <div class="slider__content">
+                <h3 class="pay__slider-heading section__heading">Кухня</h3>
+                <p class="pay__slider-paragraph content__paragraph">
+                  Кухня в наших коттеджах устроена так, чтобы вы чувствовали себя, как дома - комфортно и уютно.
+                </p>
+                <p class="pay__slider-paragraph content__paragraph">
+                  В наличии: холодильник, микроволновая печь, столовые приборы, тарелки, супницы, чайные кружки, бокалы, а также электрический чайник.
+                </p>
+              </div>
+              <div class="pay__slider-image">
+                <picture>
+                  <source srcset="picture/kitchen.png" media="(min-width: 800px)">
+                  <img src="picture/kitchen.png" alt="">
+                </picture>
+              </div>
+            </div>
+            <div class="pay__slider-item content__container content__container_right">
+              <div class="slider__content">
+                <h3 class="pay__slider-heading section__heading">Ванная комната</h3>
+                <p class="pay__slider-paragraph content__paragraph">
+                  Горячая ванная и душ позволят вам расслабиться после активного отдыха на горнолыжных склонах. В ванной комнате вы найдете все необходимое, чтобы чувствовать себя комфортно.
+                </p>
+              </div>
+              <div class="pay__slider-image">
+                <img src="picture/room/bathroom.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="slider__control">
+            <button class="slider__control-button" id="slider__minus">
+              <img src="picture/icons/arrow_black.svg" alt="">
+            </button>
+            <div class="slider__control-line"></div>
+            <button class="slider__control-button" id="slider__plus">
+              <img src="picture/icons/arrow_black.svg" alt="">
+            </button>
+            <div class="slider__control-count"><span id="slider__counter">1</span>/<span id="slider__length"></span></div>
+          </div>
         </div>
       </div>
     </section>
     <section class="ski" id="ski">
-      <a name="ski"></a>
-      <div class="ski__trace">
-        <div class="ski__trace-image">
-          <img src="picture/ski.png" alt="">
+      <div class="ski__wrapper content__wrapper">
+        <div class="ski__trace content__container content__container_left">
+          <div class="ski__trace-image">
+            <img src="picture/ski.png" alt="">
+          </div>
+          <div class="ski__trace-content">
+            <h2 class="ski__heading section__heading">Горнолыжные трассы<br>в шаге от апартаметов</h2>
+            <p class="ski__paragraph content__paragraph">
+              Поселок «Романтик», в котором находится наш apart-отель, является горнолыжным центром Архыза. На курорте открыты 6 трасс общей протяженностью 7,2 км.
+            </p>
+            <p class="ski__paragraph content__paragraph">
+              Любители горнолыжного отдыха оценят удобное расположение комплекса. В шаговой доступности от коттеджей находятся подъемники, а из окон открывается вид на «зеленую» трассу.
+            </p>
+            <p class="ski__paragraph content__paragraph">
+              К услугам наших постояльцев мы предлагаем лыжехранилище, где можно бесплатно хранить свое снаряжение.
+            </p>
+            <p class="ski__paragraph content__paragraph">
+              Средняя продолжительность сезона – 115 дней: со второй половины декабря, по начало марта, поэтому желательно задуматься о бронировании апартаметов заблаговременно.
+            </p>
+            <a href="#" class="detailed__link">
+              Подробнее
+              <img src="picture/icons/arrow_black.svg" alt="">
+            </a>
+          </div>
         </div>
-        <div class="ski__trace-content">
-          <h2 class="ski__heading section__heading">Горнолыжные трассы<br>в шаге от апартаметов</h2>
-          <p class="ski__paragraph content__paragraph">
-            Поселок «Романтик», в котором находится наш apart-отель, является горнолыжным центром Архыза. На курорте открыты 6 трасс общей протяженностью 7,2 км.
-          </p>
-          <p class="ski__paragraph content__paragraph">
-            Любители горнолыжного отдыха оценят удобное расположение комплекса. В шаговой доступности от коттеджей находятся подъемники, а из окон открывается вид на «зеленую» трассу.
-          </p>
-          <p class="ski__paragraph content__paragraph">
-            К услугам наших постояльцев мы предлагаем лыжехранилище, где можно бесплатно хранить свое снаряжение.
-          </p>
-          <p class="ski__paragraph content__paragraph">
-            Средняя продолжительность сезона – 115 дней: со второй половины декабря, по начало марта, поэтому желательно задуматься о бронировании апартаметов заблаговременно.
-          </p>
-          <a href="#" class="detailed__link">
-            Подробнее
-            <img src="picture/icons/arrow_black.svg" alt="">
-          </a>
+        <div class="ski__food content__container content__container_right">
+          <div class="ski__food-content">
+            <h2 class="ski__heading section__heading">Доставка еды из<br>ресторана в апартаменты</h2>
+            <p class="ski__paragraph content__paragraph">
+              В горах помимо безупречных природных пейзажей, Вас неприменно порадуют изысканные блюда европейской и аутентичной кавказской кухни.
+            </p>
+            <p class="ski__paragraph content__paragraph">
+              Для комфорта наших постояльцев мы доставляем заказанные блюда прямо в апартаменты.
+            </p>
+            <p class="ski__paragraph content__paragraph">
+              Даже привычная еда в горах воспринимаеся по новому, все вкусы усиливаются, становятся необычными. Возможно так влияют общие впечатления от окружающей природы, воздуха и воды.
+            </p>
+            <p class="ski__paragraph content__paragraph">
+              Для нас очень важно, чтобы вы получили удовольствие не только от ментального или активного отдыха в горах, но и от вкусной еды.
+            </p>
+            <a href="#" class="detailed__link">
+              Подробнее
+              <img src="picture/icons/arrow_black.svg" alt="">
+            </a>
+          </div>
+          <div class="ski__food-image">
+            <img src="picture/food.png" alt="">
+          </div>
         </div>
       </div>
-      <ski class="ski__food">
-        <a name="food"></a>
-        <div class="ski__food-content">
-          <h2 class="ski__heading section__heading">Доставка еды из<br>ресторана в апартаменты</h2>
-          <p class="ski__paragraph content__paragraph">
-            В горах помимо безупречных природных пейзажей, Вас неприменно порадуют изысканные блюда европейской и аутентичной кавказской кухни.
-          </p>
-          <p class="ski__paragraph content__paragraph">
-            Для комфорта наших постояльцев мы доставляем заказанные блюда прямо в апартаменты.
-          </p>
-          <p class="ski__paragraph content__paragraph">
-            Даже привычная еда в горах воспринимаеся по новому, все вкусы усиливаются, становятся необычными. Возможно так влияют общие впечатления от окружающей природы, воздуха и воды.
-          </p>
-          <p class="ski__paragraph content__paragraph">
-            Для нас очень важно, чтобы вы получили удовольствие не только от ментального или активного отдыха в горах, но и от вкусной еды.
-          </p>
-          <a href="#" class="detailed__link">
-            Подробнее
-            <img src="picture/icons/arrow_black.svg" alt="">
-          </a>
-        </div>
-        <div class="ski__food-image">
-          <img src="picture/food.png" alt="">
-        </div>
-      </ski>
     </section>
     <section class="services" id="services">
-      <div class="services__wrapper">
+      <div class="services__wrapper content__wrapper">
         <div class="services__slider1-wrapper">
           <div class="services__slider1">
             <div class="services__slider1-content">
@@ -476,7 +478,7 @@
         </div>
         <div class="services__showplace">
           <div class="services__showplace-slider">
-            <div class="services__showplace-item">
+            <div class="services__showplace-item content__container content__container_right">
               <div class="services__showplace-content">
                 <h3 class="services__showplace-heading section__heading">Аланское городище</h3>
                 <p class="services__showplace-paragraph content__paragraph">
@@ -497,7 +499,7 @@
                 </picture>
               </div>
             </div>
-            <div class="services__showplace-item">
+            <div class="services__showplace-item content__container content__container_right">
               <div class="services__showplace-content">
                 <h3 class="services__showplace-heading section__heading">Софийские водопады</h3>
                 <p class="services__showplace-paragraph content__paragraph">
@@ -517,7 +519,7 @@
                 </picture>
               </div>
             </div>
-            <div class="services__showplace-item">
+            <div class="services__showplace-item content__container content__container_right">
               <div class="services__showplace-content">
                 <h3 class="services__showplace-heading section__heading">Озеро Любви</h3>
                 <p class="services__showplace-paragraph content__paragraph">
@@ -536,7 +538,8 @@
                   <img src="picture/lake_of_love.png" alt="">
                 </picture>
               </div>
-            </div>            <div class="services__showplace-item">
+            </div>
+            <div class="services__showplace-item content__container content__container_right">
               <div class="services__showplace-content">
                 <h3 class="services__showplace-heading section__heading">Баритовый водопад</h3>
                 <p class="services__showplace-paragraph content__paragraph">
@@ -568,12 +571,12 @@
       </div>
     </section>
     <section class="contacts" id="contacts">
-      <div class="contacts__wrapper">
+      <div class="contacts__wrapper content__wrapper">
         <div class="contacts__text">
           <h2 class="contacts__heading section__heading">Остались вопросы?</h2>
           <p class="contacts__paragraph">Оставьте номер телефона и мы перезвоним вам</p>
         </div>
-        <form action="#" method="post" class="contacts__form">
+        <form action="#" method="post" class="contacts__form content__container">
           <div class="contacts__form-item">
             <label for="contacts__name" class="contacts__form-label">Ваше имя</label>
             <input type="text" class="contacts__form-input" id="contacts__name" name="contacts__name" placeholder="Имя Фамилия" pattern="[a-zA-ZА-Яа-яёЁ\-\s\']" required>
@@ -595,60 +598,106 @@
     </section>
   </main>
   <footer class="footer">
-    <div class="footer__content">
-      <div class="footer__links">
-        <div class="footer__logo">
-          <a href="#"><img src="picture/full_logo.svg" alt=""></a>
+    <div class="footer__wrapper content__wrapper">
+      <div class="footer__content">
+        <div class="footer__links">
+          <div class="footer__logo">
+            <a href="#"><img src="picture/full_logo.svg" alt=""></a>
+          </div>
+          <nav class="footer__nav">
+            <ul class="header__nav-list footer__nav-list">
+              <li class="header__nav-item"><a href="#aboutUs" class="header__nav-link link footer__nav-link">О нас</a></li>
+              <li class="header__nav-item"><a href="#apartaments" class="header__nav-link link footer__nav-link">Апартаменты</a></li>
+              <li class="header__nav-item"><a href="#pay" class="header__nav-link link footer__nav-link">Оплата</a></li>
+              <li class="header__nav-item"><a href="#ski" class="header__nav-link link footer__nav-link">Ski</a></li>
+              <li class="header__nav-item"><a href="#food" class="header__nav-link link footer__nav-link">Ресторан</a></li>
+              <li class="header__nav-item"><a href="#services" class="header__nav-link link footer__nav-link">Сервис</a></li>
+              <li class="header__nav-item"><a href="#contacts" class="header__nav-link link footer__nav-link">Контакты</a></li>
+            </ul>
+          </nav>
+          <a href="#" class="footer__booking link header__feedback-link">Забронировать</a>
         </div>
-        <nav class="footer__nav">
-          <ul class="header__nav-list footer__nav-list">
-            <li class="header__nav-item"><a href="#aboutUs" class="header__nav-link link footer__nav-link">О нас</a></li>
-            <li class="header__nav-item"><a href="#apartaments" class="header__nav-link link footer__nav-link">Апартаменты</a></li>
-            <li class="header__nav-item"><a href="#pay" class="header__nav-link link footer__nav-link">Оплата</a></li>
-            <li class="header__nav-item"><a href="#ski" class="header__nav-link link footer__nav-link">Ski</a></li>
-            <li class="header__nav-item"><a href="#food" class="header__nav-link link footer__nav-link">Ресторан</a></li>
-            <li class="header__nav-item"><a href="#services" class="header__nav-link link footer__nav-link">Сервис</a></li>
-            <li class="header__nav-item"><a href="#contacts" class="header__nav-link link footer__nav-link">Контакты</a></li>
-          </ul>
-        </nav>
-        <a href="#" class="footer__booking link header__feedback-link">Забронировать</a>
-      </div>
-      <div class="footer__connection">
-        <div class="header__contact footer__contact">
-          <a href="tel:+79288112211" class="header__tel link footer__tel">
-            <div class="header__contact-img footer__contact-img">
-              <img src="picture/icons/phone.svg" alt="">
-            </div>
-            <span class="header__contact-text footer__contact-text">+7 928 811 22 11</span>
-          </a>
-          <a href="mailto:info@axis-hotel.ru" class="header__mail link footer__mail">
-            <div class="header__contact-img footer__contact-img">
-              <img src="picture/icons/envelope.svg" alt="">
-            </div>
-            <span class="header__contact-text footer__contact-text">info@axis-hotel.ru</span>
-          </a>
+        <div class="footer__connection">
+          <div class="header__contact footer__contact">
+            <a href="tel:+79288112211" class="header__tel link footer__tel">
+              <div class="header__contact-img footer__contact-img">
+                <img src="picture/icons/phone.svg" alt="">
+              </div>
+              <span class="header__contact-text footer__contact-text">+7 928 811 22 11</span>
+            </a>
+            <a href="mailto:info@axis-hotel.ru" class="header__mail link footer__mail">
+              <div class="header__contact-img footer__contact-img">
+                <img src="picture/icons/envelope.svg" alt="">
+              </div>
+              <span class="header__contact-text footer__contact-text">info@axis-hotel.ru</span>
+            </a>
+          </div>
+          <div class="header__socials footer__socials">
+            <a href="#" class="header__socials-link footer__socials-link"><img src="picture/icons/instagram.svg" alt=""></a>
+            <a href="#" class="header__socials-link footer__socials-link"><img src="picture/icons/facebook.svg" alt=""></a>
+            <a href="#" class="header__socials-link footer__socials-link"><img src="picture/icons/booking.svg" alt=""></a>
+            <a href="#" class="header__socials-link footer__socials-link"><img src="picture/icons/vkontakte.svg" alt=""></a>
+            <a href="#" class="header__socials-link footer__socials-link"><img src="picture/icons/odnoklassniki.svg" alt=""></a>
+          </div>
         </div>
-        <div class="header__socials footer__socials">
-          <a href="#" class="header__socials-link footer__socials-link"><img src="picture/icons/instagram.svg" alt=""></a>
-          <a href="#" class="header__socials-link footer__socials-link"><img src="picture/icons/facebook.svg" alt=""></a>
-          <a href="#" class="header__socials-link footer__socials-link"><img src="picture/icons/booking.svg" alt=""></a>
-          <a href="#" class="header__socials-link footer__socials-link"><img src="picture/icons/vkontakte.svg" alt=""></a>
-          <a href="#" class="header__socials-link footer__socials-link"><img src="picture/icons/odnoklassniki.svg" alt=""></a>
-        </div>
-      </div>
-      <div class="resume">
-        <div class="copyrights">
-          Copyrights © 2013 - 2022. Все права защищены.
-        </div>
-        <div class="nelset">
-          <a href="http://nelset.com" class="link nelset__link">Создание сайта / Продвижение сайта nelset.com</a>
+        <div class="resume">
+          <div class="copyrights">
+            Copyrights © 2013 - 2022. Все права защищены.
+          </div>
+          <div class="nelset">
+            <a href="http://nelset.com" class="link nelset__link">Создание сайта / Продвижение сайта nelset.com</a>
+          </div>
         </div>
       </div>
     </div>
   </footer>
   <div class="modal">
-    <div class="modal__window">
-
+    <div class="modal__wrapper">
+      <form class="modal__window" action="#" method="post">
+        <div class="modal__tab modal__tab_small">
+          <p class="modal__label">Итого</p>
+          <div class="modal__date modal__field">
+            <div class="modal__text">
+              <span class="modal__checkIn">Заезд </span> - <span class="modal__checkOut"> Выезд</span>
+            </div>
+            <button class="modal__button"><img src="picture/icons/controls.svg" alt=""></button>
+          </div>
+        </div>
+        <div class="modal__tab modal__tab_small">
+          <p class="modal__label">Гости</p>
+          <div class="modal__guests modal__field">
+            <div class="modal__text">
+              <span class="modal__adult"></span><span class="modal__children"></span>
+            </div>
+            <button class="modal__button"><img src="picture/icons/controls.svg" alt=""></button>
+          </div>
+        </div>
+        <div class="modal__tab modal__tab_small">
+          <p class="modal__label">Ваше Имя</p>
+          <div class="modal__date modal__field modal__field_input">
+            <input class="modal__text" type="text" name="modal__name" id="modal__name" placeholder="Имя Фамилия">
+          </div>
+        </div>
+        <div class="modal__tab modal__tab_small">
+          <p class="modal__label">Номер телефона</p>
+          <div class="modal__date modal__field modal__field_input">
+            <input class="modal__text" type="tel" name="modal__tel" placeholder="+7 ХХХ ХХХ ХХ ХХ" data-mask="+7 ___ ___ ____" required>
+          </div>
+        </div>
+        <div class="modal__tab modal__tab_large">
+          <p class="modal__label">Задать вопрос</p>
+          <div class="modal__question modal__field modal__field_input">
+            <input type="text" class="modal__text" placeholder="Ваш вопрос">
+          </div>
+          <div class="modal__radio">
+            <input type="radio" name="modalPersonalData" id="modalPersonalData" >
+            <label for="modalPersonalData" class="modal__label_radio">Даю согласие на обработку персональных данных.</label>
+          </div>
+        </div>
+        <button type="submit" class="modal__submit">
+          Забронировать <img src="picture/icons/arrow__white.svg" alt="">
+        </button>
+      </form>
     </div>
   </div>
   <script src="scripts/script.js"></script>

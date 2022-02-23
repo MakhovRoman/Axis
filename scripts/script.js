@@ -58,23 +58,30 @@ guestChild.addEventListener('focusout', () => {
 
 //============= Анимация текста slideText =============
 
+function animateSlideText(target) {
+  target.addEventListener('mouseout', function() {
+    target.style.animation = 'slideTextBackward 0.4s ease forwards';
+    setTimeout( () => {target.style.animation = null}, 500);
+  });
+}
+
 let bannerLink = document.querySelector('.banner__booking-link');
-bannerLink.addEventListener('mouseout', function() {
-  bannerLink.style.animation = 'slideTextBackward 0.4s ease forwards';
-  setTimeout( () => {bannerLink.style.animation = null}, 500);
-});
+animateSlideText(bannerLink);
 
 let payLink = document.querySelector('.pay__booking');
-payLink.addEventListener('mouseout', function() {
-  payLink.style.animation = 'slideTextBigBackward 0.4s ease forwards';
-  setTimeout( () => {payLink.style.animation = null}, 500);
-})
+animateSlideText(payLink);
 
 let contactsSubmit = document.querySelector('.contacts__form-submit');
-contactsSubmit.addEventListener('mouseout', function() {
-  contactsSubmit.style.animation = 'slideTextBackward 0.4s ease forwards';
-  setTimeout( () => {contactsSubmit.style.animation = null}, 500);
-})
+animateSlideText(contactsSubmit);
+
+let detailedLink = document.querySelectorAll('.detailed__link');
+Array.from(detailedLink).forEach( (item) => {
+  animateSlideText(item);
+});
+
+let contactsFormSubmit = document.querySelector('.contacts__form-submit');
+animateSlideText(contactsFormSubmit);
+
 
 
 
@@ -285,6 +292,8 @@ function noDigits(event) {
 let contactsName = document.querySelector('#contacts__name');
 contactsName.addEventListener('keypress', noDigits);
 
+let modalName = document.querySelector('#modal__name');
+modalName.addEventListener('keypress', noDigits);
 
 //============= Header =============
 
@@ -359,10 +368,44 @@ window.addEventListener('scroll', headerScroll);
 
 //============= Modal =============
 
+let modalHeight, apartamentsHeight;
+let body          = document.querySelector('.body');
+let modalAdult    = document.querySelector('.modal__adult');
+let modalChildren = document.querySelector('.modal__children');
+let modalSubmit   = document.querySelector('.modal__submit');
+
+function setModalGuests(adultTarget, childrenTarget, adultSource, childrenSource) {
+  let phrase = ['взрослый', 'взрослых', 'ребенок', 'ребенка', 'детей'];
+
+  if (adultSource.value > 1) {
+    adultTarget.textContent = `${adultSource.value} ${phrase[1]}`;
+  } else if(adultSource.value == 1) {
+    adultTarget.textContent = `${adultSource.value} ${phrase[0]}`;
+  }
+
+  if (childrenSource.value == 1) {
+    childrenTarget.textContent = `, ${childrenSource.value} ${phrase[2]}`;
+  } else if (childrenSource.value > 1 && childrenSource.value <= 4) {
+    childrenTarget.textContent = `, ${childrenSource.value} ${phrase[3]}`;
+  } else if (childrenSource.value > 4) {
+    childrenTarget.textContent = `, ${childrenSource.value} ${phrase[4]}`;
+  } else if (childrenSource.value == 0) {
+    childrenTarget.textContent = null;
+  }
+}
+
 window.addEventListener('keydown', function(e) {              // закрытие модального окна по клавише ESC
-  if (e.which == 27) modal.classList.remove('modal_visible')
+  if (e.which == 27) modal.classList.remove('modal_visible');
+  body.style.overflowY = 'unset';
+  modalSubmit.style.transition = '0s';
+  setTimeout( () => {
+    modalSubmit.style.transition = 'all 0.4s ease';
+  }, 100);
 });
 
 bannerBookingLink.addEventListener('click', function() {
   modal.classList.add('modal_visible');
+  body.style.overflowY = 'hidden';
+
+  setModalGuests(modalAdult, modalChildren, guestAdult, guestChild);
 });
