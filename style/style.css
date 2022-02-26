@@ -272,8 +272,33 @@ body {
 .banner__booking-calendar {
   height: 64px;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   border-top: 1px solid rgba(191, 187, 187, 0.6);
   border-bottom: 1px solid rgba(191, 187, 187, 0.6);
+}
+
+#showCalendar {
+  width: 64px;
+  height: 100%;
+  border: none;
+  background: transparent;
+  box-sizing: border-box;
+  border-left: 1px solid rgba(191, 187, 187, 0.6);
+}
+
+#showCalendar:hover {
+  transition: background 0.3s ease;
+  background: rgb(255, 255, 255);
+}
+
+#showCalendar img {
+  transition: 0.3s ease;
+}
+
+#showCalendar:hover img {
+  filter: invert(100%);
+  transition: 0.3s ease;
 }
 
 .banner__booking-tab {
@@ -783,13 +808,23 @@ input[type="number"]::-webkit-inner-spin-button {
 .contacts {
   display: flex;
   height: 693px;
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/picture/footer.png);
-  background-repeat: no-repeat;
-  background-position: center center;
+  position: relative;
+}
+
+.contacts>picture>img {
+  position: absolute;
+  height: 100%;
+  max-width: 100%;
+  width: auto;
+  filter: brightness(20%) grayscale(100%);
 }
 
 .contacts__wrapper {
-  margin: auto auto;
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .contacts__text {
@@ -1143,7 +1178,134 @@ input.modal__text:focus::placeholder {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+/*============    CALENDAR   ============*/
 
+.calendar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1024px;
+  height: 544px;
+  background-color: rgb(255, 255, 255);
+  padding: 32px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 11.76471% 1fr;
+  grid-row-gap: 5.7%;
+  grid-template-columns: 1fr 1px 1fr;
+  grid-column-gap: 3.125%;
+  z-index: 100;
+  visibility: hidden;
+}
+
+.calendar__hide {
+  visibility: visible;
+}
+
+.border {
+  height: 100%;
+  width: 1px;
+  grid-row: 1/3;
+  grid-column: 2/3;
+  background-color: rgba(191, 187, 187, 0.6);
+}
+
+.calendar__header {
+  grid-row: 1/2;
+  border-top: 1px solid rgba(191, 187, 187, 0.6);
+  border-bottom: 1px solid rgba(191, 187, 187, 0.6);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calender__header_left {
+  grid-column: 1/2;
+}
+
+.calender__header_right {
+  grid-column: 3/4;
+}
+
+.calendar__button {
+  border: none;
+  background-color: transparent;
+  height: 100%;
+  width: 64px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.calendar__month {
+  font-size: 24px;
+  font-family: 'Fira Sans Condensed';
+}
+
+.calendar__button_prev {
+  border-right: 1px solid rgba(191, 187, 187, 0.6);
+}
+
+.calendar__button_next {
+  border-left: 1px solid rgba(191, 187, 187, 0.6);
+}
+
+.calendar__button_prev img {
+  transform: rotateY(180deg);
+}
+
+.calendar__table {
+  width: 100%;
+  height: 100%;
+}
+
+.calendar__day {
+  width: 64px;
+  height: 64px;
+}
+
+.calendar__day_title {
+  color: rgba(99, 99, 99, 1);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.calendar__day_number {
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.calendar__day_number:hover {
+  background-color: rgb(222, 222, 222);
+  color: rgb(0, 0, 0);
+}
+
+.calendar__day_today {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+.calendar__day_alien, .calendar__day_unchecked {
+  color: rgba(191, 187, 187, 0.3);
+  cursor: unset;
+}
+
+.calendar__day_alien:hover, .calendar__day_unchecked:hover {
+  background-color: transparent;
+  color: rgba(191, 187, 187, 0.3);
+}
+
+.calendar__day_pick {
+  background-color: rgba(99, 99, 99, 1);
+  color: rgb(255, 255, 255);
+}
+
+.calendar__day_booking {
+  background-color: rgb(222, 222, 222);
+  color: rgb(0, 0, 0);
+}
 
 /*============    MEDIA   ============*/
 

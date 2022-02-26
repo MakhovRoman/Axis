@@ -70,7 +70,12 @@
             <div class="banner__booking-item">
               <p class="banner__booking-title">Заезд – Выезд</p>
               <div class="banner__booking-calendar">
-
+                <div class="banner__booking_date">
+                  <span id="booking__checkIn">Заезд</span><span id="booking__checkOut"> - Выезд</span>
+                </div>
+                <button id="showCalendar">
+                  <img src="picture/icons/date_picker.svg" alt="">
+                </button>
               </div>
             </div>
             <div class="banner__booking-item">
@@ -571,6 +576,10 @@
       </div>
     </section>
     <section class="contacts" id="contacts">
+      <picture>
+        <source srcset="picture/footer.png">
+        <img src="picture/footer.png" alt="">
+      </picture>
       <div class="contacts__wrapper content__wrapper">
         <div class="contacts__text">
           <h2 class="contacts__heading section__heading">Остались вопросы?</h2>
@@ -651,7 +660,7 @@
       </div>
     </div>
   </footer>
-  <div class="modal">
+  <section class="modal">
     <div class="modal__wrapper">
       <form class="modal__window" action="#" method="post">
         <div class="modal__tab modal__tab_small">
@@ -699,7 +708,145 @@
         </button>
       </form>
     </div>
-  </div>
+  </section>
+  <section class="calendar">
+    <div class="calendar__header calendar__header_left">
+      <button class="calendar__button calendar__button_prev"><img src="picture/icons/arrow_black.svg" alt=""></button>
+      <h3 class="calendar__month calendar__month_current"></h3>
+    </div>
+    <div class="border"></div>
+    <div class="calendar__header calendar__header_right">
+      <h3 class="calendar__month calendar__month_next"></h3>
+      <button class="calendar__button calendar__button_next"><img src="picture/icons/arrow_black.svg" alt=""></button>
+    </div>
+    <div class="calendar__area calendar__area_left">
+      <table class="calendar__table">
+        <thead>
+          <tr>
+            <th class="calendar__day calendar__day_title">Пн</th>
+            <th class="calendar__day calendar__day_title">Вт</th>
+            <th class="calendar__day calendar__day_title">Ср</th>
+            <th class="calendar__day calendar__day_title">Чт</th>
+            <th class="calendar__day calendar__day_title">Пт</th>
+            <th class="calendar__day calendar__day_title">Сб</th>
+            <th class="calendar__day calendar__day_title">Вс</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="calendar__week">
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+          </tr>
+          <tr class="calendar__week">
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+          </tr>
+          <tr class="calendar__week">
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+          </tr>
+          <tr class="calendar__week">
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+          </tr>
+          <tr class="calendar__week">
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+            <td class="calendar__day calendar__day_number calendar__day_current"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="calendar__area calendar__area_right">
+      <table class="calendar__table">
+        <thead>
+          <tr>
+            <th class="calendar__day calendar__day_title">Пн</th>
+            <th class="calendar__day calendar__day_title">Вт</th>
+            <th class="calendar__day calendar__day_title">Ср</th>
+            <th class="calendar__day calendar__day_title">Чт</th>
+            <th class="calendar__day calendar__day_title">Пт</th>
+            <th class="calendar__day calendar__day_title">Сб</th>
+            <th class="calendar__day calendar__day_title">Вс</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="calendar__week">
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+          </tr>
+          <tr class="calendar__week">
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+          </tr>
+          <tr class="calendar__week">
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+          </tr>
+          <tr class="calendar__week">
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+          </tr>
+          <tr class="calendar__week">
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+            <td class="calendar__day calendar__day_number calendar__day_next"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </section>
   <script src="scripts/script.js"></script>
+  <script src="scripts/calendar.js"></script>
 </body>
 </html>
