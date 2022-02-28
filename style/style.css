@@ -92,7 +92,7 @@ body {
   transition: all 0.5s ease;
 }
 
-.header section {
+.header__top, .header__bot {
   border-bottom: 1px solid rgba(191, 187, 187, 0.3);
   box-sizing: border-box;
   height: 100%;
@@ -231,6 +231,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
+  height: 100vh;
 }
 
 .banner__wrapper {
@@ -274,8 +275,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(191, 187, 187, 0.6);
-  border-bottom: 1px solid rgba(191, 187, 187, 0.6);
+  border-top: 1px solid rgba(191, 187, 187, 0.3);
+  border-bottom: 1px solid rgba(191, 187, 187, 0.3);
 }
 
 #showCalendar {
@@ -284,7 +285,7 @@ body {
   border: none;
   background: transparent;
   box-sizing: border-box;
-  border-left: 1px solid rgba(191, 187, 187, 0.6);
+  border-left: 1px solid rgba(191, 187, 187, 0.3);
 }
 
 #showCalendar:hover {
@@ -409,7 +410,11 @@ input[type="number"]::-webkit-inner-spin-button {
   padding: 180px 0;
 }
 
-
+.apartaments__photo img {
+  max-width: 100%;
+  height: 100%;
+  width: auto;
+}
 
 .section__heading {
   font-family: 'Fira Sans Condensed';
@@ -1309,8 +1314,145 @@ input.modal__text:focus::placeholder {
 
 /*============    MEDIA   ============*/
 
-@media (max-width: 1920px) {
+@media (min-width: 1921px) {
   .banner {
-    height: 100vh;
+    object-fit: cover;
   }
+}
+
+
+/*============    BURGER   ============*/
+
+.burger {
+  grid-column: 2/3;
+  width: fit-content;
+  height: 16px;
+  margin: auto 0 auto auto;
+  display: flex;
+  align-items: center;
+}
+
+.burger__button {
+  width: 24px;
+  height: 1px;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  transition: 0.3s 0.3s;
+}
+
+.burger__button::after, .burger__button::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -8px;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  transition: top 0.3s 0.3s, transform 0.3s;
+}
+
+.burger__button::after {
+  top: 8px;
+}
+
+.burger__button_active::after, .burger__button_active::before {
+  top: 0;
+  transform: rotate(45deg);
+  transition: top 0.3s, transform 0.3s 0.3s;
+}
+
+.burger__button_active::before {
+  transform: rotate(-45deg);
+}
+
+.burger__button_active {
+  background-color: transparent;
+  transition: 0.2s 0.3s;
+}
+
+.burger__menu {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  transform: translateX(100%);
+  background-color: rgb(0, 0, 0);
+  transition: 0.5s;
+  z-index: 2;
+}
+
+.burger__menu_visible {
+  transition: 0.5s;
+  transform: translateX(0);
+}
+
+
+
+
+/*============    MOBILE   ============*/
+
+@media (max-width: 500px) {
+  .header {
+    height: 56px;
+    width: 100vw;
+    transform: none;
+    left: 0;
+    display: block;
+  }
+
+  .header__top, .header__bot {
+    padding: 0 4.44444%;
+  }
+
+  .header__contact, .header__socials {
+    display: none;
+  }
+
+  .header__top {
+    position: relative;
+    height: 0px;
+  }
+
+  .header__logo img {
+    display: block;
+  }
+
+  .header__bot {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 8px;
+    position: relative;
+    z-index: 100;
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .header__feedback {
+    display: none;
+  }
+
+  .main {
+    max-width: 100vw;
+  }
+
+  .content__wrapper {
+    width: 91.11111%;
+  }
+
+  .content__container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 4.44444%;
+  }
+
+  .banner__heading {
+    font-size: 24px;
+    grid-column: 1/3;
+    align-self: baseline;
+    margin-top: 25.37vh;
+    max-width: 300px;
+  }
+
+
 }

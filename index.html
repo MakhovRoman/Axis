@@ -37,6 +37,7 @@
         <a href="#" class="header__logo-link">
           <picture>
             <source srcset="picture/full_logo.svg" media="(min-width: 800px)">
+            <source srcset="picture/mobile/mobile__logo.svg" media="(max-width: 500px)">
             <img src="picture/full_logo.svg" alt="">
           </picture>
         </a>
@@ -60,6 +61,7 @@
   <main class="main">
     <section class="banner" id="aboutUs">
       <picture>
+        <source srcset="picture/mobile/mobile__banner.png" media="(max-width: 500px)">
         <source srcset="picture/BG.png">
         <img src="picture/BG.png" alt="" class="banner__img">
       </picture>
@@ -519,7 +521,7 @@
               </div>
               <div class="services__showplace-image">
                 <picture>
-                  <source srcset="picture/lake_of_love.png" media="(min-width: 800px)">
+                  <source srcset="picture/sofia_waterfall.png" media="(min-width: 800px)">
                   <img src="picture/lake_of_love.png" alt="">
                 </picture>
               </div>
@@ -848,5 +850,6 @@
   </section>
   <script src="scripts/script.js"></script>
   <script src="scripts/calendar.js"></script>
+  <script src="scripts/mobile.js"></script>
 </body>
 </html>
