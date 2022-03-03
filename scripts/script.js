@@ -158,12 +158,20 @@ let servicesSliderLength = servicesSliderList.length;
 let servicesSliderMargin = parseInt(getComputedStyle(servicesSliderList[1]).marginLeft);
 let servicesSliderWidth = parseInt(getComputedStyle(servicesSliderList[1]).width);
 let servicesCount = 0;
+let servicesCountMobile = 1;
 
 function sliderServicesForward(marker, slider) {
   servicesCount++;
   if (servicesCount >= servicesSliderLength-4) servicesCount = servicesSliderLength-4;
   marker.style.transform = `translateX(${(servicesCount)*100/((servicesSliderLength - 4) / 2)}%)`;
   slider.style.transform = `translateX(calc(${-servicesCount * servicesSliderWidth}px - ${servicesSliderMargin}px * ${servicesCount}))`;
+
+  if (medaiaQuery500.matches) {
+    servicesCountMobile++;          // счетчик в мобильной версии
+    if (servicesCountMobile >= servicesSliderLength) servicesCountMobile = servicesSliderLength;
+    document.querySelector('.services__slider1-current').textContent = `${servicesCountMobile}`;
+    slider.style.transform = `translateX(calc(${-servicesSliderWidth * (servicesCountMobile-1)}px - ${servicesSliderMargin}px * ${servicesCountMobile - 1} `;
+  }
 }
 
 function sliderServicesBackward(marker, slider) {
@@ -171,6 +179,13 @@ function sliderServicesBackward(marker, slider) {
   if (servicesCount <= 0) servicesCount = 0;
   marker.style.transform = `translateX(${(servicesCount)*100/((servicesSliderLength - 4) / 2)}%)`;
   slider.style.transform = `translateX(calc(${-servicesCount * servicesSliderWidth}px - ${servicesSliderMargin}px * ${servicesCount}))`;
+
+  if (medaiaQuery500.matches) {
+    servicesCountMobile--;          // счетчик в мобильной версии
+    if (servicesCountMobile <= 1) servicesCountMobile = 1;
+    document.querySelector('.services__slider1-current').textContent = `${servicesCountMobile}`;
+    slider.style.transform = `translateX(calc(${-servicesSliderWidth * (servicesCountMobile-1)}px - ${servicesSliderMargin}px * ${servicesCountMobile - 1} `;
+  }
 }
 
 function sliderServicesOpacity(count, sliderList) {
@@ -186,15 +201,15 @@ function sliderServicesOpacity(count, sliderList) {
   }
 }
 
-servicesButtonPlus.addEventListener('click', function() {
+servicesButtonPlus.addEventListener('click', function servicesSliderPlus() {
   sliderServicesForward(servicesMarker, servicesSlider);
 });
 
-servicesButtonMinus.addEventListener('click', function() {
+servicesButtonMinus.addEventListener('click', function servicesSliderMinus() {
   sliderServicesBackward(servicesMarker, servicesSlider);
 });
 
-servicesButtonBlock.addEventListener('click', function() {
+servicesButtonBlock.addEventListener('click', function servicesSliderOpacity() {
   sliderServicesOpacity(servicesCount, servicesSliderList);
 })
 
@@ -302,54 +317,42 @@ let headerTop = document.querySelector('.header__top');
 let headerBot = document.querySelector('.header__bot');
 let headerBotHeight = parseInt(getComputedStyle(headerBot).height);
 let headerTopHeight = parseInt(getComputedStyle(headerTop).height);
-let bannerHeight = parseInt(getComputedStyle(document.querySelector('.banner')).height);
+let bannerHeight;
 let bannerBookingLink = document.querySelector('.banner__booking-link');
+let bannerBookingLinkTab = document.querySelectorAll('.banner__booking-tab')[2];
+
 let modal = document.querySelector('.modal');
 let headerPositionTop;
 let pageScroll;
 let headerLastScrollTop = 0;
 let bannerBooking = document.querySelector('.banner__booking');
+let textHeadTop;;
 
-function headerScroll() {
+function headerScroll(textHeadTop, bannerHeight) {
   pageScroll = window.pageYOffset;
   let scrollTop = pageScroll;
 
-
-  /*
-  let timerId = setTimeout( () => {
-    if (pageScroll > headerTopHeight) {
-      headerPositionTop = headerBotHeight + headerTopHeight;
-      header.style.top = `${-headerPositionTop}px`;
-    } else {
-      return;
-    }
-  }, 5000);
-  */
   if (pageScroll > headerTopHeight) {
     headerPositionTop = headerTopHeight;
     header.style.top = `${-headerPositionTop}px`;
-
   } else {
-    /*clearTimeout(timerId);*/
     headerPositionTop = 0;
     header.style.top = `${-headerPositionTop}px`;
-
   }
 
-  if (pageScroll > 265) {
+  if (pageScroll > textHeadTop) {
     header.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
   } else {
     header.style.backgroundColor = 'transparent';
   }
 
-  if (pageScroll > (bannerHeight / 2)) {                        //при скроле вниз хайдится хедер
+  if (pageScroll > (bannerHeight)) {                        //при скроле вниз хайдится хедер
     if (scrollTop > headerLastScrollTop) {
       headerPositionTop = headerTopHeight + headerBotHeight;
     } else {
       headerPositionTop = headerTopHeight;
     }
     header.style.top = `${-headerPositionTop}px`;
-
   }
 
   if (scrollTop > headerLastScrollTop) {                        //при скроле вниз добавляется класс к форме заявки
@@ -359,12 +362,19 @@ function headerScroll() {
   }
 
   headerLastScrollTop = scrollTop;
+
+  if (pageScroll > bannerHeight / 10 && medaiaQuery500.matches) {
+    bannerBookingLink.classList.add('banner__booking-link_dark');
+  } else {
+    bannerBookingLink.classList.remove('banner__booking-link_dark');
+  }
 }
 
 
 
 
-window.addEventListener('scroll', headerScroll);
+window.addEventListener('scroll', () => headerScroll(textHeadTop, bannerHeight));
+
 
 //============= Modal =============
 

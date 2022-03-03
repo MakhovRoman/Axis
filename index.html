@@ -62,7 +62,7 @@
     <section class="banner" id="aboutUs">
       <picture>
         <source srcset="picture/mobile/mobile__banner.png" media="(max-width: 500px)">
-        <source srcset="picture/BG.png">
+        <source srcset="picture/BG.png" media="(min-width: 800px)">
         <img src="picture/BG.png" alt="" class="banner__img">
       </picture>
       <div class="banner__wrapper content__wrapper">
@@ -107,7 +107,7 @@
               </div>
             </div>
             <div class="banner__booking-item">
-              <div class="banner__booking-tab">
+              <div class="banner__booking-tab banner__booking-tab_link banner__booking-tab_link_burger">
                 <a href="#" class="banner__booking-link link">
                   Забронировать
                   <img src="picture/icons/arrow.svg" alt="">
@@ -123,6 +123,7 @@
         <div class="apartments__container content__container content__container_left">
           <div class="apartaments__photo">
             <picture>
+              <source srcset="picture/mobile/mobile__front__photo.png" media="(max-width: 500px)">
               <source srcset="picture/front_photo.png" media="(min-width: 800px)">
               <img src="picture/front_photo.png" alt="">
             </picture>
@@ -182,7 +183,7 @@
               <li class="pay__list-item"><div class="circle"></div>Расчетный час в 12:00</li>
             </ul>
             <a href="#" class="pay__booking">
-              Забронировать
+              Подробнее
               <img src="picture/icons/arrow_black.svg" alt="">
             </a>
           </div>
@@ -343,7 +344,11 @@
       <div class="ski__wrapper content__wrapper">
         <div class="ski__trace content__container content__container_left">
           <div class="ski__trace-image">
-            <img src="picture/ski.png" alt="">
+            <picture>
+              <source srcset="picture/ski.png" media="(min-width: 800px)">
+              <source srcset="picture/mobile/mobile__ski.png" media="(max-width: 500px)">
+              <img src="picture/ski.png" alt="">
+            </picture>
           </div>
           <div class="ski__trace-content">
             <h2 class="ski__heading section__heading">Горнолыжные трассы<br>в шаге от апартаметов</h2>
@@ -386,7 +391,11 @@
             </a>
           </div>
           <div class="ski__food-image">
-            <img src="picture/food.png" alt="">
+            <picture>
+              <source srcset="picture/food.png" media="(min-width: 800px)">
+              <source srcset="picture/mobile/mobile__food.png" media="(max-width: 500px)">
+              <img src="picture/food.png" alt="">
+            </picture>
           </div>
         </div>
       </div>
@@ -522,7 +531,7 @@
               <div class="services__showplace-image">
                 <picture>
                   <source srcset="picture/sofia_waterfall.png" media="(min-width: 800px)">
-                  <img src="picture/lake_of_love.png" alt="">
+                  <img src="picture/sofia_waterfall.png" alt="">
                 </picture>
               </div>
             </div>
@@ -564,7 +573,7 @@
               </div>
             </div>
           </div>
-          <div class="slider__control">
+          <div class="slider__control showplace__slider-control">
             <button class="slider__control-button" id="sliderShowplace__minus">
               <img src="picture/icons/arrow_black.svg" alt="">
             </button>
@@ -613,7 +622,13 @@
       <div class="footer__content">
         <div class="footer__links">
           <div class="footer__logo">
-            <a href="#"><img src="picture/full_logo.svg" alt=""></a>
+            <a href="#">
+              <picture>
+                <source srcset="picture/full_logo.svg" media="(min-width: 800px)">
+                <source srcset="picture/mobile/mobile__logo.svg" media="(max-width: 500px)">
+                <img src="picture/full_logo.svg" alt="">
+              </picture>
+            </a>
           </div>
           <nav class="footer__nav">
             <ul class="header__nav-list footer__nav-list">
