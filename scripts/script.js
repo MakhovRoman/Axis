@@ -341,7 +341,7 @@ function headerScroll(textHeadTop, bannerHeight) {
   }
 
   if (pageScroll > textHeadTop) {
-    header.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+    header.style.backgroundColor = medaiaQuery500.matches ? 'rgba(0, 0, 0, 0.9)' : 'rgba(0, 0, 0, 1)';
   } else {
     header.style.backgroundColor = 'transparent';
   }

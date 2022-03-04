@@ -655,10 +655,11 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .ski__trace-image img {
   height: 100%;
+  max-height: 100%;
 }
 
 .ski__food {
-  margin-top: 180px;
+  padding-top: 180px;
 }
 
 .ski__food-image {
@@ -1383,22 +1384,20 @@ input.modal__text:focus::placeholder {
   z-index: 2;
 }
 
-.burger__menu_visible {
-  padding-top: 96px;
-  transition: 0.5s;
-  transform: translateX(0);
+.html__hidden {
+  overflow-y: hidden;
 }
 
-
+.burger__menu_visible {
+  transition: 0.5s;
+  transform: translateX(0);
+  overflow-y: auto;
+}
 
 
 /*============    MOBILE   ============*/
 
 @media (max-width: 500px) {
-  html {
-    overflow-x: hidden;
-  }
-
   .header {
     height: 56px;
     width: 100vw;
@@ -1412,7 +1411,25 @@ input.modal__text:focus::placeholder {
   }
 
   .header__contact {
-    margin-top: 40px;
+    flex-direction: column;
+    width: 91.1111vw;
+    margin: 32px auto 0 auto;
+  }
+
+  .header__mail {
+    margin-left: 0;
+    margin-top: 34px;
+    margin-bottom: 24px;
+  }
+
+  .header__socials {
+    width: 91.1111vw;
+    margin: 0 auto 80px auto;
+    justify-content: unset;
+  }
+
+  .header__socials-link + .header__socials-link {
+    margin-left: 16px;
   }
 
   .header__top {
@@ -1431,6 +1448,15 @@ input.modal__text:focus::placeholder {
     z-index: 100;
   }
 
+  .header__bot_animated {
+    animation: headerBotColor 2s ease-in-out forwards;
+  }
+
+  @keyframes headerBotColor {
+    0% {background-image: linear-gradient(to left, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 1%);}
+    100% {background-image: linear-gradient(to left, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 100%);}
+  }
+
   .header__nav {
     display: none;
   }
@@ -1444,6 +1470,7 @@ input.modal__text:focus::placeholder {
 
   .header__nav_burger .header__nav-list {
     display: block;
+    width: 100%
   }
 
   .header__nav_burger .header__nav-item {
@@ -1458,7 +1485,17 @@ input.modal__text:focus::placeholder {
   }
 
   .header__nav_burger .header__nav-item:last-child {
-    margin-top: 64px;
+    margin-top: 128px;
+    position: relative;
+  }
+
+  .header__nav_burger .header__nav-item:last-child:before {
+    content: "";
+    position: absolute;
+    top: -64px;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(191, 187, 187, 0.6);
   }
 
   .header__feedback {
@@ -1511,7 +1548,7 @@ input.modal__text:focus::placeholder {
 
   .banner__booking-tab_link_burger {
     width: 91.1111vw;
-    margin: 0 auto;
+    margin: 40px auto 0 auto;
   }
 
   .banner__booking-link {
@@ -1722,7 +1759,8 @@ input.modal__text:focus::placeholder {
   }
 
   .ski__food {
-    margin-top: 80px;
+    padding-top: 80px;
+    margin-top: 0;
     grid-template-rows: auto auto;
     grid-row-gap: 32px;
   }

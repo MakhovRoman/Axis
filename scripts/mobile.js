@@ -4,6 +4,8 @@ const medaiaQuery500 = window.matchMedia('(max-width: 500px)');                 
 let burger;
 let burgerMenu;
 let footerHeader;
+let html = document.querySelector('html');
+let footer = document.querySelector('footer');
 
 let footerConnection = document.querySelector('.footer__connection');
 
@@ -21,6 +23,7 @@ let servicesSliderColunterArea = document.querySelector('.services__slider1-coun
 let servicesSlider1Count = document.createElement('div');                                        // создаю числовой счетчик слайдера
 
 let headerNav = document.querySelector('.header__nav');
+let headerNavLinkList = document.querySelectorAll('.header__nav-link:not(.footer__nav-link)');
 
 
 
@@ -47,12 +50,19 @@ function checkMeadiaQuery() {
       footerConnection.prepend(footerHeader);
       footerHeader.textContent = 'Контакты';
     }
+
+    header.prepend(headerBot);
+
+    Array.from(headerNavLinkList).forEach( (item) => {
+      item.addEventListener('click', burgerAction);
+    })
   } else {
     servicesSlider1Count.remove();
 
     textHeadTop = 265;
     bannerHeight = parseInt(getComputedStyle(document.querySelector('.banner')).height) / 2 ;
 
+    header.apepend(headerBot);
 
     if (footerHeader) {
       footerHeader.remove();
@@ -66,7 +76,9 @@ function checkMeadiaQuery() {
 
 function burgerAction() {                                       // добавляю обработчик по клику на бургер
   burgerMenu.classList.toggle('burger__menu_visible');
+  html.classList.toggle('html__hidden');
   document.querySelector('.burger__button').classList.toggle('burger__button_active');
+  headerBot.classList.toggle('header__bot_animated')
 
   if (burgerMenu.classList.contains('burger__menu_visible')) {
     burgerMenu.prepend(bannerBookingLinkTab);
@@ -74,10 +86,12 @@ function burgerAction() {                                       // добавл�
     headerNav.classList.add('header__nav_burger');
     bannerBookingLinkTab.after(headerNav);
   } else {
-    document.querySelectorAll('.banner__booking-item')[3].append(bannerBookingLinkTab);
-    bannerBookingLinkTab.classList.remove('banner__booking-tab_link_burger');
-    headerNav.classList.remove('header__nav_burger');
-    document.querySelector('.header__logo').after(headerNav);
+    setTimeout( () => {
+      document.querySelectorAll('.banner__booking-item')[3].append(bannerBookingLinkTab);
+      bannerBookingLinkTab.classList.remove('banner__booking-tab_link_burger');
+      headerNav.classList.remove('header__nav_burger');
+      document.querySelector('.header__logo').after(headerNav);
+    }, 410)
   }
 
 }
@@ -105,8 +119,11 @@ function removeBurger () {                                                      
     burger.remove();
   }
 
-  headerTop.append(headerContact);                                                    // возвращаю элементы в HeaderTop
-  headerTop.append(headerSocials);
+
+    headerTop.append(headerContact);                                                    // возвращаю элементы в HeaderTop
+    headerTop.append(headerSocials);
+
+
 }
 
 function setSliderControlPosition(controls, obj) {
