@@ -169,6 +169,9 @@ let servicesCount = 0;
 let servicesCountMobile = 1;
 
 function checkVariables() {
+servicesSliderLength = servicesSliderList.length;
+servicesSliderMargin = parseInt(getComputedStyle(servicesSliderList[1]).marginLeft);
+servicesSliderWidth = parseInt(getComputedStyle(servicesSliderList[1]).width);
   if (medaiaQuery500.matches) {
     servicesSlider.style.width = `calc(100% * ${servicesSliderList.length})`;
   }
@@ -484,6 +487,9 @@ bannerBookingLink.addEventListener('click', function() {
   setModalGuests(modalAdult, modalChildren, guestAdult, guestChild);
 });
 
+modalButtonGuests.addEventListener('click', function(e) {
+  e.preventDefault();
+})
 modalButtonGuests.addEventListener('click', addSaubguests);
 
 function addSaubguests() {
