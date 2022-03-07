@@ -99,6 +99,10 @@ body {
   display: grid;
   padding: 0 32px;
   box-sizing: border-box;
+  max-width: 1920px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .header__top {
@@ -291,6 +295,10 @@ body {
 #showCalendar:hover {
   transition: background 0.3s ease;
   background: rgb(255, 255, 255);
+}
+
+.showCalendar_rotate img {
+  transform: rotate(180deg);
 }
 
 #showCalendar img {
@@ -1049,19 +1057,93 @@ input[type="number"]::-webkit-inner-spin-button {
 .modal__wrapper {
   background-color: rgb(255, 255, 255);
   width: 896px;
-  height: 755px;
+  height: auto;
   display: flex;
+  position: relative;
+  top: 0;
+}
+
+.modal__close {
+  position: absolute;
+  right: calc(7.142857143% - 10px);
+  top: 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.modal__close img {
+  display: block;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .modal__window {
   margin: 8.928571429% 7.142857143%;
   display: grid;
   grid-template-columns: repeat(2,1fr);
-  grid-template-rows: 1fr 1fr 1.43617fr 1fr;
+  grid-template-rows: 94px 40px 94px 40px 127px 64px 80px;
   grid-column-gap: 8.3333333%;
-  grid-row-gap: 10.7563%;
   width: calc(100% - 7.142857143% * 2);
   height: auto;
+  grid-template-areas:
+  'check guests'
+  '. .'
+  'name tel'
+  '. .'
+  'question question'
+  '. .'
+  'submit submit';
+}
+
+.modal__window_large {
+  grid-template-rows: 94px 40px 64px 40px 94px 40px 127px 64px 80px;
+  grid-template-areas:
+  'check guests'
+  '. .'
+  'guests__adult guests__children'
+  '. .'
+  'name tel'
+  '. .'
+  'question question'
+  '. .'
+  'submit submit';;
+}
+
+.modal__wrapper_drift {
+  top: calc((64px + 40px) / 2);
+}
+
+.modal__tab_checkInOut {
+  grid-area: check;
+}
+
+.modal__tab_guests {
+  grid-area: guests;
+}
+
+.modal__tab_adult {
+  grid-area: guests__adult;
+}
+
+.modal__tab_children {
+  grid-area: guests__children;
+}
+
+.modal__tab_name {
+  grid-area: name;
+}
+
+.modal__tab_tel {
+  grid-area: tel;
+}
+
+.modal__tab_large {
+  grid-area: question;
+}
+
+.modal__submit {
+  grid-area: submit;
 }
 
 .modal__tab {
@@ -1069,6 +1151,34 @@ input[type="number"]::-webkit-inner-spin-button {
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.modal__tab_small {
+  min-height: 94px;
+}
+
+.modal__tab_subguests {
+  display: none;
+}
+
+.modal__tab_subguests_visible {
+  display: grid;
+}
+
+.modal__tab_subguests_content {
+  display: grid;
+}
+
+.modal__booking-input {
+  color: rgb(0, 0, 0);
+}
+
+.modal__booking-button:hover {
+  background: rgb(0, 0, 0);
+}
+
+.modal__booking-button:hover img {
+  filter: invert(100%);
 }
 
 .modal__label {
@@ -1118,17 +1228,40 @@ input[type="number"]::-webkit-inner-spin-button {
   outline: none;
 }
 
-input.modal__text::placeholder {
-  color: rgb(0, 0, 0);
-
+textarea.modal__text {
+  border: 1px solid rgba(191, 187, 187, 0.3);
+  padding: 16px;
+  overflow: hidden;
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: 60px;
+  max-height: 100px;
+  font-family: 'Fira Sans';
+  font-size: 18px;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: pre-wrap;
+  resize: none;
 }
 
-input.modal__text:focus::placeholder {
+.modal__tab_large .modal__field_input {
+  margin: 8px 0 16px 0;
+  height: auto;
+}
+
+input.modal__text::placeholder, textarea.modal__text::placeholder {
+  color: rgb(0, 0, 0);
+  font-family: 'Fira Sans';
+  font-size: 18px;
+}
+
+input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
   color: transparent;
 }
 
 .modal__tab_large {
   grid-column: 1/3;
+  height: auto;
 }
 
 #modalPersonalData {
@@ -1264,11 +1397,16 @@ input.modal__text:focus::placeholder {
 .calendar__table {
   width: 100%;
   height: 100%;
+  border-collapse: collapse;
 }
 
+.calendar__head, .calendar__week {
+  width: 100%;
+  height: calc(100% / 6);
+}
 .calendar__day {
-  width: 64px;
-  height: 64px;
+  width: calc(100% / 7);
+  height: calc(100% / 6);
 }
 
 .calendar__day_title {
@@ -1313,6 +1451,12 @@ input.modal__text:focus::placeholder {
   color: rgb(0, 0, 0);
 }
 
+.calendar__modal {
+  top: 57%;
+  width: calc(896px - 4px);
+  height: 476px;
+}
+
 /*============    MEDIA   ============*/
 
 @media (min-width: 1921px) {
@@ -1326,12 +1470,7 @@ input.modal__text:focus::placeholder {
 /*============    BURGER   ============*/
 
 .burger {
-  grid-column: 2/3;
-  width: fit-content;
-  height: 16px;
-  margin: auto 0 auto auto;
-  display: flex;
-  align-items: center;
+  display: none;
 }
 
 .burger__button {
@@ -1380,8 +1519,9 @@ input.modal__text:focus::placeholder {
   top: 0;
   transform: translateX(100%);
   background-color: rgb(0, 0, 0);
-  transition: 0.5s;
+  transition: 0.3s;
   z-index: 2;
+  visibility: hidden;
 }
 
 .html__hidden {
@@ -1389,15 +1529,25 @@ input.modal__text:focus::placeholder {
 }
 
 .burger__menu_visible {
-  transition: 0.5s;
+  transition: 0.3s;
   transform: translateX(0);
   overflow-y: auto;
+  visibility: visible;
 }
 
 
 /*============    MOBILE   ============*/
 
 @media (max-width: 500px) {
+  .burger {
+    grid-column: 2/3;
+    width: fit-content;
+    height: 16px;
+    margin: auto 0 auto auto;
+    display: flex;
+    align-items: center;
+  }
+
   .header {
     height: 56px;
     width: 100vw;
@@ -1787,6 +1937,15 @@ input.modal__text:focus::placeholder {
 
   .services__wrapper {
     padding: 80px 0;
+    overflow-x: hidden;
+  }
+
+  .services__slider1-content {
+    width: 91.1111vw;
+  }
+
+  .services__slider1-content + .services__slider1-content {
+    margin-left: 0;
   }
 
   .services__slider1-controls {
@@ -1986,7 +2145,194 @@ input.modal__text:focus::placeholder {
     margin-bottom: 32px;
   }
 
+  .modal {
+    margin-top: 56px;
+    padding-top: 40px;
+    min-height: 100vh;
+    transform: translateY(-100%);
+    transition: all 0.5s ease-in-out;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .modal_visible {
+    transform: translateY(0);
+    transition: transform 0.5s linear;
+  }
+
+  .modal__wrapper {
+    width: 100%;
+    position: static;
+    display: block;
+    height: 100vh;
+  }
+
+  .modal__window {
+    margin: 0 4.44444vw;
+    width: calc(100% - 4.4444vw * 2);
+    height: calc(906px + 56px + 40px + 80px);
+    grid-template-columns: 100%;
+    grid-template-rows: 84px 84px 84px 82px 82px 194px 56px;
+    grid-row-gap: 40px;
+    grid-template-areas:
+    'check'
+    'guests__adult'
+    'guests__children'
+    'name'
+    'tel'
+    'question'
+    'submit';
+    grid-column-gap: unset;
+  }
+
+  .modal__window_calendar {
+    grid-template-rows: 84px calc(56px + 77.8vw) 84px 84px 82px 82px 194px 56px;
+    grid-template-areas:
+    'check'
+    'calendar'
+    'guests__adult'
+    'guests__children'
+    'name'
+    'tel'
+    'question'
+    'submit';
+    min-height: calc(906px + 56px + 40px + 80px + 40px + calc(56px + 77.8vw));
+  }
+
+  .modal__tab_guests {
+    display: none;
+  }
+
+  .modal__tab_small {
+    height: 100%;
+    min-height: unset;
+  }
+
+  .modal__tab_subguests {
+    display: grid;
+    height: 56px;
+    margin-top: calc(84px - 56px);
+    position: relative;
+  }
+
+  .modal__label_radio {
+    margin-left: 0;
+    font-size: 14px;
+  }
+
+  .modal__submit {
+    grid-column: unset;
+  }
+
+  .modal__tab_large {
+    height: 100%;
+    justify-content: unset;
+  }
+
+  .modal__tab_large .modal__field_input {
+    margin: 8px 0 40px 0;
+    height: auto;
+  }
+
+  textarea.modal__text {
+    min-height: 84px;
+  }
+
+  .modal__radio {
+    margin-left: 28px;
+  }
+
+  .modal__label_radio::after {
+    top: 0;
+    transform: unset;
+  }
+
+  .modal__tab_subguests::before {
+    content: 'Гости';
+    position: absolute;
+    top: calc(-84px + 56px);
+    left: 0;
+    font-size: 14px;
+    color: rgba(99, 99, 99, 1);
+  }
+
+  .modal__field {
+    height: 56px;
+  }
+
+  .modal__close {
+    display: none;
+  }
+
+  .header__bot_modal {
+    animation: none;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .header__bot_modal img {
+    filter: invert(100%);
+  }
+
+  .header__bot_modal .burger__button::after, .header__bot_modal .burger__button::before {
+    background-color: rgb(0, 0, 0);
+  }
+
   .calendar {
-    width: 100vw;
+    position: static;
+    display: none;
+    grid-area: calendar;
+    width: 100%;
+    height: 100%;
+    transform: none;
+    padding: 0;
+    top: unset;
+    grid-template-rows: 56px 77.8vw;
+    grid-row-gap: 24px;
+  }
+
+  .calendar__hide {
+    display: grid;
+  }
+
+  .calendar__area_left {
+    grid-column: 1/4;
+    grid-row: 2/3;
+  }
+
+  .calendar__area_right {
+    display: none;
+  }
+
+  .border {
+    display: none;
+  }
+
+  .calendar__month_next {
+    display: none;
+  }
+
+  .calendar__button {
+    width: 56px;
+    height: 56px;
+  }
+
+  .calendar__button_next {
+    height: 54px;
+  }
+
+  .calendar__header_left {
+    grid-column: 1/4;
+    position: relative;
+  }
+
+  .calendar__month_current {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .calendar__header_right {
+    grid-column: unset;
+    position: absolute;
+    right: calc(4.4444vw);
   }
 }

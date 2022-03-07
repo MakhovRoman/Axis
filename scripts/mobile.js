@@ -1,9 +1,10 @@
-const medaiaQuery500 = window.matchMedia('(max-width: 500px)');                       // медиазапрос максимальной ширины 500px
+                    // медиазапрос максимальной ширины 500px
 
 
-let burger;
-let burgerMenu;
+let burger = document.querySelector('.burger');
+let burgerMenu ;
 let footerHeader;
+let burgerButton = document.querySelector('.burger__button');
 let html = document.querySelector('html');
 let footer = document.querySelector('footer');
 
@@ -26,11 +27,10 @@ let headerNav = document.querySelector('.header__nav');
 let headerNavLinkList = document.querySelectorAll('.header__nav-link:not(.footer__nav-link)');
 
 
-
 function checkMeadiaQuery() {
 
 
-  medaiaQuery500.matches ? addBurger() : removeBurger();
+  //medaiaQuery500.matches ? addBurger() : removeBurger();
 
   if (medaiaQuery500.matches) {
     servicesSlider1Count.classList.add('services__slider1-count');                              // добавляю числовой счетчик в слайдер1
@@ -55,18 +55,52 @@ function checkMeadiaQuery() {
 
     Array.from(headerNavLinkList).forEach( (item) => {
       item.addEventListener('click', burgerAction);
-    })
+    });
+
+    //dafdsf
+
+    if (!burgerMenu) {
+      burgerMenu = document.createElement('div');                                       // создаю бургер-меню
+      burgerMenu.classList.add('burger__menu');                                             // присваиваю класс
+    }
+
+
+
+      headerBot.append(burger);
+      headerTop.append(burgerMenu);
+
+      burgerMenu.append(headerContact);
+      burgerMenu.append(headerSocials);
+
+      burger.addEventListener('click', burgerAction);
+      document.querySelector('.modal__tab_checkInOut .modal__label').textContent = 'Заезд - Выезд';
+
+      modalWindow.append(calendar);
   } else {
     servicesSlider1Count.remove();
 
     textHeadTop = 265;
     bannerHeight = parseInt(getComputedStyle(document.querySelector('.banner')).height) / 2 ;
 
-    header.apepend(headerBot);
+    headerTop.append(headerContact);                                                    // возвращаю элементы в HeaderTop
+    headerTop.append(headerSocials);
+
+    header.prepend(headerTop);
 
     if (footerHeader) {
       footerHeader.remove();
     }
+
+    //34534534
+    if (getComputedStyle(burger).display == 'flex') {
+      burger.removeEventListener('click', burgerAction);
+
+      burger.remove();
+      burgerMenu.remove();
+    }
+
+    document.querySelector('.modal__tab_checkInOut .modal__label').textContent = 'Заезд - Выезд';
+    document.querySelector('script').before(calendar);
   }
 
   //изменяю положение кнопок управления слайдерами
@@ -77,8 +111,8 @@ function checkMeadiaQuery() {
 function burgerAction() {                                       // добавляю обработчик по клику на бургер
   burgerMenu.classList.toggle('burger__menu_visible');
   html.classList.toggle('html__hidden');
-  document.querySelector('.burger__button').classList.toggle('burger__button_active');
-  headerBot.classList.toggle('header__bot_animated')
+  burgerButton.classList.toggle('burger__button_active');
+  headerBot.classList.toggle('header__bot_animated');
 
   if (burgerMenu.classList.contains('burger__menu_visible')) {
     burgerMenu.prepend(bannerBookingLinkTab);
@@ -92,6 +126,18 @@ function burgerAction() {                                       // добавл�
       headerNav.classList.remove('header__nav_burger');
       document.querySelector('.header__logo').after(headerNav);
     }, 410)
+  }
+
+  if (modal.classList.contains('modal_visible')) {
+    closeModal();
+  } else if (modal.classList.contains('modal_visible') && !burgerMenu.classList.contains('burger__menu_visible')) {
+    burgerButton.classList.remove('burger__button_active');
+    burgerMenu.classList.remove('burger__menu_visible')
+  }
+
+  if (burgerButton.classList.contains('burger__button_active') && modal.classList.contains('modal_visible')) {
+    burgerButton.classList.remove('burger__button_active');
+    headerBot.classList.remove('header__bot_animated');
   }
 
 }
@@ -134,5 +180,6 @@ function setSliderControlPosition(controls, obj) {
   }
 }
 
-checkMeadiaQuery();
+window.addEventListener('DOMContentLoaded', checkMeadiaQuery);
 window.addEventListener('resize', checkMeadiaQuery);
+window.addEventListener('load', checkMeadiaQuery);

@@ -56,68 +56,71 @@
       <div class="header__feedback">
         <a href="#" class="header__feedback-link link">Заказать звонок</a>
       </div>
-    </section>
-  </header>
-  <main class="main">
-    <section class="banner" id="aboutUs">
-      <picture>
-        <source srcset="picture/mobile/mobile__banner.png" media="(max-width: 500px)">
-        <source srcset="picture/BG.png" media="(min-width: 800px)">
-        <img src="picture/BG.png" alt="" class="banner__img">
-      </picture>
-      <div class="banner__wrapper content__wrapper">
-        <div class="banner__container content__container">
-          <h1 class="banner__heading">Уютные Апартаменты в центре горнолыжного курорта</h1>
-          <form class="banner__booking content__wrapper" name="booking" method="post">
-            <div class="banner__booking-item">
-              <p class="banner__booking-title">Заезд – Выезд</p>
-              <div class="banner__booking-calendar">
-                <div class="banner__booking_date">
-                  <span id="booking__checkIn">Заезд</span><span id="booking__checkOut"> - Выезд</span>
-                </div>
-                <button id="showCalendar">
-                  <img src="picture/icons/date_picker.svg" alt="">
-                </button>
-              </div>
-            </div>
-            <div class="banner__booking-item">
-              <p class="banner__booking-title">Гости</p>
-              <div class="banner__booking-tab">
-                <label for="adults" class="banner__booking-label">Взрослые</label>
-                <button class="banner__booking-button" id="guestAdultMinus">
-                  <img src="picture/icons/minus.svg" alt="" class="button__sign">
-                </button>
-                <input type="number" class="banner__booking-input" id="guestAdult" name="adults" value="2" min="1" max="42">
-                <button class="banner__booking-button" id="guestAdultPlus">
-                  <img src="picture/icons/plus.svg" alt="" class="button__sign">
-                </button>
-              </div>
-            </div>
-            <div class="banner__booking-item">
-              <p class="banner__booking-title">Гости</p>
-              <div class="banner__booking-tab">
-                <label for="child" class="banner__booking-label">Дети</label>
-                <button class="banner__booking-button" id="guestChildMinus">
-                  <img src="picture/icons/minus.svg" alt="" class="button__sign">
-                </button>
-                <input type="number" class="banner__booking-input" id="guestChild" name="child" value="0" min="0" max="42">
-                <button class="banner__booking-button" id="guestChildPlus">
-                  <img src="picture/icons/plus.svg" alt="" class="button__sign">
-                </button>
-              </div>
-            </div>
-            <div class="banner__booking-item">
-              <div class="banner__booking-tab banner__booking-tab_link banner__booking-tab_link_burger">
-                <a href="#" class="banner__booking-link link">
-                  Забронировать
-                  <img src="picture/icons/arrow.svg" alt="">
-                </a>
-              </div>
-            </div>
-          </form>
-        </div>
+      <div class="burger">
+        <div class="burger__button"></div>
       </div>
     </section>
+  </header>
+  <section class="banner" id="aboutUs">
+    <picture>
+      <source srcset="picture/mobile/mobile__banner.png" media="(max-width: 500px)">
+      <source srcset="picture/BG.png" media="(min-width: 800px)">
+      <img src="picture/BG.png" alt="" class="banner__img">
+    </picture>
+    <div class="banner__wrapper content__wrapper">
+      <div class="banner__container content__container">
+        <h1 class="banner__heading">Уютные Апартаменты в центре горнолыжного курорта</h1>
+        <form class="banner__booking content__wrapper" name="booking" method="post">
+          <div class="banner__booking-item">
+            <p class="banner__booking-title">Заезд – Выезд</p>
+            <div class="banner__booking-calendar">
+              <div class="banner__booking_date">
+                <span id="booking__checkIn">Заезд</span><span id="booking__checkOut"> - Выезд</span>
+              </div>
+              <button id="showCalendar">
+                <img src="picture/icons/date_picker.svg" alt="">
+              </button>
+            </div>
+          </div>
+          <div class="banner__booking-item">
+            <p class="banner__booking-title">Гости</p>
+            <div class="banner__booking-tab">
+              <label for="adults" class="banner__booking-label">Взрослые</label>
+              <button class="banner__booking-button guestAdultMinus" id="guestAdultMinus">
+                <img src="picture/icons/minus.svg" alt="" class="button__sign">
+              </button>
+              <input type="number" class="banner__booking-input" id="guestAdult" name="adults" value="2" min="1" max="42">
+              <button class="banner__booking-button guestAdultPlus" id="guestAdultPlus">
+                <img src="picture/icons/plus.svg" alt="" class="button__sign">
+              </button>
+            </div>
+          </div>
+          <div class="banner__booking-item">
+            <p class="banner__booking-title">Гости</p>
+            <div class="banner__booking-tab">
+              <label for="child" class="banner__booking-label">Дети</label>
+              <button class="banner__booking-button guestChildMinus" id="guestChildMinus">
+                <img src="picture/icons/minus.svg" alt="" class="button__sign">
+              </button>
+              <input type="number" class="banner__booking-input" id="guestChild" name="child" value="0" min="0" max="42">
+              <button class="banner__booking-button guestChildPlus" id="guestChildPlus">
+                <img src="picture/icons/plus.svg" alt="" class="button__sign">
+              </button>
+            </div>
+          </div>
+          <div class="banner__booking-item">
+            <div class="banner__booking-tab banner__booking-tab_link">
+              <a href="#" class="banner__booking-link link">
+                Забронировать
+                <img src="picture/icons/arrow.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <main class="main">
     <section class="apartaments" id="apartaments">
       <div class="apartaments__wrapper content__wrapper">
         <div class="apartments__container content__container content__container_left">
@@ -677,34 +680,56 @@
       </div>
     </div>
   </footer>
+  <!--Модальное окно-->
   <section class="modal">
     <div class="modal__wrapper">
+      <button class="modal__close"><img src="picture/icons/close.svg" alt=""></button>
       <form class="modal__window" action="#" method="post">
-        <div class="modal__tab modal__tab_small">
+        <div class="modal__tab modal__tab_small modal__tab_checkInOut">
           <p class="modal__label">Итого</p>
           <div class="modal__date modal__field">
             <div class="modal__text">
-              <span class="modal__checkIn">Заезд </span> - <span class="modal__checkOut"> Выезд</span>
+              <span class="modal__checkIn">Заезд</span> <span class="modal__checkOut"> - Выезд</span>
             </div>
-            <button class="modal__button"><img src="picture/icons/controls.svg" alt=""></button>
+            <button class="modal__button" id="modal__button_calendar"><img src="picture/icons/controls.svg" alt=""></button>
           </div>
         </div>
-        <div class="modal__tab modal__tab_small">
+        <div class="modal__tab modal__tab_small modal__tab_guests">
           <p class="modal__label">Гости</p>
           <div class="modal__guests modal__field">
             <div class="modal__text">
               <span class="modal__adult"></span><span class="modal__children"></span>
             </div>
-            <button class="modal__button"><img src="picture/icons/controls.svg" alt=""></button>
+            <button class="modal__button" id="modal__button_guests"><img src="picture/icons/controls.svg" alt=""></button>
           </div>
         </div>
-        <div class="modal__tab modal__tab_small">
+        <div class="banner__booking-tab modal__tab  modal__tab_adult modal__tab_subguests">
+          <label class="banner__booking-label">Взрослые</label>
+          <button class="banner__booking-button modal__booking-button guestAdultMinus">
+            <img src="picture/icons/minus_black.svg" alt="" class="button__sign">
+          </button>
+          <input type="number" class="banner__booking-input modal__booking-input" id="modalGuestAdult" value="2" min="0" max="42">
+          <button class="banner__booking-button modal__booking-button guestAdultPlus">
+            <img src="picture/icons/plus_black.svg" alt="" class="button__sign">
+          </button>
+        </div>
+        <div class="banner__booking-tab modal__tab  modal__tab_children modal__tab_subguests">
+          <label class="banner__booking-label">Дети</label>
+          <button class="banner__booking-button modal__booking-button guestChildMinus">
+            <img src="picture/icons/minus_black.svg" alt="" class="button__sign">
+          </button>
+          <input type="number" class="banner__booking-input modal__booking-input" id="modalGuestChildren" value="0" min="0" max="42">
+          <button class="banner__booking-button modal__booking-button guestChildPlus">
+            <img src="picture/icons/plus_black.svg" alt="" class="button__sign">
+          </button>
+        </div>
+        <div class="modal__tab modal__tab_small modal__tab_name">
           <p class="modal__label">Ваше Имя</p>
           <div class="modal__date modal__field modal__field_input">
             <input class="modal__text" type="text" name="modal__name" id="modal__name" placeholder="Имя Фамилия">
           </div>
         </div>
-        <div class="modal__tab modal__tab_small">
+        <div class="modal__tab modal__tab_small modal__tab_tel">
           <p class="modal__label">Номер телефона</p>
           <div class="modal__date modal__field modal__field_input">
             <input class="modal__text" type="tel" name="modal__tel" placeholder="+7 ХХХ ХХХ ХХ ХХ" data-mask="+7 ___ ___ ____" required>
@@ -713,7 +738,7 @@
         <div class="modal__tab modal__tab_large">
           <p class="modal__label">Задать вопрос</p>
           <div class="modal__question modal__field modal__field_input">
-            <input type="text" class="modal__text" placeholder="Ваш вопрос">
+            <textarea type="text" class="modal__text" placeholder="Ваш вопрос" oninput="auto_grow(this)" id="modal__textarea"></textarea>
           </div>
           <div class="modal__radio">
             <input type="radio" name="modalPersonalData" id="modalPersonalData" >
@@ -726,6 +751,7 @@
       </form>
     </div>
   </section>
+    <!--Календарь-->
   <section class="calendar">
     <div class="calendar__header calendar__header_left">
       <button class="calendar__button calendar__button_prev"><img src="picture/icons/arrow_black.svg" alt=""></button>
@@ -738,7 +764,7 @@
     </div>
     <div class="calendar__area calendar__area_left">
       <table class="calendar__table">
-        <thead>
+        <thead class="calendar__head">
           <tr>
             <th class="calendar__day calendar__day_title">Пн</th>
             <th class="calendar__day calendar__day_title">Вт</th>

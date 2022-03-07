@@ -37,6 +37,17 @@
       }
     }
 
+    get LastDayOfMonth() {
+      let _fullDate = new Date(this.value);
+      _fullDate.setMonth(_fullDate.getMonth() + 1, 1);
+      _fullDate.setDate(_fullDate.getDate() - 1);
+      if (_fullDate.getDay() > 0){
+        return _fullDate.getDay() - 1;
+      } else if (_fullDate.getDay() == 0){
+        return _fullDate.getDay() + 6;
+      }
+    }
+
     get dateList() {                                                                  // получаю список чисел в месяце
       let result = [];
       for (let i = 1; i <= this.lastDate; i++) {
@@ -75,10 +86,13 @@ let bookingArea = new Set();                                                    
 let stringStart, stringEnd;                                                                         // переменные для хранения строки с датой в виде массива[2022, 02, 02]
 
 let calendarButton = document.querySelector('#showCalendar');
+let modalCalendarButton = document.querySelector('#modal__button_calendar');
 let calendar = document.querySelector('.calendar');
 
 let bookingCheckIn = document.querySelector('#booking__checkIn');                     // поле для даты заезда
 let bookingCheckOut = document.querySelector('#booking__checkOut');                   // поле для даты выезда
+let modalCheckIn = document.querySelector('.modal__checkIn');                         // поле для даты заезда в модальном окне
+let modalCheckOut = document.querySelector('.modal__checkOut');                       // поле для даты выезда в модальном окне
 
 let today = new SetDate(Date.now());                                                  // создаю текущую дату
 
@@ -108,6 +122,7 @@ function insertDateInCalendar(objCurrent, objNext, targetCurrent, targetNext){  
   let c = 0;                                                                                // для вставки чисел из массива дат предидущего месяца в текущий месяц
   let d = 1;                                                                                // для вставки чисел из предидущего месяца в текущий
   let f = 0;                                                                                // для вставки чисел из следующего месяца в текущий
+
 
   for (let i = 0; i < visionDateArray.length; i++) {                                        // при перелистывании месяцев очищаю стили ячеек
     visionDateArray[i].classList.remove('calendar__day_unchecked');
@@ -148,7 +163,7 @@ function insertDateInCalendar(objCurrent, objNext, targetCurrent, targetNext){  
     d++;
   }
 
-  for (let i = objCurrent.lastDate + 1; i < currentDateAreaList.length; i++) {                           // добавляю числа из следующего месяца
+  for (let i = objCurrent.lastDate + 1 + d; i < currentDateAreaList.length; i++) {                           // добавляю числа из следующего месяца
     targetCurrent[i].textContent = `${yearMonthArray[monthCount + 1].dateList[f]}`;
     targetCurrent[i].classList.add('calendar__day_alien');
     f++;
@@ -170,7 +185,8 @@ function insertDateInCalendar(objCurrent, objNext, targetCurrent, targetNext){  
   }
 
   for(let i = objNext.lastDate + objNext.firstDayOFMonth; i < targetNext.length; i++) {               // добавляю числа из предидущего месяца
-     targetNext[i].textContent = `${yearMonthArray[monthCount + 2].dateList[c]}`;
+    if (yearMonthArray[monthCount + 2] == null) break;
+    targetNext[i].textContent = `${yearMonthArray[monthCount + 2].dateList[c]}`;
     targetNext[i].classList.add('calendar__day_alien');
     c++;
   }
@@ -233,6 +249,12 @@ function moveMonthBackward() {                                                  
 getMonthList();
 insertDateInCalendar(yearMonthArray[monthCount], yearMonthArray[monthCount + 1], currentDateAreaList, nextDateAreaList);
 
+Array.from(calendarButtons).forEach( item => {
+  item.addEventListener('click', function(e) {
+    e.preventDefault();
+  })
+})
+
 calendarButtons[0].addEventListener('click', moveMonthBackward);
 calendarButtons[1].addEventListener('click', moveMonthForward);
 
@@ -261,12 +283,14 @@ function createBookingArea() {
         start = index;
         startValue = item.dataset.value;
         stringStart = bookingDate[0].split(`-`);
-        bookingCheckIn.textContent = `${stringStart[2]}.${stringStart[1]}.${stringStart[0]}`;
+        bookingCheckIn.textContent = `${stringStart[2]}.${stringStart[1]}.${stringStart[0]}`;           // вывожу дату начала бронирования в поле в банере и в модальном окне
+        modalCheckIn.textContent = `${stringStart[2]}.${stringStart[1]}.${stringStart[0]}`;
       } else if (item.dataset.value == bookingDate[1]) {                                                // получаю номер ячейки с датой конца бронирования
         end = index;
         endValue = item.dataset.value;
         stringEnd = bookingDate[1].split(`-`);
-        bookingCheckOut.textContent = ` - ${stringEnd[2]}.${stringEnd[1]}.${stringEnd[0]}`;
+        bookingCheckOut.textContent = ` - ${stringEnd[2]}.${stringEnd[1]}.${stringEnd[0]}`;           // вывожу дату окончания бронирования в поле в банере и в модальном окне
+        modalCheckOut.textContent = ` - ${stringEnd[2]}.${stringEnd[1]}.${stringEnd[0]}`;
       }
     })
 
@@ -277,7 +301,13 @@ function createBookingArea() {
       }
     }
 
+    calendarButton.classList.remove('showCalendar_rotate');                                       // поворачиваю стрелку, если выбраны 2 даты
     calendar.classList.remove('calendar__hide');                                                  // закрываю календарь, если выбраны 2 даты
+
+    if (medaiaQuery500.matches) {
+      modalWindow.classList.remove('modal__window_calendar');
+      calendarActiveButtons[1].classList.remove('showCalendar_rotate');
+    }
   } else if (bookingDate.length < 2) {                                                                         // если в массиве меньше 2 дат, то удаляю выделение периода бронирования
     visionDateArray.forEach( item => item.classList.remove('calendar__day_booking'));
     bookingArea.clear();
@@ -291,13 +321,33 @@ function createBookingArea() {
 visionDateArray.forEach( item => item.addEventListener('click', createBookingArea));
 
 
+let calendarActiveButtons = [calendarButton, modalCalendarButton];
+let modalWidth = parseInt(getComputedStyle(document.querySelector('.modal__wrapper')).width);
+calendarActiveButtons.forEach( item => {
+  item.addEventListener('click', function(e) {
+    e.preventDefault();
 
-calendarButton.addEventListener('click', function(e) {
-  e.preventDefault();
-  calendar.classList.toggle('calendar__hide');
-  if (bookingDate.length == 1 && !calendar.classList.contains('calendar__hide')) {
-    stringStart = bookingDate[0].split(`-`);
-    bookingCheckIn.textContent = `${stringStart[2]}.${stringStart[1]}.${stringStart[0]}`;
-    bookingCheckOut.textContent =null
-  }
-});
+    calendar.classList.toggle('calendar__hide');
+
+    if (bookingDate.length == 1 && !calendar.classList.contains('calendar__hide')) {
+      stringStart = bookingDate[0].split(`-`);
+      bookingCheckIn.textContent = `${stringStart[2]}.${stringStart[1]}.${stringStart[0]}`;
+      bookingCheckOut.textContent =null
+      modalCheckIn.textContent = `${stringStart[2]}.${stringStart[1]}.${stringStart[0]}`;
+      modalCheckOut.textContent =null
+    }
+
+    if (modal.classList.contains('modal_visible')) {
+      calendar.classList.toggle('calendar__modal');
+    }
+
+    item.classList.toggle('showCalendar_rotate');
+
+    if (medaiaQuery500.matches) {
+      modalWindow.classList.toggle('modal__window_calendar');
+    }
+  });
+})
+
+
+// подгоняю размер календаря под размер модального окна

@@ -2,12 +2,16 @@
 
 //============= Заполнение формы количества гостей =============
 
-let buttonAdultMinus = document.querySelector('#guestAdultMinus');
-let buttonAdultPlus = document.querySelector('#guestAdultPlus');
-let buttonChildMinus = document.querySelector('#guestChildMinus');
-let buttonChildPlus = document.querySelector('#guestChildPlus');
+let buttonAdultMinus = document.querySelectorAll('.guestAdultMinus');
+let buttonAdultPlus = document.querySelectorAll('.guestAdultPlus');
+let buttonChildMinus = document.querySelectorAll('.guestChildMinus');
+let buttonChildPlus = document.querySelectorAll('.guestChildPlus');
 let guestAdult = document.querySelector('#guestAdult');
 let guestChild = document.querySelector('#guestChild');
+let modalGuestAdult = document.querySelector('#modalGuestAdult');
+let modalGuestChildren = document.querySelector('#modalGuestChildren');
+
+const medaiaQuery500 = window.matchMedia('(max-width: 500px)');
 
 function checkGuest(target, minValue, minTargetValue, maxValue, maxTargetValue) { // проверка на соответствие заявки мин и макс количеству мест в домиках
   if(target.value <= minValue) {
@@ -17,24 +21,28 @@ function checkGuest(target, minValue, minTargetValue, maxValue, maxTargetValue) 
   }
 }
 
-function guestPlus(button, target, minValue, minTargetValue, maxValue, maxTargetValue) {
-  button.addEventListener('click', function(event) { //увеличение количества гостей
+function guestPlus(button, target, minValue, minTargetValue, maxValue, maxTargetValue, modalTarget) {
+  Array.from(button).forEach( item => item.addEventListener('click', function(event) { //увеличение количества гостей
     event.preventDefault();
     target.value ++;
     checkGuest(target, minValue, minTargetValue, maxValue, maxTargetValue);
-  });
+    modalTarget.value = target.value;
+    setModalGuests(modalAdult, modalChildren, guestAdult, guestChild);
+  }));
 }
 
-function guestMinus(button, target, minValue, minTargetValue, maxValue, maxTargetValue) {
-  button.addEventListener('click', function(event) { //уменьшение количества гостей
+function guestMinus(button, target, minValue, minTargetValue, maxValue, maxTargetValue, modalTarget) {
+  Array.from(button).forEach( item => item.addEventListener('click', function(event) { //увеличение количества гостей
     event.preventDefault();
     target.value --;
     checkGuest(target, minValue, minTargetValue, maxValue, maxTargetValue);
-  });
+    modalTarget.value = target.value;
+    setModalGuests(modalAdult, modalChildren, guestAdult, guestChild);
+  }));
 }
 
-guestMinus(buttonAdultMinus, guestAdult, 0, 1, 43, 42); // работа кнопок - и +, а также проверка input в Гости/взрослые
-guestPlus(buttonAdultPlus, guestAdult, 0, 1, 43, 42);
+guestMinus(buttonAdultMinus, guestAdult, 0, 1, 43, 42, modalGuestAdult); // работа кнопок - и +, а также проверка input в Гости/взрослые
+guestPlus(buttonAdultPlus, guestAdult, 0, 1, 43, 42, modalGuestAdult);
 checkGuest(guestAdult);
 guestAdult.addEventListener('focusout', () => {
   if(guestAdult.value <= 0) {
@@ -44,8 +52,8 @@ guestAdult.addEventListener('focusout', () => {
   }
 });
 
-guestMinus(buttonChildMinus, guestChild, 0 , 0, 43, 42); // работа кнопок - и +, а также проверка input в Гости/дети
-guestPlus(buttonChildPlus, guestChild, 0, 0, 43, 42);
+guestMinus(buttonChildMinus, guestChild, 0 , 0, 43, 42, modalGuestChildren); // работа кнопок - и +, а также проверка input в Гости/дети
+guestPlus(buttonChildPlus, guestChild, 0, 0, 43, 42, modalGuestChildren);
 checkGuest(guestChild);
 guestChild.addEventListener('focusout', () => {
   if(guestChild.value <= 0) {
@@ -160,6 +168,14 @@ let servicesSliderWidth = parseInt(getComputedStyle(servicesSliderList[1]).width
 let servicesCount = 0;
 let servicesCountMobile = 1;
 
+function checkVariables() {
+  if (medaiaQuery500.matches) {
+    servicesSlider.style.width = `calc(100% * ${servicesSliderList.length})`;
+  }
+}
+window.addEventListener('DOMContentLoaded', checkVariables);
+window.addEventListener('resize', checkVariables);
+
 function sliderServicesForward(marker, slider) {
   servicesCount++;
   if (servicesCount >= servicesSliderLength-4) servicesCount = servicesSliderLength-4;
@@ -170,7 +186,7 @@ function sliderServicesForward(marker, slider) {
     servicesCountMobile++;          // счетчик в мобильной версии
     if (servicesCountMobile >= servicesSliderLength) servicesCountMobile = servicesSliderLength;
     document.querySelector('.services__slider1-current').textContent = `${servicesCountMobile}`;
-    slider.style.transform = `translateX(calc(${-servicesSliderWidth * (servicesCountMobile-1)}px - ${servicesSliderMargin}px * ${servicesCountMobile - 1} `;
+    slider.style.transform = `translateX(calc(-${100 / servicesSliderList.length * (servicesCountMobile - 1)}%))`;
   }
 }
 
@@ -184,7 +200,7 @@ function sliderServicesBackward(marker, slider) {
     servicesCountMobile--;          // счетчик в мобильной версии
     if (servicesCountMobile <= 1) servicesCountMobile = 1;
     document.querySelector('.services__slider1-current').textContent = `${servicesCountMobile}`;
-    slider.style.transform = `translateX(calc(${-servicesSliderWidth * (servicesCountMobile-1)}px - ${servicesSliderMargin}px * ${servicesCountMobile - 1} `;
+    slider.style.transform = `translateX(calc(-${100 / servicesSliderList.length * (servicesCountMobile - 1)}%))`;
   }
 }
 
@@ -326,7 +342,7 @@ let headerPositionTop;
 let pageScroll;
 let headerLastScrollTop = 0;
 let bannerBooking = document.querySelector('.banner__booking');
-let textHeadTop;;
+let textHeadTop;
 
 function headerScroll(textHeadTop, bannerHeight) {
   pageScroll = window.pageYOffset;
@@ -368,7 +384,7 @@ function headerScroll(textHeadTop, bannerHeight) {
   } else {
     bannerBookingLink.classList.remove('banner__booking-link_dark');
   }
-}
+};
 
 
 
@@ -383,6 +399,15 @@ let body          = document.querySelector('.body');
 let modalAdult    = document.querySelector('.modal__adult');
 let modalChildren = document.querySelector('.modal__children');
 let modalSubmit   = document.querySelector('.modal__submit');
+
+let modalTextarea = document.querySelector('#modal__textarea');
+if (modalTextarea.value == '') modalTextarea.style.height = '60px';
+
+let modalButtonGuests = document.querySelector('#modal__button_guests');
+let modalWindow = document.querySelector('.modal__window');
+let modalWrapper = document.querySelector('.modal__wrapper');
+let modalSubguestsList = document.querySelectorAll('.modal__tab_subguests');
+
 
 function setModalGuests(adultTarget, childrenTarget, adultSource, childrenSource) {
   let phrase = ['взрослый', 'взрослых', 'ребенок', 'ребенка', 'детей'];
@@ -404,18 +429,65 @@ function setModalGuests(adultTarget, childrenTarget, adultSource, childrenSource
   }
 }
 
-window.addEventListener('keydown', function(e) {              // закрытие модального окна по клавише ESC
-  if (e.which == 27) modal.classList.remove('modal_visible');
+function auto_grow(element) {    // изменение высота textarea
+  element.style.height = "5px";
+  element.style.height = (element.scrollHeight)+"px";
+  if (modalTextarea.value == '') modalTextarea.style.height = '60px';
+}
+
+function closeModal() {                                       // функция, описывающая действия при закрытии модального окна
+  modal.classList.remove('modal_visible');
   body.style.overflowY = 'unset';
   modalSubmit.style.transition = '0s';
+  modalWrapper.classList.remove('modal__wrapper_drift');
+  modalWindow.classList.remove('modal__window_large');
+  modalSubguestsList.forEach( item => item.classList.remove('modal__tab_subguests_visible'));
+  headerBot.classList.remove('header__bot_modal');
+  modalWindow.classList.remove('modal__window_calendar');
   setTimeout( () => {
     modalSubmit.style.transition = 'all 0.4s ease';
   }, 100);
+
+  if (calendar.classList.contains('calendar__hide')) calendar.classList.remove('calendar__hide');
+}
+
+window.addEventListener('keydown', function(e) {              // закрытие модального окна по клавише ESC
+  if (e.which == 27) closeModal();
 });
+
+modal.addEventListener('click', function(event) {            // закрытие модального окна вне поля
+  let el = event.target;
+  if (el.className === 'modal modal_visible' && !medaiaQuery500.matches) closeModal();
+})
+
+document.querySelector('.modal__close').addEventListener('click', closeModal);
 
 bannerBookingLink.addEventListener('click', function() {
   modal.classList.add('modal_visible');
   body.style.overflowY = 'hidden';
 
+  if (modal.classList.contains('modal_visible') && medaiaQuery500.matches) {
+    headerBot.classList.add('header__bot_modal');
+  } else {
+    headerBot.classList.remove('header__bot_modal');
+  }
+
+  if (!document.querySelector('.burger__button').classList.contains('burger__button_active') && medaiaQuery500.matches) {
+    document.querySelector('.burger__button').classList.add('burger__button_active')
+  }
+
+  if (!burgerMenu.classList.contains('burger__menu_visible') && medaiaQuery500.matches) {
+    setTimeout( () => burgerMenu.classList.add('burger__menu_visible'), 300);
+    headerBot.classList.add('header__bot_animated');
+  }
+
   setModalGuests(modalAdult, modalChildren, guestAdult, guestChild);
 });
+
+modalButtonGuests.addEventListener('click', addSaubguests);
+
+function addSaubguests() {
+  modalWindow.classList.toggle('modal__window_large');
+  modalWrapper.classList.toggle('modal__wrapper_drift');
+  modalSubguestsList.forEach( item => item.classList.toggle('modal__tab_subguests_visible'));
+}
