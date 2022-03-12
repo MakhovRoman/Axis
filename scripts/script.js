@@ -339,6 +339,7 @@ let headerTopHeight = parseInt(getComputedStyle(headerTop).height);
 let bannerHeight;
 let bannerBookingLink = document.querySelector('.banner__booking-link');
 let bannerBookingLinkTab = document.querySelectorAll('.banner__booking-tab')[2];
+let scrollTop;
 
 let modal = document.querySelector('.modal');
 let headerPositionTop;
@@ -347,9 +348,14 @@ let headerLastScrollTop = 0;
 let bannerBooking = document.querySelector('.banner__booking');
 let textHeadTop;
 
+let apartamentsHeight = parseInt(getComputedStyle(document.querySelector('#apartaments')).height);
+let payContainerHeight = parseInt(getComputedStyle(document.querySelector('.pay__container')).height);
+let formHideScroll;
+
 function headerScroll(textHeadTop, bannerHeight) {
   pageScroll = window.pageYOffset;
-  let scrollTop = pageScroll;
+  scrollTop = pageScroll;
+  formHideScroll = apartamentsHeight + payContainerHeight + bannerHeight - headerBotHeight - headerTopHeight;
 
   if (pageScroll > headerTopHeight) {
     headerPositionTop = headerTopHeight;
@@ -360,7 +366,7 @@ function headerScroll(textHeadTop, bannerHeight) {
   }
 
   if (pageScroll > textHeadTop) {
-    header.style.backgroundColor = medaiaQuery500.matches ? 'rgba(0, 0, 0, 0.9)' : 'rgba(0, 0, 0, 1)';
+    header.style.backgroundColor = medaiaQuery500.matches ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 1)';
   } else {
     header.style.backgroundColor = 'transparent';
   }
@@ -374,12 +380,21 @@ function headerScroll(textHeadTop, bannerHeight) {
     header.style.top = `${-headerPositionTop}px`;
   }
 
-  if (scrollTop > headerLastScrollTop) {                        //при скроле вниз добавляется класс к форме заявки
+  if (scrollTop > headerLastScrollTop) {                        //при скроле вниз добавляется класс к форме заявки и делает ее черной и прижатой к низу экрана
     bannerBooking.classList.add('banner__booking_scroll');
-  } else {
+  } else if (scrollTop == 0) {
     bannerBooking.classList.remove('banner__booking_scroll');
   }
 
+  if (scrollTop >= formHideScroll) {                            // при достижении начала первого слайдера скрываю форму для бронирования
+    bannerBooking.classList.add('banner__booking_hide');
+  } else {
+    bannerBooking.classList.remove('banner__booking_hide');
+  }
+
+  if (scrollTop <= headerLastScrollTop){                        // при скролле вверх вывожу панель
+    bannerBooking.classList.remove('banner__booking_hide');
+  }
   headerLastScrollTop = scrollTop;
 
   if (pageScroll > bannerHeight / 10 && medaiaQuery500.matches) {
@@ -389,15 +404,20 @@ function headerScroll(textHeadTop, bannerHeight) {
   }
 };
 
+function checkHeaderHeight() {
+  headerBotHeight = parseInt(getComputedStyle(headerBot).height);
+  headerTopHeight = parseInt(getComputedStyle(headerTop).height);
+}
 
-
-
+window.addEventListener('resize', checkHeaderHeight);
+window.addEventListener('load', () => headerScroll(textHeadTop, bannerHeight));
+window.addEventListener('resize', () => headerScroll(textHeadTop, bannerHeight));
 window.addEventListener('scroll', () => headerScroll(textHeadTop, bannerHeight));
 
 
 //============= Modal =============
 
-let modalHeight, apartamentsHeight;
+let modalHeight;
 let body          = document.querySelector('.body');
 let modalAdult    = document.querySelector('.modal__adult');
 let modalChildren = document.querySelector('.modal__children');
@@ -440,6 +460,7 @@ function auto_grow(element) {    // изменение высота textarea
 
 function closeModal() {                                       // функция, описывающая действия при закрытии модального окна
   modal.classList.remove('modal_visible');
+  calendar.classList.remove('calendar__modal');
   body.style.overflowY = 'unset';
   modalSubmit.style.transition = '0s';
   modalWrapper.classList.remove('modal__wrapper_drift');
@@ -465,7 +486,7 @@ modal.addEventListener('click', function(event) {            // закрытие
 
 document.querySelector('.modal__close').addEventListener('click', closeModal);
 
-bannerBookingLink.addEventListener('click', function() {
+function openModal() {
   modal.classList.add('modal_visible');
   body.style.overflowY = 'hidden';
 
@@ -485,7 +506,11 @@ bannerBookingLink.addEventListener('click', function() {
   }
 
   setModalGuests(modalAdult, modalChildren, guestAdult, guestChild);
-});
+}
+
+bannerBookingLink.addEventListener('click', openModal);
+document.querySelector('.pay__booking').addEventListener('click', openModal);
+document.querySelector('.footer__booking').addEventListener('click', openModal);
 
 modalButtonGuests.addEventListener('click', function(e) {
   e.preventDefault();

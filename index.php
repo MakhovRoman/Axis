@@ -1,3 +1,37 @@
+<?php
+if(isset($_POST) AND count($_POST)>=2 AND strlen(implode('',$_POST)) > 5) {
+
+  $body='';
+  foreach($_POST as $key=>$val) {
+
+    if ($key == 'modalGuestAdult') {
+      $key_label = "Взрослых гостей";
+    } elseif ($key == 'modalGuestChildren') {
+      $key_label = "Количество детей";
+    } elseif ($key == 'modal__name') {
+      $key_label = "Имя";
+    } elseif ($key == 'modal__tel') {
+      $key_label = "Телефон";
+    } elseif ($key == 'modal__textarea') {
+      $key_label = "Вопрос";
+    } else {
+      $key_label = $key;
+    }
+
+    $body.='<b>'.$key_label.'</b>: '.$val.'<br />';
+
+  }
+
+$headers  = "Content-type: text/html; charset=utf8 \r\n";
+$headers .= "From: <send@axis-hotel.ru>\r\n";
+$headers .= "Reply-To: send@axis-hotel.ru\r\n";
+
+mail('chepurnov@nelset.com', '[AXIS-HOTEL.RU]', $body,$headers);
+header("Location: ?send=ok&time=".time());
+
+}
+?>
+
 <!DOCTYPE html>
 
 <html lang="ru">
@@ -12,8 +46,9 @@
 
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="style/custom.css">
-
-  <title>Axis</title>
+  <link rel="icon" href="picture/icons/favicon.png" type="image/x-icon">
+  <title>Апартаменты в Архызе | Apart-отель Axis</title>
+  <meta name="description" content="Апартаменты в горнолыжном курорте Архыз — отель Axis. Комплекс из 7 двухэтажных коттеджей с домашним уютом и гостиничным сервисом. Бронируйте онлайн прямо сейчас!"/>
 
 </head>
 
@@ -344,12 +379,6 @@
               Шале с видом на лес<br>и горнолыжную трассу
 
             </h2>
-
-            <p class="pay__paragraph content__paragraph">
-
-              Апартаменты совершенно новые, после ремонта.
-
-            </p>
 
             <p class="pay__paragraph content__paragraph">
 
@@ -1231,7 +1260,7 @@
 
             <div class="contacts__form-personal">
 
-              <input type="radio" class="contacts__form-radio" name="personalData" value="1" id="personalData">
+              <input type="radio" class="contacts__form-radio" name="personalData" value="1" id="personalData" checked>
 
               <label for="personalData" class="contacts__form-radioLabel">Даю согласие на обработку персональных данных.</label>
 
@@ -1373,7 +1402,7 @@
 
       <button class="modal__close"><img src="picture/icons/close.svg" alt=""></button>
 
-      <form class="modal__window" action="#" method="post">
+      <form class="modal__window" action="#" method="post" id="contactform_booking">
 
         <div class="modal__tab modal__tab_small modal__tab_checkInOut">
 
@@ -1383,7 +1412,7 @@
 
             <div class="modal__text">
 
-              <span class="modal__checkIn">Заезд</span> <span class="modal__checkOut"> - Выезд</span>
+              <span id="modal__checkIn" class="modal__checkIn">Заезд</span> <span id="modal__checkOut" class="modal__checkOut"> - Выезд</span>
 
             </div>
 
@@ -1421,7 +1450,7 @@
 
           </button>
 
-          <input type="number" class="banner__booking-input modal__booking-input" id="modalGuestAdult" value="2" min="0" max="42">
+          <input type="number" class="banner__booking-input modal__booking-input" id="modalGuestAdult" name="modalGuestAdult" value="2" min="0" max="42">
 
           <button class="banner__booking-button modal__booking-button guestAdultPlus">
 
@@ -1441,7 +1470,7 @@
 
           </button>
 
-          <input type="number" class="banner__booking-input modal__booking-input" id="modalGuestChildren" value="0" min="0" max="42">
+          <input type="number" class="banner__booking-input modal__booking-input" id="modalGuestChildren" name="modalGuestChildren" value="0" min="0" max="42">
 
           <button class="banner__booking-button modal__booking-button guestChildPlus">
 
@@ -1469,7 +1498,7 @@
 
           <div class="modal__date modal__field modal__field_input">
 
-            <input class="modal__text" type="tel" name="modal__tel" placeholder="+7 ХХХ ХХХ ХХ ХХ" data-mask="+7 ___ ___ ____" required>
+            <input class="modal__text" type="tel" name="modal__tel" id="modal__tel" placeholder="+7 ХХХ ХХХ ХХ ХХ" data-mask="+7 ___ ___ ____" required>
 
           </div>
 
@@ -1481,13 +1510,13 @@
 
           <div class="modal__question modal__field modal__field_input">
 
-            <textarea type="text" class="modal__text" placeholder="Ваш вопрос" oninput="auto_grow(this)" id="modal__textarea"></textarea>
+            <textarea type="text" class="modal__text" placeholder="Ваш вопрос" oninput="auto_grow(this)" name="modal__textarea" id="modal__textarea"></textarea>
 
           </div>
 
           <div class="modal__radio">
 
-            <input type="radio" name="modalPersonalData" id="modalPersonalData" >
+            <input type="radio" name="modalPersonalData" id="modalPersonalData" checked>
 
             <label for="modalPersonalData" class="modal__label_radio">Даю согласие на обработку персональных данных.</label>
 
@@ -1495,7 +1524,7 @@
 
         </div>
 
-        <button type="submit" class="modal__submit">
+        <button type="submit" id="modal__submit" class="modal__submit">
 
           Забронировать <img src="picture/icons/arrow__white.svg" alt="">
 
@@ -1792,6 +1821,8 @@
   <script src="scripts/calendar.js"></script>
 
   <script src="scripts/mobile.js"></script>
+
+  <!-- <script src="scripts/email.js"></script> -->
 
 </body>
 

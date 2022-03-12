@@ -47,21 +47,21 @@ html {
 
 @keyframes slideText {
   0% {padding-left: 0px;}
-  100% {padding-left: 170px;}
+  100% {padding-left: 120px;}
 }
 
 @keyframes slideTextBackward {
-  0% {padding-left: 170px;}
+  0% {padding-left: 120px;}
   100% {padding-left: 0px;}
 }
 
 @keyframes slideTextBig {
   0% {padding-left: 0px;}
-  100% {padding-left: 430px;}
+  100% {padding-left: 350px;}
 }
 
 @keyframes slideTextBigBackward {
-  0% {padding-left: 430px;}
+  0% {padding-left: 350px;}
   100% {padding-left: 0px;}
 }
 
@@ -69,7 +69,7 @@ html {
 
 body {
   font-family: 'Fira Sans', sans-serif;
-  overflow-x: hidden;
+  /*overflow-x: hidden;*/
 }
 
 /*============    HEADER   ============*/
@@ -88,7 +88,7 @@ body {
 
   color: rgb(255, 255, 255);
   align-items: center;
-  z-index: 10;
+  z-index: 40;
   transition: all 0.5s ease;
 }
 
@@ -608,6 +608,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .slider__control {
   display: flex;
+  background-color: rgb(236,235,235);
   height: 80px;
   width: 608px;
   position: absolute;
@@ -1325,11 +1326,18 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+.modal__check_reserve {
+  visibility: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+
 /*============    CALENDAR   ============*/
 
 .calendar {
-  position: absolute;
-  top: 50%;
+  position: fixed;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 1024px;
@@ -1345,6 +1353,7 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
   z-index: 100;
   visibility: hidden;
 }
+
 
 .calendar__hide {
   visibility: visible;
@@ -1400,6 +1409,10 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
 
 .calendar__button_prev img {
   transform: rotateY(180deg);
+}
+
+.calendar__area {
+  height: 384px;
 }
 
 .calendar__table {
@@ -1461,9 +1474,41 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
 
 .calendar__modal {
   top: 57%;
-  width: calc(896px - 4px);
+  width: calc(896px);
   height: 476px;
 }
+
+.calendar__bonusRow {
+  height: calc(544px + 64px);
+  top: calc(45% + 32px);
+  grid-template-rows: calc(10.52632%) 1fr;
+}
+
+.calendar__bonusRow_modal {
+  top: calc(57% + 16px);
+  height: calc(476px + 32px);
+}
+
+.calendar__area_large{
+  height: calc(384px + 64px);
+}
+
+.calendar__area_large .calendar__week {
+  height: calc(100% / 7);
+}
+
+.calendar__area_large .calendar__day {
+  height: calc(100% / 7);
+}
+
+.calendar__area_large .calendar__head {
+  height: calc(100% / 7);
+}
+/*
+.calendar__area_small {
+  height: 384px;
+}
+*/
 
 /*============    MEDIA   ============*/
 
@@ -1732,7 +1777,7 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
   }
 
   .services__showplace-image img {
-    width: 46vw;
+    width: 45vw;
     height: auto;
   }
 
@@ -1806,12 +1851,16 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
   }
 
   .footer__connection {
-    padding: 2.3125vw;
+    padding: 2.3125vw 0;
   }
 
   .footer__contact-text {
     margin-left: 0.625vw;
     font-size: 1vw;
+  }
+
+  .header__tel .header__contact-img img {
+    display: block;
   }
 
   .resume {
@@ -1837,6 +1886,7 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
   .header__tel .header__contact-img img {
     width: 1.1111vw;
     height: auto;
+    display: block;
   }
 
   .header__mail .header__contact-img img {
@@ -1846,6 +1896,7 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
 
   .header__socials-link {
     width: 1.39vw;
+    height: 1.39vw;
   }
 
   .header__socials-link img {
@@ -1884,15 +1935,203 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
   .modal__close {
     right: calc(7.142857143% - 0.694444vw);
     top: 1.39vw;
+    width: 4.17vw;
+    height: 4.17vw;
+  }
+
+  .modal__close img {
+    padding: 1.39vw;
+    width: 100%;
+    height: 100%;
   }
 
   .modal__window {
-
+    grid-template-rows: 6.523vw 2.8vw 6.523vw 2.8vw 8.82vw 4.4444vw 5.55555vw;
   }
+
+  .modal__tab_small {
+    min-height: 5.23vw;
+  }
+
+  .modal__label {
+    font-size: 1.1111vw;
+  }
+
+  .modal__button img {
+    width: 1.81vw;
+    height: auto;
+  }
+
+  .banner__booking-button img {
+    width: 1.76vw;
+    height: auto;
+  }
+
+  .banner__booking-tab {
+    grid-template-columns: 1fr repeat(3, 4.4444vw);
+  }
+
+  .modal__field {
+    height: 4.44444vw;
+  }
+
+  .modal__text {
+    font-size: 1.25vw;
+  }
+
+  input.modal__text::placeholder, textarea.modal__text::placeholder {
+    font-size: 1.25vw;
+  }
+
+  .modal__window_large {
+    grid-template-rows: 6.523vw 2.8vw 4.4444vw 2.8vw 6.523vw 2.8vw 8.82vw 4.4444vw 5.555556vw;
+  }
+
+  .banner__booking-label {
+    font-size: 1.25vw;
+  }
+
+  .banner__booking-input {
+    font-size: 1.66667vw;
+  }
+
+  .banner__booking-button {
+    font-size: 1.66667vw;
+  }
+
+  .modal__tab_large .modal__field_input {
+    margin: 0.55556vw 0 1.11111vw 0;
+  }
+
+  textarea.modal__text {
+    padding: 1.1111vw;
+    min-height: 4.17vw;
+    max-height: 6.94vw;
+    font-size: 1.25vw;
+  }
+
+  .modal__label_radio {
+    margin-left: 1.9444vw;
+    font-size: 1.111vw;
+  }
+
+  .modal__label_radio::after {
+    left: -1.806vw;
+    width: 1.1111vw;
+    height: 1.1111vw;
+  }
+
+  .modal__submit {
+    padding-left: 2.2222vw;
+    font-size: 1.25vw;
+    font-size: 1.25vw;
+  }
+
+  .calendar {
+    width: 71.1vw;
+    height: 37.8vw;
+    padding: 2.222vw;
+  }
+
+  .calendar__button {
+    width: 4.4444vw;
+  }
+
+  .calendar__button img {
+    width: 1.805vw;
+    height: auto;
+  }
+
+  .calendar__month {
+    font-size: 1.67vw;
+  }
+
+  .calendar__day {
+    font-size: 1.1111vw;
+  }
+
+  .calendar__bonusRow {
+    height: calc(37.8vw + 4.4444vw);
+  }
+
+  .calendar__modal {
+    width: 62.2222vw;
+    top: 60%;
+  }
+
+  .calendar__bonusRow_modal {
+    top: calc(60% + 2.2222vw);
+  }
+
+  .calendar__area {
+    height: 26.66667vw;
+  }
+
+  .calendar__area_large {
+    height: calc(26.66667vw + 4.4444vw);
+  }
+
+  .banner__booking {
+    bottom: 5.6vw;
+  }
+
+  .banner__booking-title {
+    font-size: 1.1111vw;
+    margin-bottom: 0.56vw;
+  }
+
+  .banner__booking-calendar {
+    height: 4.44444vw;
+  }
+
+  .banner__booking-item div {
+    font-size: 1.25vw;
+  }
+
+  #showCalendar {
+    width: 4.44444vw;
+  }
+
+  #showCalendar img {
+    width: 1.806vw;
+    height: auto;
+  }
+
+  .banner__booking-tab {
+    height: 4.44444vw;
+  }
+
+  .banner__booking-link img,
+  .pay__booking img,
+  .detailed__link img,
+  .contacts__form-submit img {
+    margin-left: 0.56vw;
+    width: 1.806vw;
+    height: auto;
+  }
+
+  .slider__control-button img {
+    width: 1.806vw;
+    height: auto;
+  }
+
+  .header__mail {
+    margin-left: 2.43vw;
+  }
+
+  .footer__contact-img {
+    display: flex;
+    align-items: center;
+  }
+
 }
 /*============    MOBILE   ============*/
 
 @media (max-width: 500px) {
+
+  input {
+    -webkit-appearance: button;
+  }
   .burger {
     grid-column: 2/3;
     width: fit-content;
@@ -2033,7 +2272,6 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
     transform: translateX(-50%);
     grid-template-columns: 1fr;
     width: 91.11111vw;
-    height: fit-content;
   }
 
   .banner__booking-item:not(:last-child) {
@@ -2084,6 +2322,7 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
   .section__heading {
     font-size: 24px;
     letter-spacing: 0.05em;
+    width: 100%;
   }
 
   .content__paragraph {
@@ -2289,6 +2528,10 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
     font-size: 18px;
   }
 
+  .ski__food-content .ski__heading {
+    width: 100%;
+  }
+
   .services__wrapper {
     padding: 80px 0;
     overflow-x: hidden;
@@ -2312,7 +2555,8 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
 
   .services__slider1-count {
     height: 100%;
-    width: 100%;
+    width: fit-content;
+    margin-left: auto;
     display: flex;
     align-items: center;
     justify-content: right;
@@ -2421,6 +2665,10 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
   .footer__wrapper {
     margin-top: 80px;
     margin-bottom: 80px;
+  }
+
+  .contacts>picture>img {
+    object-fit: cover;
   }
 
   .footer__links {
@@ -2639,7 +2887,7 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
     transform: none;
     padding: 0;
     top: unset;
-    grid-template-rows: 56px 77.8vw;
+    grid-template-rows: 56px auto;
     grid-row-gap: 24px;
   }
 
@@ -2689,4 +2937,17 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
     position: absolute;
     right: calc(4.4444vw);
   }
+
+  .calendar__area {
+    height: 77.77778vw;
+  }
+
+  .calendar__area_large {
+    height: 88.888889vw;
+  }
+
+  .modal__window_calendar-bonus{
+    grid-template-rows: 84px calc(56px + 88.888889vw) 84px 84px 82px 82px 194px 56px;
+  }
+
 }

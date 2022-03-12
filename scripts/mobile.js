@@ -1,6 +1,3 @@
-                    // медиазапрос максимальной ширины 500px
-
-
 let burger = document.querySelector('.burger');
 let burgerMenu ;
 let footerHeader;
@@ -26,12 +23,7 @@ let servicesSlider1Count = document.createElement('div');                       
 let headerNav = document.querySelector('.header__nav');
 let headerNavLinkList = document.querySelectorAll('.header__nav-link:not(.footer__nav-link)');
 
-
 function checkMeadiaQuery() {
-
-
-  //medaiaQuery500.matches ? addBurger() : removeBurger();
-
   if (medaiaQuery500.matches) {
     servicesSlider1Count.classList.add('services__slider1-count');                              // добавляю числовой счетчик в слайдер1
     servicesSlider1Count.innerHTML = '<span class="services__slider1-current"></span> / <span class="services__slider1-total"></span>';
@@ -64,18 +56,16 @@ function checkMeadiaQuery() {
       burgerMenu.classList.add('burger__menu');                                             // присваиваю класс
     }
 
+    headerBot.append(burger);
+    headerTop.append(burgerMenu);
 
+    burgerMenu.append(headerContact);
+    burgerMenu.append(headerSocials);
 
-      headerBot.append(burger);
-      headerTop.append(burgerMenu);
+    burger.addEventListener('click', burgerAction);
+    document.querySelector('.modal__tab_checkInOut .modal__label').textContent = 'Заезд - Выезд';
 
-      burgerMenu.append(headerContact);
-      burgerMenu.append(headerSocials);
-
-      burger.addEventListener('click', burgerAction);
-      document.querySelector('.modal__tab_checkInOut .modal__label').textContent = 'Заезд - Выезд';
-
-      modalWindow.append(calendar);
+    modalWindow.append(calendar);
   } else {
     servicesSlider1Count.remove();
 
@@ -101,6 +91,11 @@ function checkMeadiaQuery() {
 
     document.querySelector('.modal__tab_checkInOut .modal__label').textContent = 'Заезд - Выезд';
     document.querySelector('script').before(calendar);
+    headerNav.classList.remove('header__nav_burger');
+
+    Array.from(headerNavLinkList).forEach( (item) => {
+      item.removeEventListener('click', burgerAction);
+    });
   }
 
   //изменяю положение кнопок управления слайдерами
@@ -114,7 +109,7 @@ function burgerAction() {                                       // добавл�
   burgerButton.classList.toggle('burger__button_active');
   headerBot.classList.toggle('header__bot_animated');
 
-  if (burgerMenu.classList.contains('burger__menu_visible')) {
+  if (burgerMenu.classList.contains('burger__menu_visible') && medaiaQuery500.matches) {
     burgerMenu.prepend(bannerBookingLinkTab);
     bannerBookingLinkTab.classList.add('banner__booking-tab_link_burger');
     headerNav.classList.add('header__nav_burger');
@@ -129,6 +124,7 @@ function burgerAction() {                                       // добавл�
   }
 
   if (modal.classList.contains('modal_visible')) {
+    html.classList.remove('html__hidden');
     closeModal();
   } else if (modal.classList.contains('modal_visible') && !burgerMenu.classList.contains('burger__menu_visible')) {
     burgerButton.classList.remove('burger__button_active');
@@ -139,37 +135,6 @@ function burgerAction() {                                       // добавл�
     burgerButton.classList.remove('burger__button_active');
     headerBot.classList.remove('header__bot_animated');
   }
-
-}
-
-function addBurger() {
-  if (!burger) {
-    burger = document.createElement('div');                                           // создаю бургер
-    burger.classList.add('burger');                                                       // присваиваю класс
-    burgerMenu = document.createElement('div');                                       // создаю бургер-меню
-    burgerMenu.classList.add('burger__menu');                                             // присваиваю класс
-
-    burger.innerHTML = '<div class="burger__button"></div>';                            // создаю элементы управления бургером
-    headerBot.append(burger);
-    headerTop.append(burgerMenu);
-    burgerMenu.append(headerContact);
-    burgerMenu.append(headerSocials);
-
-    burger.addEventListener('click', burgerAction);
-  }
-}
-
-function removeBurger () {                                                            // удаляю бургер меню
-  if (burger) {
-    burger.removeEventListener('click', burgerAction);
-    burger.remove();
-  }
-
-
-    headerTop.append(headerContact);                                                    // возвращаю элементы в HeaderTop
-    headerTop.append(headerSocials);
-
-
 }
 
 function setSliderControlPosition(controls, obj) {

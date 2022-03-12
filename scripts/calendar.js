@@ -37,7 +37,7 @@
       }
     }
 
-    get LastDayOfMonth() {
+    get lastDayOfMonth() {                                                           // получаю день недели, которым заканчивается месяц
       let _fullDate = new Date(this.value);
       _fullDate.setMonth(_fullDate.getMonth() + 1, 1);
       _fullDate.setDate(_fullDate.getDate() - 1);
@@ -106,12 +106,24 @@ yearMonthArray.push(today);
 
 let currentMonthArea = document.querySelector('.calendar__month_current');            // поле для отображения текущего месяца
 let nextMonthArea = document.querySelector('.calendar__month_next');                  // поле для отображения текущего месяца
-let currentDateAreaList = document.querySelectorAll('.calendar__day_current');        // список ячеек для отображения чисел текущего месяца
-let nextDateAreaList = document.querySelectorAll('.calendar__day_next');              // список ячеек для отображения чисел следующего месяца
+let currentDateAreaList = document.getElementsByClassName('calendar__day_current');   // список ячеек для отображения чисел текущего месяца
+let nextDateAreaList = document.getElementsByClassName('calendar__day_next');         // список ячеек для отображения чисел следующего месяца
 
 let monthCount = 0;                                                                   // начальное значение счетчика месяца
 let calendarButtons = document.querySelectorAll('.calendar__button');                 // кнопки переключения месяцев
 let visionDateArray = Array.from(document.getElementsByClassName('calendar__day_current')).concat(Array.from(document.getElementsByClassName('calendar__day_next'))); // массив со всеми отображаемыми ячейками
+
+let currentWeekList = document.querySelectorAll('.calendar__area_left .calendar__week');
+let currentTableBody = document.querySelector('.calendar__area_left tbody');
+let bonusCurrentTableRow = currentWeekList[4].cloneNode(true);
+let nextWeekList = document.querySelectorAll('.calendar__area_right .calendar__week');
+let nextTableBody = document.querySelector('.calendar__area_right tbody');
+let bonusNextTableRow = nextWeekList[4].cloneNode(true);
+let removeCurrentBonusRow, removeNextBonusRow;
+let tableList = document.querySelectorAll('.calendar__area');
+
+let modalCheckInReserve = document.querySelector('.modal__checkIn_reserve');
+let modalCheckOutReserve = document.querySelector('.modal__checkOut_reserve');
 
   //====================================== Вычисления ======================================
 
@@ -123,6 +135,48 @@ function insertDateInCalendar(objCurrent, objNext, targetCurrent, targetNext){  
   let d = 1;                                                                                // для вставки чисел из предидущего месяца в текущий
   let f = 0;                                                                                // для вставки чисел из следующего месяца в текущий
 
+
+
+  if ( (objCurrent.firstDayOFMonth == 5 && objCurrent.dateList.length > 30) || (objCurrent.firstDayOFMonth > 5 && objCurrent.dateList.length >= 30) ){  //добавляю дополнительную строку в текущий месяц, если месяц занимает 6 недель
+    currentTableBody.append(bonusCurrentTableRow);
+    tableList[0].classList.add('calendar__area_large');
+  } else if (currentTableBody.querySelectorAll('.calendar__week').length == 6) {          // удаляю бонусную строку
+    removeCurrentBonusRow = currentTableBody.querySelectorAll('.calendar__week')[5];
+    removeCurrentBonusRow.remove();
+    tableList[0].classList.remove('calendar__area_large');
+  }
+
+  if ( (objNext.firstDayOFMonth == 5 && objNext.dateList.length > 30) || (objNext.firstDayOFMonth > 5 && objNext.dateList.length >= 30) ){ //добавляю дополнительную строку в следующий, если месяц занимает 6 недель
+    nextTableBody.append(bonusNextTableRow);
+    tableList[1].classList.add('calendar__area_large');
+  } else if (nextTableBody.querySelectorAll('.calendar__week').length == 6) {          // удаляю бонусную строку
+    removeNextBonusRow = nextTableBody.querySelectorAll('.calendar__week')[5];
+    removeNextBonusRow.remove();
+    tableList[1].classList.remove('calendar__area_large');
+  }
+
+  if (currentTableBody.querySelectorAll('.calendar__week').length == 6 || nextTableBody.querySelectorAll('.calendar__week').length == 6) {
+    calendar.classList.add('calendar__bonusRow');
+  } else {
+    calendar.classList.remove('calendar__bonusRow');
+  }
+
+  if (medaiaQuery500.matches && document.querySelector('.calendar__area_left').classList.contains('calendar__area_large')) {
+    document.querySelector('.modal__window_calendar').classList.add('modal__window_calendar-bonus');
+  } else if (medaiaQuery500.matches && !document.querySelector('.calendar__area_left').classList.contains('calendar__area_large') && document.querySelector('.modal__window_calendar-bonus')){
+    document.querySelector('.modal__window_calendar').classList.remove('modal__window_calendar-bonus');
+  }
+
+  if ( (currentTableBody.querySelectorAll('.calendar__week').length == 6 || nextTableBody.querySelectorAll('.calendar__week').length == 6) && calendar.classList.contains('calendar__modal')){
+    calendar.classList.add('calendar__bonusRow_modal');
+  } else {
+    calendar.classList.remove('calendar__bonusRow_modal');
+  }
+
+
+  currentDateAreaList = document.getElementsByClassName('calendar__day_current');
+  nextDateAreaList = document.getElementsByClassName('calendar__day_next');
+  visionDateArray = Array.from(document.getElementsByClassName('calendar__day_current')).concat(Array.from(document.getElementsByClassName('calendar__day_next')));
 
   for (let i = 0; i < visionDateArray.length; i++) {                                        // при перелистывании месяцев очищаю стили ячеек
     visionDateArray[i].classList.remove('calendar__day_unchecked');
@@ -210,6 +264,15 @@ function insertDateInCalendar(objCurrent, objNext, targetCurrent, targetNext){  
 
 }
 
+function checkBonusWeekRow(obj, tableBody, bonusRow) {
+  if ( (obj.firstDayOFMonth == 5 && obj.dateList.length > 30) || (obj.firstDayOFMonth > 5 && obj.dateList.length >= 30) ){
+    tableBody.append(bonusRow);
+  } else if (tableBody.querySelectorAll('.calendar__week').length == 6) {
+    bonusRow = tableBody.querySelectorAll('.calendar__week')[5];
+    bonusRow.remove();
+  }
+}
+
 function getMonthList() {                                                             // функция для создания объектов месяцев на год вперед и добавление их к массиву
   for(let i = 1; i < 12; i++) {
     let buf = today.month;                                                            // копирую значение текущего месяца для дальнейшей итерации
@@ -230,7 +293,8 @@ function moveMonthForward() {                                                   
   if (monthCount < 10) {
     monthCount++;
   };
-  visionDateArray = Array.from(currentDateAreaList).concat(Array.from(nextDateAreaList))
+
+  visionDateArray = Array.from(currentDateAreaList).concat(Array.from(nextDateAreaList));
   insertDateInCalendar(yearMonthArray[monthCount], yearMonthArray[monthCount + 1], currentDateAreaList, nextDateAreaList);
   return monthCount;
 }
@@ -285,12 +349,14 @@ function createBookingArea() {
         stringStart = bookingDate[0].split(`-`);
         bookingCheckIn.textContent = `${stringStart[2]}.${stringStart[1]}.${stringStart[0]}`;           // вывожу дату начала бронирования в поле в банере и в модальном окне
         modalCheckIn.textContent = `${stringStart[2]}.${stringStart[1]}.${stringStart[0]}`;
+        modalCheckInReserve.value = `${stringStart[2]}.${stringStart[1]}.${stringStart[0]}`;
       } else if (item.dataset.value == bookingDate[1]) {                                                // получаю номер ячейки с датой конца бронирования
         end = index;
         endValue = item.dataset.value;
         stringEnd = bookingDate[1].split(`-`);
         bookingCheckOut.textContent = ` - ${stringEnd[2]}.${stringEnd[1]}.${stringEnd[0]}`;           // вывожу дату окончания бронирования в поле в банере и в модальном окне
         modalCheckOut.textContent = ` - ${stringEnd[2]}.${stringEnd[1]}.${stringEnd[0]}`;
+        modalCheckOutReserve.value = `${stringEnd[2]}.${stringEnd[1]}.${stringEnd[0]}`;
       }
     })
 
@@ -334,7 +400,10 @@ calendarActiveButtons.forEach( item => {
       bookingCheckIn.textContent = `${stringStart[2]}.${stringStart[1]}.${stringStart[0]}`;
       bookingCheckOut.textContent =null
       modalCheckIn.textContent = `${stringStart[2]}.${stringStart[1]}.${stringStart[0]}`;
-      modalCheckOut.textContent =null
+      modalCheckInReserve.value = `${stringStart[2]}.${stringStart[1]}.${stringStart[0]}`;
+      modalCheckOut.textContent =null;
+      modalCheckOutReserve.value = 'null';
+      bookingArea.add(bookingDate[0]);                                                                // есои выбрана 1 дата и закрыт календарь, то добавляю ее в список бронирования
     }
 
     if (modal.classList.contains('modal_visible')) {

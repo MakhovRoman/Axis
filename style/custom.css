@@ -1,0 +1,21 @@
+.banner__booking_hide {
+	transform: translate(-50%, 200%);
+}
+
+
+
+.banner__booking_scroll {
+	bottom: 0;
+	background-color: rgb(0, 0, 0);
+}
+.banner__booking_scroll .banner__booking-title {
+	visibility: hidden;
+	opacity: 0;
+	display: none;
+}
+.banner__booking_scroll .banner__booking-calendar {
+	padding-left: 15px;
+}
+.banner__booking {
+	transition: .3s;
+}
