@@ -2434,6 +2434,10 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
      height: fit-content;
    }
 
+   .pay__slider-wrapper {
+    transition: all 0.3s linear;
+  }
+
    .pay__slider-item, .services__showplace-item {
      grid-template-columns: 1fr;
      grid-template-rows: auto auto;
@@ -2537,6 +2541,10 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
     overflow-x: hidden;
   }
 
+  .services__slider1 {
+    transition: all 0.3s linear;
+  }
+
   .services__slider1-content {
     width: 91.1111vw;
   }
@@ -2575,6 +2583,10 @@ input.modal__text:focus::placeholder, textarea.modal__text:focus::placeholder {
   .services__showplace {
     margin-top: 80px;
     width: 100%;
+  }
+
+  .services__showplace-slider {
+    transition: all 0.3s linear;
   }
 
   .services__showplace-image {

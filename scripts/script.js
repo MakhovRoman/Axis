@@ -522,3 +522,69 @@ function addSaubguests() {
   modalWrapper.classList.toggle('modal__wrapper_drift');
   modalSubguestsList.forEach( item => item.classList.toggle('modal__tab_subguests_visible'));
 }
+
+
+//============= Swipe =============
+
+// на слайдер нужно повесить событие-обработчик для считывания касаний экрана
+
+let touchStartPoint = null;
+let touchEndPoint = null;
+let touchListStart;
+let touchListEnd;
+let touchListLastItem;
+let currentSliderWrapperStyle = null;
+let paySlider = document.querySelector('.pay__slider');
+
+
+function swipeSlider(sliderWrapper, forwardFunction, backwardFunction, sliderCount, sliderList) {
+  sliderWrapper.addEventListener('touchstart', function(event) {
+    touchListStart = event.changedTouches[0];
+    touchStartPoint = touchListStart.clientX;
+  });
+
+  sliderWrapper.addEventListener('touchmove', function(event) {
+    currentSliderWrapperStyle = getComputedStyle(sliderWrapper);
+    let currentTransformSlider = new WebKitCSSMatrix(currentSliderWrapperStyle.transform);
+
+    for (let i = 0; i < event.targetTouches.length; i++) {
+      if (touchStartPoint < event.targetTouches[i].clientX && (event.targetTouches[i].clientX - touchStartPoint <= window.innerWidth / 4)) {
+        sliderWrapper.style.transform = `translateX(${currentTransformSlider.m41 + event.targetTouches[i].clientX}px)`;
+      } else {
+        break;
+      }
+    }
+
+    for (let i = 0; i < event.targetTouches.length; i++) {
+      if(touchStartPoint > event.targetTouches[i].clientX && (event.targetTouches[i].clientX - touchStartPoint >= -window.innerWidth / 4)) {
+        sliderWrapper.style.transform = `translateX(-${-currentTransformSlider.m41 + event.targetTouches[i].clientX}px)`;
+      } else {
+        break;
+      }
+    }
+  });
+
+  sliderWrapper.addEventListener('touchend', function(event) {
+    touchListEnd = event.changedTouches[0];
+    touchEndPoint = touchListEnd.clientX;
+
+    if (sliderWrapper == servicesSlider) {
+      if (touchStartPoint - touchEndPoint >= 40) {
+        forwardFunction(sliderCount, sliderWrapper);
+      } else if (touchEndPoint - touchStartPoint >= 40) {
+        backwardFunction(sliderCount, sliderWrapper);
+      }
+    }
+
+    if (touchStartPoint - touchEndPoint >= 40) {
+      forwardFunction(sliderWrapper, sliderCount, sliderList.length);
+    } else if (touchEndPoint - touchStartPoint >= 40) {
+      backwardFunction(sliderWrapper, sliderCount, sliderList.length);
+    }
+
+  });
+}
+
+swipeSlider(paySliderWrapper, sliderForward, sliderBackward, paySliderCount, paySliderList);
+swipeSlider(showplaceSlider, sliderForward, sliderBackward, showplaceSliderCount, showplaceSliderList);
+swipeSlider(servicesSlider, sliderServicesForward, sliderServicesBackward, servicesMarker);

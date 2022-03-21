@@ -14,6 +14,12 @@ if(isset($_POST) AND count($_POST)>=2 AND strlen(implode('',$_POST)) > 5) {
       $key_label = "Телефон";
     } elseif ($key == 'modal__textarea') {
       $key_label = "Вопрос";
+    } elseif ($key == 'modal__checkIn_reserve') {
+      $key_label = "Дата заезда";
+    } elseif ($key == 'modal__checkOut_reserve') {
+      $key_label = "Дата выезда";
+    } elseif ($key == 'modalPersonalData') {
+      $key_label = "Согласие на обработку данных";
     } else {
       $key_label = $key;
     }
@@ -27,8 +33,8 @@ $headers .= "From: <send@axis-hotel.ru>\r\n";
 $headers .= "Reply-To: send@axis-hotel.ru\r\n";
 
 mail('chepurnov@nelset.com', '[AXIS-HOTEL.RU]', $body,$headers);
-header("Location: ?send=ok&time=".time());
-
+mail('info@axis-hotel.ru', '[AXIS-HOTEL.RU]', $body,$headers);
+header("Location: ?send=ok&time=".time()."#openModal");
 }
 ?>
 
@@ -88,15 +94,15 @@ header("Location: ?send=ok&time=".time());
 
       <div class="header__socials">
 
-        <a href="#" class="header__socials-link"><img src="picture/icons/instagram.svg" alt=""></a>
+        <a href="https://www.instagram.com/axis_hotel/" class="header__socials-link"><img src="picture/icons/instagram.svg" alt="instagram"></a>
 
-        <a href="#" class="header__socials-link"><img src="picture/icons/facebook.svg" alt=""></a>
+        <!-- <a href="#" class="header__socials-link"><img src="picture/icons/facebook.svg" alt=""></a> -->
 
-        <a href="#" class="header__socials-link"><img src="picture/icons/booking.svg" alt=""></a>
+        <a href="#" class="header__socials-link"><img src="picture/icons/booking.svg" alt="booking"></a>
 
-        <a href="#" class="header__socials-link"><img src="picture/icons/vkontakte.svg" alt=""></a>
+        <!-- <a href="#" class="header__socials-link"><img src="picture/icons/vkontakte.svg" alt=""></a>
 
-        <a href="#" class="header__socials-link"><img src="picture/icons/odnoklassniki.svg" alt=""></a>
+        <a href="#" class="header__socials-link"><img src="picture/icons/odnoklassniki.svg" alt=""></a> -->
 
       </div>
 
@@ -106,7 +112,7 @@ header("Location: ?send=ok&time=".time());
 
       <div class="header__logo">
 
-        <a href="#" class="header__logo-link">
+        <a href="/" class="header__logo-link">
 
           <picture>
 
@@ -188,7 +194,7 @@ header("Location: ?send=ok&time=".time());
 
               <div class="banner__booking_date">
 
-                <span id="booking__checkIn">Заезд</span><span id="booking__checkOut"> - Выезд</span>
+                <span id="booking__checkIn">Заезд</span><span id="booking__checkOut"> — Выезд</span>
 
               </div>
 
@@ -306,7 +312,7 @@ header("Location: ?send=ok&time=".time());
 
             <p class="apartaments__paragraph content__paragraph">
 
-              Апарт-отель «Axis» - это комплекс из 7 двухэтажных коттеджей с домашним уютом и гостиничным сервисом.
+              Апарт-отель «Axis» — это комплекс из 7 двухэтажных коттеджей с домашним уютом и гостиничным сервисом.
 
             </p>
 
@@ -428,9 +434,9 @@ header("Location: ?send=ok&time=".time());
 
             <picture>
 
-              <source srcset="picture/room/linens.png" media="(min-width: 800px)">
+              <source srcset="picture/room/closely_bed.png" media="(min-width: 800px)">
 
-              <img src="picture/room/linens.png" alt="" class="pay__img">
+              <img src="picture/room/closely_bed.png" alt="" class="pay__img">
 
             </picture>
 
@@ -452,9 +458,9 @@ header("Location: ?send=ok&time=".time());
 
             <picture>
 
-              <source srcset="picture/room/bootle.png">
+              <source srcset="picture/room/cups.png">
 
-              <img src="picture/room/bootle.png" alt="" class="pay__img">
+              <img src="picture/room/cups.png" alt="" class="pay__img">
 
             </picture>
 
@@ -464,9 +470,9 @@ header("Location: ?send=ok&time=".time());
 
             <picture>
 
-              <source srcset="picture/room/dining_room.png" media="(min-width: 800px)">
+              <source srcset="picture/room/table.png" media="(min-width: 800px)">
 
-              <img src="picture/room/dining_room.png" alt="" class="pay__img">
+              <img src="picture/room/table.png" alt="" class="pay__img">
 
             </picture>
 
@@ -514,13 +520,13 @@ header("Location: ?send=ok&time=".time());
 
                   <br>
 
-                  Для любителей горнолыжного спорта у нас есть отличные новости - мы находимся всего в 200 метрах от канатной дороги.
+                  Для любителей горнолыжного спорта у нас есть отличные новости — мы находимся всего в 200 метрах от канатной дороги.
 
                 </p>
 
                 <p class="pay__slider-paragraph content__paragraph">
 
-                  В стоимость проживания включено: парковка - ваш транспорт будет под надежной защитой, и высокоскоростной wi-fi, чтобы всегда оставаться на связи с родными и делиться радостными моментами.
+                  В стоимость проживания включено: парковка — ваш транспорт будет под надежной защитой, и высокоскоростной wi-fi, чтобы всегда оставаться на связи с родными и делиться радостными моментами.
 
                 </p>
 
@@ -608,7 +614,7 @@ header("Location: ?send=ok&time=".time());
 
                 <p class="pay__slider-paragraph content__paragraph">
 
-                  Вид из аппортаментов «Axis» - наша настоящая гордость.
+                  Вид из апартаментов «Axis» — наша настоящая гордость.
 
                   <br>
 
@@ -616,7 +622,7 @@ header("Location: ?send=ok&time=".time());
 
                 </p>
 
-                <p class="pay__slider-paragraph content__paragraph">Площадка - хорошее место, чтобы насладиться тишиной и покоем, с чашечкой душистого чая в руках.</p>
+                <p class="pay__slider-paragraph content__paragraph">Площадка — хорошее место, чтобы насладиться тишиной и покоем, с чашечкой душистого чая в руках.</p>
 
               </div>
 
@@ -642,7 +648,7 @@ header("Location: ?send=ok&time=".time());
 
                 <p class="pay__slider-paragraph content__paragraph">
 
-                  Кухня в наших коттеджах устроена так, чтобы вы чувствовали себя, как дома - комфортно и уютно.
+                  Кухня в наших коттеджах устроена так, чтобы вы чувствовали себя, как дома — комфортно и уютно.
 
                 </p>
 
@@ -658,9 +664,9 @@ header("Location: ?send=ok&time=".time());
 
                 <picture>
 
-                  <source srcset="picture/kitchen.png" media="(min-width: 800px)">
+                  <source srcset="picture/broad_kitchen.png" media="(min-width: 800px)">
 
-                  <img src="picture/kitchen.png" alt="">
+                  <img src="picture/broad_kitchen.png" alt="">
 
                 </picture>
 
@@ -740,7 +746,7 @@ header("Location: ?send=ok&time=".time());
 
           <div class="ski__trace-content">
 
-            <h2 class="ski__heading section__heading">Горнолыжные трассы в шаге от апартаметов</h2>
+            <h2 class="ski__heading section__heading">Горнолыжные трассы в шаге от апартаментов</h2>
 
             <p class="ski__paragraph content__paragraph">
 
@@ -850,7 +856,7 @@ header("Location: ?send=ok&time=".time());
 
               <div class="services__slider1-icon">
 
-                <img src="picture/icons/parking.svg" alt="">
+                <img src="picture/icons/parking.svg" alt="парковка">
 
               </div>
 
@@ -868,7 +874,7 @@ header("Location: ?send=ok&time=".time());
 
               <div class="services__slider1-icon">
 
-                <img src="picture/icons/wifi.svg" alt="">
+                <img src="picture/icons/wifi.svg" alt="бесплатный wi-fi">
 
               </div>
 
@@ -886,7 +892,25 @@ header("Location: ?send=ok&time=".time());
 
               <div class="services__slider1-icon">
 
-                <img src="picture/icons/transfer.svg" alt="">
+                <img src="picture/icons/cleaning.svg" alt="уборка">
+
+              </div>
+
+              <h3 class="services__slider1-heading">Ежедневная уборка</h3>
+
+              <p class="services__slider1-paragraph content__paragraph">
+
+                Для вашего комфорта мы каждый день проводим уборку апартаментов, чтобы никакая мелочь не испортила Ваш отдых!
+
+              </p>
+
+            </div>
+
+            <div class="services__slider1-content">
+
+              <div class="services__slider1-icon">
+
+                <img src="picture/icons/transfer.svg" alt="трансфер">
 
               </div>
 
@@ -904,7 +928,7 @@ header("Location: ?send=ok&time=".time());
 
               <div class="services__slider1-icon">
 
-                <img src="picture/icons/washing_machine.svg" alt="">
+                <img src="picture/icons/washing_machine.svg" alt="прачечная">
 
               </div>
 
@@ -918,77 +942,7 @@ header("Location: ?send=ok&time=".time());
 
             </div>
 
-            <div class="services__slider1-content">
 
-              <div class="services__slider1-icon">
-
-                <img src="picture/icons/parking.svg" alt="">
-
-              </div>
-
-              <h3 class="services__slider1-heading">Бесплатная парковка</h3>
-
-              <p class="services__slider1-paragraph content__paragraph">
-
-                В период «высокого» сезона на курорте возникает загруженность парковочных мест, поэтому мы предоставляем бесплатную стоянку на территории отеля.
-
-              </p>
-
-            </div>
-
-            <div class="services__slider1-content">
-
-              <div class="services__slider1-icon">
-
-                <img src="picture/icons/wifi.svg" alt="">
-
-              </div>
-
-              <h3 class="services__slider1-heading">Бесплатный Wi-Fi</h3>
-
-              <p class="services__slider1-paragraph content__paragraph">
-
-                Мобильный интернет и роуминг в горах могут стать проблемой, но не у нас. Делитесь видео и фотографиями, общайтесь и делитесь впечатлениями!
-
-              </p>
-
-            </div>
-
-            <div class="services__slider1-content">
-
-              <div class="services__slider1-icon">
-
-                <img src="picture/icons/transfer.svg" alt="">
-
-              </div>
-
-              <h3 class="services__slider1-heading">Трансфер</h3>
-
-              <p class="services__slider1-paragraph content__paragraph">
-
-                В горах слишком красиво, чтобы смотреть только на дорогу. При необходимости организуем трансфер от любого транспортного узла к нам в apart-отель.
-
-              </p>
-
-            </div>
-
-            <div class="services__slider1-content">
-
-              <div class="services__slider1-icon">
-
-                <img src="picture/icons/washing_machine.svg" alt="">
-
-              </div>
-
-              <h3 class="services__slider1-heading">Прачечная</h3>
-
-              <p class="services__slider1-paragraph content__paragraph">
-
-                Для наших гостей доступны услуги прачечной и глаженья одежды. Чтобы не беспокоиться о мелочах и насладиться отдыхом.
-
-              </p>
-
-            </div>
 
           </div>
 
@@ -998,7 +952,7 @@ header("Location: ?send=ok&time=".time());
 
               <button class="slider__control-button" id="services__button-minus">
 
-                <img src="picture/icons/arrow_black.svg" alt="">
+                <img src="picture/icons/arrow_black.svg" alt="стрелка">
 
               </button>
 
@@ -1006,7 +960,7 @@ header("Location: ?send=ok&time=".time());
 
               <button class="slider__control-button" id="services__button-plus">
 
-                <img src="picture/icons/arrow_black.svg" alt="">
+                <img src="picture/icons/arrow_black.svg" alt="стрелка">
 
               </button>
 
@@ -1116,7 +1070,7 @@ header("Location: ?send=ok&time=".time());
 
                 <p class="services__showplace-paragraph content__paragraph">
 
-                  Озеро любви, или Суук-Джюрек-Кёль, что в переводе означает «холодное сердце» - природный водоем уникальной формы, напоминающей сердце.
+                  Озеро любви, или Суук-Джюрек-Кёль, что в переводе означает «холодное сердце» — природный водоем уникальной формы, напоминающей сердце.
 
                 </p>
 
@@ -1228,7 +1182,8 @@ header("Location: ?send=ok&time=".time());
 
           <h2 class="contacts__heading section__heading">Остались вопросы?</h2>
 
-          <p class="contacts__paragraph">Оставьте номер телефона и мы перезвоним вам</p>
+          <p class="contacts__paragraph">Наши контакты: <a href="tel:+79288112211">+7 928 811 22 11</a> <span class="separator">/</span> <a href="mailto:info@axis-hotel.ru">info@axis-hotel.ru</a><br>
+          <span>Или оставьте номер телефона и мы перезвоним</span></p>
 
         </div>
 
@@ -1376,7 +1331,7 @@ header("Location: ?send=ok&time=".time());
 
           <div class="copyrights">
 
-            Copyrights © 2013 - 2022. Все права защищены.
+            Copyrights © 2022. Все права защищены.
 
           </div>
 
@@ -1412,7 +1367,7 @@ header("Location: ?send=ok&time=".time());
 
             <div class="modal__text">
 
-              <span id="modal__checkIn" class="modal__checkIn">Заезд</span> <span id="modal__checkOut" class="modal__checkOut"> - Выезд</span>
+              <span name="modal__checkIn" id="modal__checkIn" class="modal__checkIn">Заезд</span> <span name="modal__checkOut" id="modal__checkOut" class="modal__checkOut"> — Выезд</span>
 
             </div>
 
@@ -1524,6 +1479,10 @@ header("Location: ?send=ok&time=".time());
 
         </div>
 
+        <input type="text" name="modal__checkIn_reserve" id="modal__checkIn_reserve" class="modal__checkIn_reserve modal__check_reserve">
+
+        <input type="text" name="modal__checkOut_reserve" id="modal__checkOut_reserve" class="modal__checkOut_reserve modal__check_reserve">
+
         <button type="submit" id="modal__submit" class="modal__submit">
 
           Забронировать <img src="picture/icons/arrow__white.svg" alt="">
@@ -1532,9 +1491,7 @@ header("Location: ?send=ok&time=".time());
 
       </form>
 
-      <input type="text" class="modal__checkIn_reserve modal__check_reserve">
 
-      <input type="text" class="modal__checkOut_reserve modal__check_reserve">
 
     </div>
 
@@ -1816,6 +1773,20 @@ header("Location: ?send=ok&time=".time());
 
   </section>
 
+  <div id="openModal" class="modalDialog">
+    <div class="modal__wrap">
+      <a href="#close" class="modal__close">
+        <img src="picture/icons/close.svg" alt="close">
+      </a>
+
+      <h3>Спасибо за бронирование!</h3>
+      <p>В ближайшее время с Вами свяжется менеджер для подтверждени заказа.</p>
+
+    </div>
+  </div>
+
+
+
   <script src="scripts/script.js"></script>
 
   <script src="scripts/calendar.js"></script>
@@ -1823,6 +1794,21 @@ header("Location: ?send=ok&time=".time());
   <script src="scripts/mobile.js"></script>
 
   <!-- <script src="scripts/email.js"></script> -->
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(87775234, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<!-- /Yandex.Metrika counter -->
 
 </body>
 

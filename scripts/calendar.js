@@ -217,7 +217,7 @@ function insertDateInCalendar(objCurrent, objNext, targetCurrent, targetNext){  
     d++;
   }
 
-  for (let i = objCurrent.lastDate + 1 + d; i < currentDateAreaList.length; i++) {                           // добавляю числа из следующего месяца
+  for (let i = objCurrent.lastDate+objCurrent.firstDayOFMonth; i < currentDateAreaList.length; i++) {                           // добавляю числа из следующего месяца
     targetCurrent[i].textContent = `${yearMonthArray[monthCount + 1].dateList[f]}`;
     targetCurrent[i].classList.add('calendar__day_alien');
     f++;
