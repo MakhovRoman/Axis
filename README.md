@@ -9,3 +9,7 @@
   <li>Сделал несколько самописных слайдеров</li>
   <li>Прокачал верстку</li>
 </ul>
+
+<h3>Stack</h3>
+
+![My Skills](https://skillicons.dev/icons?i=html,css,sass,js,php)
